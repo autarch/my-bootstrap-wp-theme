@@ -41,7 +41,7 @@
 					<hgroup>
 						<h1 id="site-title">
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-								<span><?php bloginfo( 'name' ); ?></span>
+                                <img src="<?php echo get_template_directory_uri() ?>/img/bridges-logo.png">
 							</a>
 						</h1>
 						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
