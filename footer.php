@@ -13,11 +13,16 @@
                         <p>
                             Copyright &copy; <?php echo date('Y') ?>  Bridges of Respect, all rights reserved
                         </p>
+                        <p>
+                          <strong>Email:</strong> <a href="mailto:info@bridgesofrespect.org">info@bridgesofrespect.org</a><br />
+                          <strong>Phone:</strong> 612-209-2787
+                        </p>
+
 						<?php wp_nav_menu( array(
 							'container'			=>	'nav',
 							'container_class'	=>	'subnav',
 							'theme_location'	=>	'footer-menu',
-							'menu_class'		=>	'credits nav pull-left',
+							'menu_class'		=>	'credits nav',
 							'depth'				=>	3,
 							'fallback_cb'		=>	'the_bootstrap_credits',
 							'walker'			=>	new The_Bootstrap_Nav_Walker,
