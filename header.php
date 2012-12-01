@@ -31,7 +31,7 @@
 					<?php tha_header_top();
 					wp_nav_menu( array(
 						'container'			=>	'nav',
-						'container_class'	=>	'subnav clearfix',
+						'container_class'	=>	'subnav clearfix global-nav',
 						'theme_location'	=>	'header-menu',
 						'menu_class'		=>	'nav nav-pills pull-right',
 						'depth'				=>	3,

@@ -10,3 +10,23 @@
 blockquote.hero-unit q {
     font-weight: bold;
 }
+
+nav.global-nav {
+    border-bottom: 1px solid @grayLight;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+
+    ul {
+        margin-bottom: 0;
+    }
+
+    .nav-pills > li > a {
+        color: @bridgesOrange;
+    }
+
+    .nav-pills > .active > a,
+    .nav-pills > .active > a:hover {
+        color: @white;
+        background-color: @bridgesOrange;
+    }
+}
