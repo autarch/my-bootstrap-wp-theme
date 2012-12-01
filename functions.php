@@ -224,7 +224,7 @@ function the_bootstrap_register_scripts_styles() {
 		 */
 		wp_register_script(
 			'tw-bootstrap',
-			get_template_directory_uri() . "/js/bootstrap{$suffix}.js",
+			get_template_directory_uri() . "/js/bootstrap.js",
 			array('jquery'),
 			'2.0.3',
 			true
@@ -1068,7 +1068,6 @@ function _the_bootstrap_version() {
 	
 	return $theme_version;
 }
-
 
 /* End of file functions.php */
 /* Location: ./wp-content/themes/the-bootstrap/functions.php */
