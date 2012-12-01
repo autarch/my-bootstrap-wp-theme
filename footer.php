@@ -10,22 +10,19 @@
 				<footer id="colophon" role="contentinfo" class="span12">
 					<?php tha_footer_top(); ?>
 					<div id="page-footer" class="well clearfix">
+                        <p>
+                            Copyright &copy; <?php echo date('Y') ?>  Bridges of Respect, all rights reserved
+                        </p>
 						<?php wp_nav_menu( array(
 							'container'			=>	'nav',
 							'container_class'	=>	'subnav',
 							'theme_location'	=>	'footer-menu',
-							'menu_class'		=>	'credits nav nav-pills pull-left',
+							'menu_class'		=>	'credits nav pull-left',
 							'depth'				=>	3,
 							'fallback_cb'		=>	'the_bootstrap_credits',
 							'walker'			=>	new The_Bootstrap_Nav_Walker,
 						) );
 						?>
-						<div id="site-generator"<?php echo has_nav_menu('footer-menu') ? ' class="footer-nav-menu"' : ''; ?>>
-							<a	href="<?php echo esc_url( __( 'http://wordpress.org/', 'the-bootstrap' ) ); ?>"
-								title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'the-bootstrap' ); ?>"
-								target="_blank"
-								rel="generator"><?php printf( _x( 'Proudly powered by %s', 'WordPress', 'the-bootstrap' ), 'WordPress' ); ?></a>
-						</div>
 					</div><!-- #page-footer .well .clearfix -->
 					<?php tha_footer_bottom(); ?>
 				</footer><!-- #colophon -->
