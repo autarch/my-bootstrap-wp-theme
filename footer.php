@@ -10,13 +10,6 @@
 				<footer id="colophon" role="contentinfo" class="span12">
 					<?php tha_footer_top(); ?>
 					<div id="page-footer" class="well clearfix">
-                        <p>
-                            Copyright &copy; <?php echo date('Y') ?>  Bridges of Respect, all rights reserved
-                        </p>
-                        <p>
-                          <strong>Email:</strong> <a href="mailto:info@bridgesofrespect.org">info@bridgesofrespect.org</a><br />
-                          <strong>Phone:</strong> 612-209-2787
-                        </p>
 
 						<?php wp_nav_menu( array(
 							'container'			=>	'nav',
@@ -28,6 +21,15 @@
 							'walker'			=>	new The_Bootstrap_Nav_Walker,
 						) );
 						?>
+
+                        <p>
+                          <strong>Email:</strong> <a href="mailto:info@bridgesofrespect.org">info@bridgesofrespect.org</a><br />
+                          <strong>Phone:</strong> 612-209-2787
+                        </p>
+
+                        <p>
+                            Copyright &copy; <?php echo date('Y') ?>  Bridges of Respect, all rights reserved
+                        </p>
 					</div><!-- #page-footer .well .clearfix -->
 					<?php tha_footer_bottom(); ?>
 				</footer><!-- #colophon -->
