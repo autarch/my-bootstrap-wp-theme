@@ -12,6 +12,7 @@
 					<div id="page-footer" class="clearfix">
                         <ul id="footer-nav">
                             <li><a href="mailto:info@tcvegfest.com">Contact Us</a></li>
+                            <li><a href="/about-the-festival/">About Us</a></li>
                             <li><a href="/code-of-conduct/">Code of Conduct</a></li>
                             <li><a href="/credits/">Credits</a></li>
                         </ul>
