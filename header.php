@@ -13,6 +13,7 @@
 <html class="no-js" <?php language_attributes(); ?>>
 	<head>
 		<?php tha_head_top(); ?>
+        <link rel="shortcut icon" href="<?php echo bloginfo('stylesheet_directory'); ?>/img/favicon.ico" />
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,12 +40,17 @@
 						'walker'			=>	new The_Bootstrap_Nav_Walker,
 					) ); ?>
 					<hgroup>
-						<h1 id="site-title">
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-								<span><?php bloginfo( 'name' ); ?></span>
-							</a>
-						</h1>
-						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+                        <a  id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+                            <img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/vegfest-2013-logo.gif" width="223" height="126">
+                        </a>
+                        <div id="titles">
+                            <h1 id="site-title">
+                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+                                    <span><?php bloginfo( 'name' ); ?></span>
+                                </a>
+                            </h1>
+                            <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+                        </div>
 					</hgroup>
 					
 					<?php if ( get_header_image() ) : ?>

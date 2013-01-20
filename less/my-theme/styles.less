@@ -1,0 +1,117 @@
+body {
+    background-color: @grayLighter;
+
+    & > .container {
+        margin-top: 0px;
+
+        & > #page {
+            padding-top: 0px;
+        }
+    }
+}
+
+header.page-header {
+    border: 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+
+#logo {
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    margin-top: 5px;
+    width: 223px !important;
+    height: 126px !important;
+}
+
+#site-title, #site-description {
+    clear: none;
+    margin-left: 235px;
+}
+
+#site-title {
+    margin-top: 10;
+    margin-bottom: 0;
+    padding-top: 35px;
+
+    a {
+        color: @caaBlue;
+    }
+}
+
+#site-description {
+    font-size: 18px;
+    color: @grayDarker;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#access {
+    clear: both;
+}
+
+figcaption.wp-caption-text {
+    font-size: @baseFontSize * 0.8;
+    line-height: @baseLineHeight * 0.8;
+    text-align: left !important;
+}
+
+h1.entry-title {
+    color: #7C4613;
+}
+
+.widget-title {
+    color: #333;
+    font-size: 14px;
+    font-variant: small-caps;
+    line-height: 24px;
+    text-transform: none;
+}
+
+footer {
+    background-color: @caaBrown;
+    .border-radius(4px);
+    color: @grayLighter;
+    margin-top: 20px;
+    padding: 20px 10px;
+    text-align: center;
+
+    a {
+        color: @white;
+
+        &:hover {
+            color: @grayLight;
+        }
+    }
+
+    #footer-nav {
+        list-style: none;
+        margin-left: 0;
+        margin-bottom: 0;
+
+        li {
+            display: inline;
+            margin-left: 0;
+            margin-right: 5px;
+
+            &:after {
+                content: "|";
+                margin-left: 10px;
+            }
+
+            &:last-child:after {
+                content: "";
+            }
+        }
+    }
+
+    #caa-logo {
+        margin-top: 5px;
+    }
+}
+
+footer.entry-meta {
+    background-color: @white;
+    text-align: left;
+}
