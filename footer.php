@@ -12,8 +12,8 @@
 					<div id="page-footer" class="clearfix">
                         <ul id="footer-nav">
                             <li><a href="mailto:info@tcvegfest.com">Contact Us</a></li>
-                            <li><a href="/code-of-conduct">Code of Conduct</a></li>
-                            <li><a href="/credits">Credits</a></li>
+                            <li><a href="/code-of-conduct/">Code of Conduct</a></li>
+                            <li><a href="/credits/">Credits</a></li>
                         </ul>
 
                         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img width="67" height="13" src="<?php echo bloginfo('stylesheet_directory'); ?>/img/cc-by-sa.png" title="Creative Commons BY-SA" alt="Creative Commons BY-SA logo"></a>
