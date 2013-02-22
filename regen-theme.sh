@@ -7,4 +7,4 @@ cat less/bootstrap/js/bootstrap-transition.js less/bootstrap/js/bootstrap-alert.
 
 ./node_modules/uglify-js/bin/uglifyjs -nc -v js/bootstrap.js > js/bootstrap.min.tmp.js
 
-rm js/bootstrap.min.tmp.js
+mv js/bootstrap.min.tmp.js js/bootstrap.min.js
