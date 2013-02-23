@@ -22,7 +22,7 @@ get_header(); ?>
 </style>
 
 <p>
-You can through PayPal using the form below.
+You can pay through PayPal using the form below.
 </p>
 
 <form action="https://www.paypal.com/cgi-bin/webscr" id="exhibitor-payment" method="post">
