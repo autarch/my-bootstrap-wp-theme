@@ -34,13 +34,13 @@ header.page-header {
     padding-top: 30px;
 
     a {
-        color: @caaBlue;
+        color: @grayDarker;
     }
 }
 
 #site-description {
     font-size: 18px;
-    color: @grayDarker;
+    color: @caaBlue;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -56,11 +56,11 @@ figcaption.wp-caption-text {
 }
 
 h1.entry-title {
-    color: #7C4613;
+    color: @grayDarker;
 }
 
 .widget-title {
-    color: #333;
+    color: #666;
     font-size: 14px;
     font-variant: small-caps;
     line-height: 24px;
@@ -71,16 +71,15 @@ h1.entry-title {
     white-space: nowrap;
 }
 
-footer {
-    background-color: @caaBrown;
-    .border-radius(4px);
-    color: @grayLighter;
+#colophon {
+    border-top: 2px solid @caaBrown;
+    color: @grayDarker;
     margin-top: 20px;
     padding: 20px 0;
     text-align: center;
 
     a {
-        color: @white;
+        color: @grayDarker;
 
         &:hover {
             color: @grayLight;
