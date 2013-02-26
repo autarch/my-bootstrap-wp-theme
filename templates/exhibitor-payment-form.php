@@ -140,11 +140,21 @@ get_footer();
 
          var total = baseCost[selected];
 
-         if ( selected != "fc" ) {
+         if ( selected == "fc" ) {
              $.each(
                  [ "#extra-table", "#electricity" ],
                  function ( idx, id ) {
-                     if ( $( id, form ).attr("checked") ) {
+                     $( id, form ).removeAttr("checked").attr( "disabled", 1 );
+                 }
+             );
+         }
+         else {
+             $.each(
+                 [ "#extra-table", "#electricity" ],
+                 function ( idx, id ) {
+                     var elt = $( id, form );
+                     elt.removeAttr("disabled");
+                     if ( elt.attr("checked") ) {
                          total += 25;
                      }
                  }
