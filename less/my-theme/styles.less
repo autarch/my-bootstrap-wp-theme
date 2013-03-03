@@ -1,0 +1,244 @@
+body {
+    background-color: @grayLighter;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+div.container {
+}
+
+div.main {
+    background-color: white;
+    .border-radius(4px 4px 0 0);
+    margin-bottom: 0;
+    padding: 0px 20px 10px 20px;
+}
+
+#logo {
+    display: inline;
+    float: left;
+    height: 100px;
+    margin-top: 10px;
+    width: 165px;
+}
+
+#site-header {
+    clear: none;
+    margin-left: 180px;
+    min-height: 100px;
+
+    h1 {
+        clear: none;
+        font-size: 34px;
+        line-height: 40px;
+
+        a {
+            color: @textColor;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    h2 {
+        clear: none;
+        color: @caaBlue;
+        font-size: 28px;
+        line-height: 34px;
+    }
+}
+
+#global-nav {
+    font-family: @sansFontFamily;
+    margin-top: 20px;
+    margin-left: (@gridGutterWidth * -1);
+    margin-right: (@gridGutterWidth * -1);
+
+    .navbar-inner {
+        .border-radius(0px);
+        padding-left: 0;
+    }
+
+    .nav {
+        margin-left: 5px;
+
+        li {
+            font-size: 18px;
+            font-weight: bold;
+
+            a {
+                line-height: 37px;
+            }
+        }
+    }
+
+    form {
+        margin-top: 8px;
+
+        /* This matches the padding on the well element below the search input */
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+}
+
+.front-page-photo {
+    font-family: @sansFontFamily;
+
+    .caption {
+        position: relative;
+        bottom: 37px;
+        left: 0px;
+        .border-radius(0px 0px 0px 4px);
+        color: @white;
+        font-size: 35px;
+        font-weight: bold;
+        #gradient > .vertical(@grayLight, @black);
+        letter-spacing: 0.13em;
+        padding: 2px 8px;
+    }
+}
+
+#front-page-actions .well {
+    /*
+      449px is the height of the front page image.  19px is the size of the
+      padding for .well elements (there's no way to look this up with Less).
+      The extra 2px is for the border on the well elements.
+     */
+    height: (449px - (19px * 2) - 2px);
+}
+
+.right-side-actions {
+    color: @black;
+    font-family: @sansFontFamily;
+    font-size: 15px;
+    text-align: center;
+
+    form {
+        margin: 0;
+
+        button {
+            font-family: @sansFontFamily;
+        }
+    }
+
+    a, button {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 5px 0 10px 0;
+
+        i {
+            vertical-align: 0%;
+        }
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+#events {
+    h2 {
+        background-color: @caaBlue;
+        .border-radius(4px);
+        color: @white;
+        font-size: 16px;
+        padding: 0px 8px;
+
+        img.rss {
+            margin-bottom: 3px;
+        }
+    }
+
+    .event {
+        font-size: 12px;
+        margin-left: 8px;
+
+        h3 {
+            font-size: 14px;
+            line-height: 30px;
+            margin-bottom: 0;
+        }
+
+        p.date {
+            margin-top: 0;
+        }
+    }
+}
+
+#page-title {
+    margin-top: 0;
+}
+
+div.footer {
+    background-color: @caaBrown;
+    .border-radius(0 0 4px 4px);
+    color: @grayLighter;
+    margin-top: 0;
+    padding: 10px 20px;
+
+    a {
+        color: @white;
+
+        &:hover {
+            color: @grayLight;
+        }
+    }
+
+    #footer-nav {
+        list-style: none;
+        margin-left: 0;
+
+        li {
+            display: inline;
+            margin-left: 0;
+            margin-right: 5px;
+
+            &:after {
+                content: "|";
+                margin-left: 10px;
+            }
+
+            &:last-child:after {
+                content: "";
+            }
+        }
+    }
+}
+
+h3.subtitle {
+    line-height: 20px;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+img.content-right {
+    margin-left: 20px;
+}
+
+.campaigns {
+    .clearfix();
+
+    h3 {
+        clear: none;
+    }
+}
+
+.sidekick-unit {
+    background-color: @wellBackground;
+    .border-radius(6px);
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 15px;
+    padding: 20px;
+
+    &.with-image {
+        width: 65%;
+    }
+
+    blockquote {
+        border-left: 5px solid #ccc;
+        margin-bottom: 0px;
+    }
+}
