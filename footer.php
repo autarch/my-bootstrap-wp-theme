@@ -33,8 +33,9 @@
         </p>
 
         <p>
-          <a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img
-              src="<?php echo bloginfo('stylesheet_directory'); ?>/img/by-sa.png" width="67" height="13"></a>
+          <a href="http://creativecommons.org/licenses/by-sa/3.0/us/"
+             ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/by-sa.png"
+                   alt="Creative Commons BY-SA logo" width="67" height="13"></a>
           Copyright &copy; 2012-<?php print(Date("Y")); ?> Compassionate Action for
           Animals. <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">Some
           rights reserved</a>.
