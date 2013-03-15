@@ -63,6 +63,11 @@ function the_bootstrap_setup() {
 	 * Custom Nav Menu handler for the Navbar.
 	 */
 	require_once( get_template_directory() . '/inc/nav-menu-walker.php' );
+
+    /**
+     * Custom for exploreveg theme
+     */
+	require_once( get_template_directory() . '/inc/exploreveg.php' );
 	
 	/**
 	 * Theme Hook Alliance
