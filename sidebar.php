@@ -23,17 +23,17 @@ tha_sidebars_before(); ?>
 
               <p>
                 Help us help animals:
-                <a href="donate" class="btn btn-primary">Donate</a>
+                <a href="/donate" class="btn btn-primary">Donate</a>
               </p>
 
               <p>
                 Free Veg Starter Kit:
-                <a href="vsk.html" class="btn btn-primary">Order</a>
+                <a href="/resources/vsk" class="btn btn-primary">Order</a>
               </p>
 
               <p>
                 Get involved:
-                <a href="volunteer.html" class="btn btn-primary">Volunteer</a>
+                <a href="/volunteer" class="btn btn-primary">Volunteer</a>
               </p>
             </div>            
           </aside>
