@@ -31,6 +31,7 @@
           <div class="span12">
             <div id="logo">
               <a href="/"><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/caa-logo.png"
+                               width="200" height="121"
                                alt="Compassionate Action for Animals Logo"></a>
             </div>
             <hgroup id="site-header">
