@@ -10,7 +10,9 @@ tha_sidebars_before(); ?>
 
         <div class="span3">
 	      <?php tha_sidebar_top(); ?>
-          <aside class="right-side-actions">
+          <aside
+            <?php if ( is_front_page() ) : echo 'id="front-page-actions" '; endif ?>
+            class="right-side-actions">
             <div class="well">
               <p>
                 News and events:
