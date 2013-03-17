@@ -79,20 +79,27 @@ div.main {
     }
 }
 
-.front-page-photo {
-    font-family: @sansFontFamily;
+#front-page-photos {
+    height: 449px;
+    width: 700px;
 
-    .caption {
-        position: relative;
-        bottom: 37px;
-        left: 0px;
-        .border-radius(0px 0px 0px 4px);
-        color: @white;
-        font-size: 35px;
-        font-weight: bold;
-        #gradient > .vertical(@grayLight, @black);
-        letter-spacing: 0.13em;
-        padding: 2px 8px;
+    .front-page-photo {
+        font-family: @sansFontFamily;
+
+        .caption {
+            bottom: 41px;
+            .border-radius(0px 0px 4px 4px);
+            color: @white;
+            font-size: 30px;
+            font-weight: bold;
+            #gradient > .vertical(@grayLight, @black);
+            height: 37px;
+            left: 0px;
+            letter-spacing: 0.1em;
+            line-height: 36px;
+            padding: 2px 8px;
+            position: relative;
+        }
     }
 }
 
