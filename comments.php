@@ -14,7 +14,7 @@
 
 tha_comments_before();
 
-comment_form();
+
 
 tha_comments_after();
 
