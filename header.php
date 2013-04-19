@@ -41,7 +41,7 @@
 					) ); ?>
                     <?php if ( is_front_page() ) : ?>
                       <div id="front-page-logo">
-                        <img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/vegfest-logo-300x269.png" width="300" height="269">
+                        <img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/vegfest-logo-300x269.png" width="225" height="202">
                       </div>
                     <?php else : ?>
                       <a  id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
