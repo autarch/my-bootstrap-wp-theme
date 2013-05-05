@@ -29,5 +29,5 @@ get_header(); ?>
 get_footer();
 
 
-/* End of file _full_width.php */
-/* Location: ./wp-content/themes/the-bootstrap/_full_width.php */
+/* End of file home.php */
+/* Location: ./wp-content/themes/the-bootstrap/home.php */
