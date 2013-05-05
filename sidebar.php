@@ -81,8 +81,8 @@ tha_sidebars_before(); ?>
               <a href="#" title="News Feed"
                  ><img class="rss"
                        src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png"
-                       alt="RSS icon" height="16" width="16"> News feed</a>
-              </a>
+                       alt="RSS icon" height="16" width="16"></a>
+              <a href="#" title="News Feed">News feed</a>
             </div>
           </div>
 
