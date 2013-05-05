@@ -1,5 +1,5 @@
 <?php
-/** _full_width.php
+/** home.php
  *
  * Template Name: Home page
  *
