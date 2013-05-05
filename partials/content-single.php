@@ -20,7 +20,12 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
 		<?php
+        if ( '' != get_the_post_thumbnail() ) { 
+            the_post_thumbnail( 'post-thumbnail', array( 'class' => 'pull-right featured-image thumbnail' ) );
+        }
+
 		the_content();
+
 		the_bootstrap_link_pages(); ?>
 	</div><!-- .entry-content -->
 
