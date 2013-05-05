@@ -22,7 +22,7 @@ tha_entry_before(); ?>
 			'posts_per_page' => -1,
 			'tax_query' => array(
 					array(
-						'taxonomy' => 'media_tag',
+						'taxonomy' => 'media-tags',
 						'terms'    => 'front-page',
 						'field'    => 'slug',
 					)
