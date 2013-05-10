@@ -61,14 +61,14 @@
                                width="200" height="121"
                                alt="Compassionate Action for Animals Logo"></a>
             </div>
-            <hgroup id="site-header">
+            <div id="site-header">
               <h1>
                 <a href="/"><?php bloginfo( 'name' ); ?></a>
               </h1>
               <h2 id="tagline">
                 <?php bloginfo( 'description' ); ?>
               </h2>
-            </hgroup>
+            </div>
             <div class="navbar navbar-inverse" id="global-nav">
               <div class="navbar-inner">
                 <div class="row">
