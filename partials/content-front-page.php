@@ -40,11 +40,11 @@ tha_entry_before(); ?>
 			$url = wp_get_attachment_url();
 
             echo '<div class="front-page-photo"'
-                 . ( $i == 0 ? '' : 'style="display:none"' )
-                 . 'id="front-page-photo-' . $i++  . '">'
+                 . ( $i == 0 ? '' : ' style="display:none"' )
+                 . ' id="front-page-photo-' . $i++  . '">'
                    . '<a href="' . $url . '">'
                      . '<img class="img-rounded" src="' . $image[0]
-                     . '" height="449" width="700"></a>'
+                     . '" height="449" width="700" alt="' . $post->post_excerpt . '"></a>'
                    . '<div class="caption">' . $post->post_excerpt . '</div>'
                  . '</div>';
         }
