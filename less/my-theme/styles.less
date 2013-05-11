@@ -143,75 +143,88 @@ div.main {
     height: (449px - (19px * 2) - 2px);
 }
 
-.right-side-actions {
-    color: @black;
-    font-family: @sansFontFamily;
-    font-size: 15px;
-    text-align: center;
+#right-nav {
+    background-color: @caaGrey;
+    color: @grayDarker;
 
-    form {
-        margin: 0;
-
-        input[type="text"],
-        input[type="email"] {
-            width: 150px;
-        }
-
-        input[type="submit"] {
-            font-family: @sansFontFamily;
-        }
-
-        .ajax-loader {
-            display: none;
-        }
-    }
-
-    a, button, input[type="submit"] {
-        display: block;
-        font-size: 18px;
-        font-weight: bold;
-        margin: 5px 0 10px 0;
-
-        i {
-            vertical-align: 0%;
-        }
-    }
-
-    button, input[type="submit"] {
-        width: 100%;
-    }
-}
-
-#follow, #events {
     h2 {
-        background-color: @caaBlue;
-        .border-radius(4px);
+        background-color: @caaGreen;
         color: @white;
-        font-size: 16px;
-        padding: 0px 8px;
+        font-size: 18px;
+        margin: 10px 0 10px 0;
+        padding: 0px 15px 0px 15px;
+        text-align: center;
+
+        a, a:hover, a:visited {
+            color: @white;
+        }
 
         img.rss {
-            margin-bottom: 3px;
+            margin-left: 5px;
+            vertical-align: -5%;
+        }
+    }
+
+    h2.first {
+        margin-top: 0;
+    }
+
+    .right-side-content {
+        padding: 10px;
+    }
+
+    .right-side-actions {
+        font-size: 15px;
+        text-align: center;
+
+        form {
+            margin: 0;
+
+            input[type="text"],
+            input[type="email"] {
+                width: 170px;
+            }
+
+            input[type="submit"] {
+                font-family: @sansFontFamily;
+            }
+
+            .ajax-loader {
+                display: none;
+            }
+        }
+
+        a, button, input[type="submit"] {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0 30px 0;
+
+            i {
+                vertical-align: 0%;
+            }
+        }
+
+        button, input[type="submit"] {
+            width: 100%;
         }
     }
 
     .event {
-        font-size: 12px;
-        margin-left: 8px;
-
-        h3 {
-            font-size: 14px;
-            line-height: 30px;
-            margin-bottom: 0;
-        }
-
-        p.date {
+        h3.date {
+            color: @grayDark;
+            font-size: 12px;
+            line-height: 12px;
+            margin-bottom: 2px;
             margin-top: 0;
         }
-    }
 
-    .follow-button {
-        margin-bottom: 10px;
+        h3.event {
+            font-size: 16px;
+            line-height: 18px;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
     }
 }
 
@@ -312,4 +325,20 @@ img.content-right {
     .social-button {
         float: left;
     }
+}
+
+.kill-gradient() {
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-repeat: no-repeat;
+    filter: none;
+}
+
+.btn {
+    .border-radius(0px);
+    .kill-gradient();
 }
