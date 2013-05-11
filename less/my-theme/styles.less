@@ -3,13 +3,14 @@ body {
     font-family: @sansFontFamily;
     font-size: 16px;
     line-height: 22px;
+    padding-bottom: 10px;
 }
 
 div.main {
     background-color: @white;
     .border-radius(4px 4px 0 0);
     margin-bottom: 0;
-    padding: 0px 20px 10px 20px;
+    padding: 0px 20px 0px 20px;
 }
 
 #site-header {
@@ -231,39 +232,49 @@ p.byline {
     float: right;
 }
 
-div.footer {
-    background-color: @caaBrown;
-    .border-radius(0 0 4px 4px);
-    color: @grayLighter;
-    margin-top: 0;
-    padding: 10px 20px;
+footer {
+    color: @white;
+    margin-left: (@gridGutterWidth * -1);
+    margin-right: (@gridGutterWidth * -1);
 
     a {
         color: @white;
 
         &:hover {
-            color: @grayLight;
+            color: @grayLighter;
         }
     }
 
     #footer-nav {
-        list-style: none;
-        margin-left: 0;
+        background-color: @caaBlue;
+        padding: 10px @gridGutterWidth;
 
-        li {
-            display: inline;
+        ul {
+            font-weight: bold;
+            list-style: none;
+            margin-bottom: 0;
             margin-left: 0;
-            margin-right: 5px;
 
-            &:after {
-                content: "|";
-                margin-left: 10px;
-            }
+            li {
+                display: inline;
+                margin-left: 0;
+                margin-right: 5px;
 
-            &:last-child:after {
-                content: "";
+                &:after {
+                    content: "|";
+                    margin-left: 10px;
+                }
+
+                &:last-child:after {
+                    content: "";
+                }
             }
         }
+    }
+
+    #colophon {
+        background-color: @caaGreen;
+        padding: 10px @gridGutterWidth;
     }
 }
 
