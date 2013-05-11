@@ -56,12 +56,15 @@
         <?php tha_header_top(); ?>
         <div class="row">
           <div id="follow-buttons" class="span12">
-            <a href="https://www.facebook.com/exploreveg" title="Follow us on Facebook" alt="Facebook icon"
-               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/facebook.png" height="24" width="24"></a>
-            <a href="https://www.twitter.com/exploreveg" title="Follow us on Twitter" alt="Twitter icon"
-               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/twitter.png" height="24" width="24"></a>
-            <a href="#" title="Subscribe to our news feed" alt="RSS icon"
-               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png" height="24" width="24"></a>
+            <a href="https://www.facebook.com/exploreveg" title="Follow us on Facebook"
+               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/facebook.png"
+                     height="24" width="24" alt="Facebook icon"></a>
+            <a href="https://www.twitter.com/exploreveg" title="Follow us on Twitter"
+               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/twitter.png"
+                     height="24" width="24" alt="Twitter icon"></a>
+            <a href="#" title="Subscribe to our news feed"
+               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png"
+                     height="24" width="24" alt="RSS icon"></a>
           </div>
         </div>
         <div class="row">
