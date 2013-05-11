@@ -43,7 +43,7 @@ tha_entry_before(); ?>
                  . ( $i == 0 ? '' : ' style="display:none"' )
                  . ' id="front-page-photo-' . $i++  . '">'
                    . '<a href="' . $url . '">'
-                     . '<img class="img-rounded" src="' . $image[0]
+                     . '<img src="' . $image[0]
                      . '" height="449" width="700" alt="' . $post->post_excerpt . '"></a>'
                    . '<div class="caption">' . $post->post_excerpt . '</div>'
                  . '</div>';
