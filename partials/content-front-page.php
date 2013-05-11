@@ -53,7 +53,7 @@ tha_entry_before(); ?>
       ?>
     </div>
 
-	<div class="entry-content clearfix">
+	<div id="front-page-content" class="entry-content clearfix">
 		<?php
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );
 		the_bootstrap_link_pages(); ?>
