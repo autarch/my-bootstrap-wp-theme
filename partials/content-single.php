@@ -29,7 +29,7 @@ tha_entry_before(); ?>
 		the_bootstrap_link_pages(); ?>
 	</div><!-- .entry-content -->
 
-    <div id="social-buttons row">
+    <div id="social-buttons" class="row">
       <div class="span2">
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
