@@ -286,20 +286,23 @@ img.content-right {
 }
 
 .sidekick-unit {
-    background-color: @wellBackground;
+    background-color: @caaGray;
     .border-radius(6px);
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 15px;
-    padding: 20px;
+    padding: 10px;
 
     &.with-image {
         width: 65%;
     }
 
     blockquote {
-        border-left: 5px solid #ccc;
         margin-bottom: 0px;
+
+        small {
+            color: @gray;
+        }
     }
 }
 
