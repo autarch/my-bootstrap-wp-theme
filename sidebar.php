@@ -15,7 +15,7 @@ tha_sidebars_before(); ?>
                <?php if ( is_front_page() ) : echo 'id="front-page-actions" '; endif ?>
                class="right-side-actions">
 
-              <h2 class="first">Get Involved</h2>
+              <h2>Get Involved</h2>
 
               <div class="right-side-content">
                 <div id="announce-subscribe-form">
