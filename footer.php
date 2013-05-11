@@ -10,15 +10,13 @@
       <?php tha_footer_before(); ?>
       <footer>
         <div id="footer-nav">
-          <ul>
-            <?php wp_nav_menu( array(
-                'theme_location'    =>  'footer-menu',
-                'depth'             =>  3,
-                'fallback_cb'       =>  false,
-                'walker'            =>  new The_Bootstrap_Nav_Walker,
-            ) );
-            ?>
-          </ul>
+          <?php wp_nav_menu( array(
+              'theme_location'    =>  'footer-menu',
+              'depth'             =>  3,
+              'fallback_cb'       =>  false,
+              'walker'            =>  new The_Bootstrap_Nav_Walker,
+          ) );
+          ?>
         </div>
 
         <div id="colophon">
