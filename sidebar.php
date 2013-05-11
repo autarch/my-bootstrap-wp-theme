@@ -18,11 +18,9 @@ tha_sidebars_before(); ?>
                 News and events:
               </p>
 
-              <form>
-                <input type="text" class="input-medium" placeholder="Email">
-                <button type="submit" class="btn btn-primary">Subscribe</button>
-              </form>
-
+              <div id="announce-subscribe-form">
+              <?php echo do_shortcode( '[contact-form-7 id="150" title="Announce Subscribe"]' ); ?>
+              </div>
               <p>
                 Help us help animals:
                 <a href="/donate" class="btn btn-primary">Donate</a>
@@ -39,6 +37,19 @@ tha_sidebars_before(); ?>
               </p>
             </div>            
           </aside>
+
+          <div id="announce-subscribe-response" class="modal hide fade">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 id="announce-subscribe-response-header"></h3>
+            </div>
+            <div class="modal-body">
+              <p id="announce-subscribe-response-text"></p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+          </div>
 
           <div id="events">
             <h2>
