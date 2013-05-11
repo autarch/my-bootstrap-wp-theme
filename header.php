@@ -52,8 +52,18 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     <div class="container main">
-      <header>
+      <header id="site-header">
         <?php tha_header_top(); ?>
+        <div class="row">
+          <div id="follow-buttons" class="span12">
+            <a href="https://www.facebook.com/exploreveg" title="Follow us on Facebook"
+               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/facebook.png" height="32" width="32"></a>
+            <a href="https://www.twitter.com/exploreveg" title="Follow us on Twitter"
+               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/twitter.png" height="32" width="32"></a>
+            <a href="#" title="Subscribe to our news feed"
+               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png" height="32" width="32"></a>
+          </div>
+        </div>
         <div class="row">
           <div class="span12">
             <div id="logo">
@@ -61,7 +71,7 @@
                                width="200" height="121"
                                alt="Compassionate Action for Animals Logo"></a>
             </div>
-            <div id="site-header">
+            <div id="name-and-tagline">
               <h1>
                 <a href="/"><?php bloginfo( 'name' ); ?></a>
               </h1>

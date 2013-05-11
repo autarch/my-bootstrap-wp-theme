@@ -1,5 +1,6 @@
 body {
     background-color: @grayLighter;
+    font-family: @sansFontFamily;
     font-size: 16px;
     line-height: 22px;
 }
@@ -11,44 +12,60 @@ div.main {
     padding: 0px 20px 10px 20px;
 }
 
-#logo {
-    display: inline;
-    float: left;
-    height: 100px;
-    margin-top: 10px;
-    width: 165px;
-}
-
 #site-header {
-    clear: none;
-    margin-left: 180px;
-    min-height: 100px;
+    #follow-buttons {
+        margin-top: 8px;
+        text-align: right;
 
-    h1 {
-        clear: none;
-        font-size: 34px;
-        line-height: 40px;
-
-        a {
-            color: @textColor;
-
-            &:hover {
-                text-decoration: none;
-            }
+        img {
+            margin-left: 4px;
         }
     }
 
-    h2 {
+    #logo {
+        display: inline;
+        float: left;
+        height: 100px;
+        width: 165px;
+    }
+
+    #name-and-tagline {
         clear: none;
-        color: @caaBlue;
-        font-size: 28px;
-        line-height: 34px;
+        margin-left: 180px;
+
+        h1 {
+            clear: none;
+            font-family: "Questrial", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 48px;
+            line-height: 25px;
+            margin-bottom: 2px;
+            margin-top: 35px;
+
+            a {
+                color: @textColor;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        h2 {
+            clear: none;
+            color: @caaBlue;
+            font-size: 24px;
+            font-style: italic;
+            font-weight: normal;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            text-align: right;
+        }
     }
 }
 
 #global-nav {
     font-family: @sansFontFamily;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: (@gridGutterWidth * -1);
     margin-right: (@gridGutterWidth * -1);
 
@@ -65,7 +82,7 @@ div.main {
             font-weight: bold;
 
             a {
-                line-height: 37px;
+                line-height: 28px;
             }
 
             &:hover {
@@ -75,7 +92,7 @@ div.main {
     }
 
     form {
-        margin-top: 8px;
+        margin-top: 3px;
 
         /* This matches the padding on the well element below the search input */
         padding-left: 19px;

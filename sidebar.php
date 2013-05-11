@@ -79,24 +79,6 @@ tha_sidebars_before(); ?>
             </div>
           </div>
 
-          <div id="follow">
-            <h2>Follow Us</h2>
-
-            <div class="fb-follow follow-button" data-href="https://www.facebook.com/exploreveg" data-show-faces="false" data-width="200"></div>
-
-            <div class="follow-button">
-              <a href="https://twitter.com/exploreveg" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @exploreveg</a>
-            </div>
-
-            <div class="follow-button">
-              <a href="#" title="News Feed"
-                 ><img class="rss"
-                       src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png"
-                       alt="RSS icon" height="16" width="16"></a>
-              <a href="#" title="News Feed">News feed</a>
-            </div>
-          </div>
-
 	      <?php tha_sidebar_bottom(); ?>
         </div>
 
