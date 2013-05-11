@@ -98,8 +98,8 @@
                   <div class="span3">
                     <form class="navbar-form navbar-search">
                       <div class="input-append">
-                        <input type="text" class="search input-medium" placeholder="Search">
-                        <button class="btn"><i class="icon-search"></i></button>
+                        <input type="text" class="search" placeholder="Search"
+                               ><button class="btn"><i class="icon-search"></i></button>
                       </div>
                     </form>
                   </div>
