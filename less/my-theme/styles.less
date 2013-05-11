@@ -91,6 +91,15 @@ div.main {
         }
     }
 
+    /* Bootstrap adds a box-shadow effect that we want to remove */
+    .nav > .active > a,
+    .nav > .active > a:hover,
+    .nav > .active > a:focus {
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
     form {
         margin-top: 3px;
 
