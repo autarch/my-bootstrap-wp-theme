@@ -13,6 +13,8 @@
  * @since       1.0.0 - 07.02.2012
  */
 
+$GLOBALS['is-multi-post'] = true;
+
 get_header(); ?>
 
       <div class="row">
@@ -37,12 +39,16 @@ get_header(); ?>
             </h1>
           </header><!-- .page-header -->
 
-          <?php
-            while ( have_posts() ) {
-                the_post();
-                get_template_part( '/partials/content', get_post_format() );
-            }
-            the_bootstrap_content_nav();
+          <div class="posts">
+            <?php
+              while ( have_posts() ) {
+                  the_post();
+                  get_template_part( '/partials/content', get_post_format() );
+              }
+              the_bootstrap_content_nav();
+            ?>
+          </div>
+        <?php
         else :
             get_template_part( '/partials/content', 'not-found' );
         endif;
