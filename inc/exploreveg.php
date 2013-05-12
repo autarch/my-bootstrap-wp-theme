@@ -72,12 +72,21 @@ function exploreveg_front_page_blog_post () {
                                   'orderby'        => 'post_date',
                                   'order'          => 'DESC' ) );
 
+
     while ( $query->have_posts() ) {
         $query->the_post();
 
         $return .= '<h2>' . get_the_title() . '</h2>';
         $return .= '<p class="byline">' . get_the_date() . ' by ' . get_the_author() . '</p>';
-        $return .= '<p>' . get_the_excerpt() . '</p>';
+
+        // I love the Wordpress API!
+        global $more;
+        $old_more = $more;
+        $more = 0;
+
+        $return .= _clean_excerpt( get_the_content(''), get_permalink() );
+
+        $more = $old_more;
     }
 
     wp_reset_postdata();
@@ -86,6 +95,27 @@ function exploreveg_front_page_blog_post () {
 }
 
 add_shortcode( 'ev_front_page_blog_post', 'exploreveg_front_page_blog_post' );
+
+function exploreveg_front_page_event () {
+    $events = EM_Events::get(
+        array(
+            'scope'   => 'future',
+            'limit'   => 5,
+            'order'   => 'ASC',
+            'orderby' => 'event_start',
+            )
+        );
+
+    $return = $events[0]->output('<h2>#_EVENTNAME</h2>');
+
+    $return .= $events[0]->output('<h3 class="event-date">#_EVENTDATES</h3>');
+
+    $return .= _clean_excerpt( $events[0]->output('#_EVENTEXCERPT'), $events[0]->output('#_EVENTURL') );
+
+    return $return;
+}
+
+add_shortcode( 'ev_front_page_event', 'exploreveg_front_page_event' );
 
 function exploreveg_blockquote ($atts, $content) {
     extract( shortcode_atts( array(
@@ -149,3 +179,16 @@ function exploreveg_definition_list_item ($atts, $content) {
 
 add_shortcode( 'ev_dl_item', 'exploreveg_definition_list_item' );
 
+function _clean_excerpt ($excerpt, $url) {
+    preg_replace( '/^\s+/', '', $excerpt );
+    preg_replace( '/\s+$/', '', $excerpt );
+
+    $paras = preg_split( '/\n+/', $excerpt );
+    foreach ( $paras as $p ) {
+        $clean .= "<p>$p</p>";
+    }
+
+    $clean .= '<a href="' . $url . '">Continue reading<span class="meta-nav">→</span></a>';
+
+    return $clean;
+}
