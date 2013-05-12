@@ -47,24 +47,30 @@ tha_sidebars_before(); ?>
             </div>
 
             <h2>
-              <a href="#" title="See all upcoming events">Upcoming Events</a>
+              <a href="/events/" title="See all upcoming events">Upcoming Events</a>
             </h2>
 
             <div class="right-side-content">
-              <div class="event">
-                <h3 class="date">Friday, Dec 17, 2012</h3>
-                <h3 class="event"><a href="#">Holiday Cooking Class</a></h3>
-              </div>
 
-              <div class="event">
-                <h3 class="date">Wednesday, Dec 21, 2012</h3>
-                <h3 class="event"><a href="#">Dine Out at Bad Waitress Diner</a></h3>
-              </div>
+              <?php
+                 $event_format = <<<EOF
+<div class="event">
+  <h3 class="date">#_EVENTDATES</h3>
+  <h3 class="event"><a href="#_EVENTURL">#_EVENTNAME</a></h3>
+</div>
+EOF;
 
-              <div class="event">
-                <h3 class="date">Thursday, Apr 04, 2013</h3>
-                <h3 class="event"><a href="#">Annual Banquet</a></h3>
-              </div>
+                echo EM_Events::output(
+                    array(
+                        'scope'   => 'future',
+                        'limit'   => 5,
+                        'order'   => 'ASC',
+                        'orderby' => 'event_start',
+                        'format' => $event_format,
+                        )
+                    );
+              ?>
+
             </div>
 
 	        <?php tha_sidebar_bottom(); ?>
