@@ -6,7 +6,7 @@ function exploreveg_page_list ($atts) {
 	), $atts ) );
 
     if (! $tag) {
-        return new WP_Error('The ev-page-list shortcode requires a tag parameter');
+        die('The ev-page-list shortcode requires a tag parameter');
     }
 
     $query = new WP_Query ( array( 'post_type' => 'page',
@@ -39,7 +39,7 @@ function exploreveg_page_include ($atts) {
 	), $atts ) );
 
     if (! $tag) {
-        return new WP_Error('The ev-page-include shortcode requires a tag parameter');
+        die('The ev-page-include shortcode requires a tag parameter');
     }
 
     $query = new WP_Query ( array( 'post_type' => 'page',
