@@ -96,9 +96,11 @@
                   </div>
 
                   <div class="span3">
-                    <form class="navbar-form navbar-search">
+                    <form action="<?php echo bloginfo('url'); ?>/"
+                          method="get" id="searchform" class="navbar-form navbar-search">
                       <div class="input-append">
-                        <input type="text" class="search" placeholder="Search"
+                        <input type="text" name="s"
+                               value="<?php echo get_search_query() ?>" placeholder="Search"
                                ><button class="btn"><i class="icon-search"></i></button>
                       </div>
                     </form>
