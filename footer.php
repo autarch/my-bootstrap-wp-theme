@@ -26,7 +26,7 @@
             <strong>Phone:</strong> 612-276-2242
           </p>
 
-          <p>
+          <p id="copyright">
             <a href="http://creativecommons.org/licenses/by-sa/3.0/us/"
                ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/by-sa.png"
                      alt="Creative Commons BY-SA logo" width="67" height="13"></a>
