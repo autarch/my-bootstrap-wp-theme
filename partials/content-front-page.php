@@ -23,7 +23,7 @@ tha_entry_before(); ?>
 			'tax_query' => array(
 					array(
 						'taxonomy' => 'media-tags',
-						'terms'    => 'front-page',
+						'terms'    => 'ev-front-page',
 						'field'    => 'slug',
 					)
 				),
