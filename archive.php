@@ -13,7 +13,7 @@
  * @since       1.0.0 - 07.02.2012
  */
 
-$GLOBALS['is-multi-post'] = true;
+$is_multi_post = true;
 
 get_header(); ?>
 
