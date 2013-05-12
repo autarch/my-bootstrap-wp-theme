@@ -42,6 +42,7 @@
 
              var response = $.parseJSON( form.data("jqxhr").responseText );
              console.log(response);
+             modal.find(".modal-body").children().detach();
              modal.find(".modal-body").append( '<p>' + response.message + '</p>' );
              modal.modal("show");
          };
