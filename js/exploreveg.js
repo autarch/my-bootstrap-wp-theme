@@ -24,31 +24,37 @@
          $.cookie( cookie_name, image_num, { expires: 365 } );
      };
 
-     var instrumentSubscribeForm = function () {
-         $("#announce-subscribe-form .wpcf7-response-output").detach();
+     var instrumentWPCF7Form = function (id) {
+         var marker = $( "#" + id );
+         if ( ! marker.length ) {
+             return;
+         }
 
-         var form = $("#announce-subscribe-form form");
-         form.find('input[name="your-email"]').attr( "placeholder", "Email" );
+         var container = marker.parent().parent();
+         var form = container.find("form");
 
-         var subscribeModal = $("#announce-subscribe-response");
+         form.find(".wpcf7-response-output").detach();
 
-         $("#announce-subscribe-form .wpcf7").on(
+         var modal = $( "#" + id + "-modal" );
+
+         var displayModal = function (title) {
+             modal.find("h3").text(title);
+
+             var response = $.parseJSON( form.data("jqxhr").responseText );
+             console.log(response);
+             modal.find(".modal-body").append( '<p>' + response.message + '</p>' );
+             modal.modal("show");
+         };
+
+         container.on(
              "mailsent.wpcf7",
              function () {
-                 var response = $.parseJSON( form.data("jqxhr").responseText );
-                 subscribeModal.find("#announce-subscribe-response-header").text("Success!");
-                 subscribeModal.find("#announce-subscribe-response-text").text( response.message );
-                 subscribeModal.modal('show');
+                 displayModal("Success!");
              }
-         );
-
-         $("#announce-subscribe-form .wpcf7").on(
+         ).on(
              "mailfailed.wpcf7",
              function () {
-                 var response = $.parseJSON( form.data("jqxhr").responseText );
-                 subscribeModal.find("#announce-subscribe-response-header").text("Error");
-                 subscribeModal.find("#announce-subscribe-response-text").text( response.message );
-                 subscribeModal.modal('show');
+                 displayModal("Error");
              }
          );
      };
@@ -56,7 +62,11 @@
      $(document).ready(
          function () {
              instrumentFrontPagePhotos();
-             instrumentSubscribeForm();
+
+             var subscribe = instrumentWPCF7Form("announce-subscribe");
+             $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
+             
+             instrumentWPCF7Form("vsk-request");
          }
      );
 })();

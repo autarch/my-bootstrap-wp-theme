@@ -18,9 +18,7 @@ tha_sidebars_before(); ?>
               <h2>Get Involved</h2>
 
               <div class="right-side-content">
-                <div id="announce-subscribe-form">
-                  <?php echo do_shortcode( '[contact-form-7 id="150" title="Announce Subscribe"]' ); ?>
-                </div>
+                <?php echo do_shortcode( '[contact-form-7 id="150" title="Announce Subscribe"]' ); ?>
 
                 <p>
                   <a href="/donate" class="btn btn-primary" title="Support our work">Donate</a>
@@ -36,13 +34,12 @@ tha_sidebars_before(); ?>
               </div>
             </div>
 
-            <div id="announce-subscribe-response" class="modal hide fade">
+            <div id="announce-subscribe-modal" class="modal hide fade">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="announce-subscribe-response-header"></h3>
+                <h3></h3>
               </div>
               <div class="modal-body">
-                <p id="announce-subscribe-response-text"></p>
               </div>
               <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
