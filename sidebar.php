@@ -51,10 +51,6 @@ tha_sidebars_before(); ?>
 
             <h2>
               <a href="#" title="See all upcoming events">Upcoming Events</a>
-              <a href="#" title="Upcoming events feed"
-                 ><img class="rss"
-                       src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png"
-                       alt="RSS icon" height="16" width="16"></a>
             </h2>
 
             <div class="right-side-content">
