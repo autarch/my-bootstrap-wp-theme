@@ -6,7 +6,7 @@ function exploreveg_page_list ($atts) {
 	), $atts ) );
 
     if (! $tag) {
-        die('The ev-page-list shortcode requires a tag parameter');
+        die('The ev_page_list shortcode requires a tag parameter');
     }
 
     $query = new WP_Query ( array( 'post_type' => 'page',
@@ -31,7 +31,7 @@ function exploreveg_page_list ($atts) {
     return $return;
 }
 
-add_shortcode( 'ev-pages-list', 'exploreveg_page_list' );
+add_shortcode( 'ev_page_list', 'exploreveg_page_list' );
 
 function exploreveg_page_include ($atts) {
     extract( shortcode_atts( array(
@@ -39,7 +39,7 @@ function exploreveg_page_include ($atts) {
 	), $atts ) );
 
     if (! $tag) {
-        die('The ev-page-include shortcode requires a tag parameter');
+        die('The ev_page_include shortcode requires a tag parameter');
     }
 
     $query = new WP_Query ( array( 'post_type' => 'page',
@@ -63,7 +63,7 @@ function exploreveg_page_include ($atts) {
     return $return;
 }
 
-add_shortcode( 'ev-pages-include', 'exploreveg_page_include' );
+add_shortcode( 'ev_page_include', 'exploreveg_page_include' );
 
 function exploreveg_front_page_blog_post () {
     $query = new WP_Query( array( 'post_type'      => 'post',
@@ -85,4 +85,67 @@ function exploreveg_front_page_blog_post () {
     return $return;
 }
 
-add_shortcode( 'ev-front-page-blost-post', 'exploreveg_front_page_blog_post' );
+add_shortcode( 'ev_front_page_blog_post', 'exploreveg_front_page_blog_post' );
+
+function exploreveg_blockquote ($atts, $content) {
+    extract( shortcode_atts( array(
+		'author' => '',
+		'image'  => false,
+	), $atts ) );
+
+
+    if (! $author) {
+        die('The ev_blockquote shortcode requires an author parameter');
+    }
+
+    if (! $content) {
+        die('The ev_blockquote shortcode requires a quote');
+    }
+
+    $classes = 'sidekick-unit';
+    if ($image) {
+        $classes .= ' with-image';
+    }
+
+    $return .= '<div class="' . $classes . '">';
+    $return .= "\n";
+    $return .= '<blockquote>' . $content . "\n";
+    $return .= "\n";
+    $return .= '<small>' . $author . '</small>';
+    $return .= '</blockquote>';
+    $return .= '</div>';
+
+    return $return;
+}
+
+add_shortcode( 'ev_blockquote', 'exploreveg_blockquote' );
+
+function exploreveg_definition_list ($atts, $content) {
+    if (! $content) {
+        die('The ev_dl shortcode requires list items');
+    }
+
+    return '<dl>' . do_shortcode($content) . '</dl>';
+}
+
+add_shortcode( 'ev_dl', 'exploreveg_definition_list' );
+
+function exploreveg_definition_list_item ($atts, $content) {
+    extract( shortcode_atts( array(
+		'title' => '',
+	), $atts ) );
+
+
+    if (! $title) {
+        die('The ev_dl_item shortcode requires a title parameter');
+    }
+
+    if (! $content) {
+        die('The ev_dl_item shortcode require a body');
+    }
+
+    return '<dt>' . $title . '</dt><dd>' . $content . "</dd>\n";
+}
+
+add_shortcode( 'ev_dl_item', 'exploreveg_definition_list_item' );
+
