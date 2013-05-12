@@ -68,7 +68,7 @@ add_shortcode( 'ev_page_include', 'exploreveg_page_include' );
 function exploreveg_front_page_blog_post () {
     $query = new WP_Query( array( 'post_type'      => 'post',
                                   'posts_per_page' => 1,
-                                  'tag'            => 'front-page',
+                                  'tag'            => 'ev-front-page',
                                   'orderby'        => 'post_date',
                                   'order'          => 'DESC' ) );
 
