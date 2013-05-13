@@ -78,15 +78,7 @@ function exploreveg_front_page_blog_post () {
 
         $return .= '<h2>' . get_the_title() . '</h2>';
         $return .= '<p class="byline">' . get_the_date() . ' by ' . get_the_author() . '</p>';
-
-        // I love the Wordpress API!
-        global $more;
-        $old_more = $more;
-        $more = 0;
-
-        $return .= _clean_excerpt( get_the_content(''), get_permalink() );
-
-        $more = $old_more;
+        $return .= _clean_excerpt();
     }
 
     wp_reset_postdata();
@@ -106,11 +98,21 @@ function exploreveg_front_page_event () {
             )
         );
 
+    if ( ! count($events) ) {
+        return '<p>There are no upcoming events right now.</p>';
+    }
+
     $return = $events[0]->output('<h2>#_EVENTNAME</h2>');
 
     $return .= $events[0]->output('<h3 class="event-date">#_EVENTDATES</h3>');
 
-    $return .= _clean_excerpt( $events[0]->output('#_EVENTEXCERPT'), $events[0]->output('#_EVENTURL') );
+    global $post;
+    $post = get_post( $events[0]->post_id );
+    setup_postdata($post);
+
+    $return .= _clean_excerpt();
+
+    wp_reset_postdata();
 
     return $return;
 }
@@ -122,7 +124,6 @@ function exploreveg_blockquote ($atts, $content) {
 		'author' => '',
 		'image'  => false,
 	), $atts ) );
-
 
     if (! $author) {
         die('The ev_blockquote shortcode requires an author parameter');
@@ -179,16 +180,46 @@ function exploreveg_definition_list_item ($atts, $content) {
 
 add_shortcode( 'ev_dl_item', 'exploreveg_definition_list_item' );
 
-function _clean_excerpt ($excerpt, $url) {
+function _clean_excerpt () {
+    // I love the Wordpress API!
+    global $more;
+    $old_more = $more;
+    $more = 0;
+
+    $excerpt = get_the_content('');
+
+    $more = $old_more;
+
     preg_replace( '/^\s+/', '', $excerpt );
     preg_replace( '/\s+$/', '', $excerpt );
 
+    $thumbnail = _maybe_thumbnail();
+    $added_thumbnail = false;
+
     $paras = preg_split( '/\n+/', $excerpt );
     foreach ( $paras as $p ) {
-        $clean .= "<p>$p</p>";
+        if ( ! $added_thumbnail ) {
+            $clean .= "<p>$thumbnail$p</p>";
+            $added_thumbnail = true;
+        }
+        else {
+            $clean .= "<p>$p</p>";
+        }
     }
 
-    $clean .= '<a href="' . $url . '">Continue reading<span class="meta-nav">→</span></a>';
+    $clean .= '<a href="' . get_permalink() . '">Continue reading<span class="meta-nav">→</span></a>';
 
     return $clean;
+}
+
+function _maybe_thumbnail () {
+    if ( ! has_post_thumbnail() ) {
+        return '';
+    }
+
+    $return .= '<a href="' . get_permalink() . '">';
+    $return .= get_the_post_thumbnail( null, 'thumbnail', array( 'class' => 'pull-right' ) );
+    $return .= '</a>';
+
+    return $return;
 }
