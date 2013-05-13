@@ -78,7 +78,7 @@ function exploreveg_front_page_blog_post () {
 
         $return .= '<h2>' . get_the_title() . '</h2>';
         $return .= '<p class="byline">' . get_the_date() . ' by ' . get_the_author() . '</p>';
-        $return .= _clean_excerpt();
+        $return .= _exploreveg_clean_excerpt();
     }
 
     wp_reset_postdata();
@@ -110,7 +110,7 @@ function exploreveg_front_page_event () {
     $post = get_post( $events[0]->post_id );
     setup_postdata($post);
 
-    $return .= _clean_excerpt();
+    $return .= _exploreveg_clean_excerpt();
 
     wp_reset_postdata();
 
@@ -180,7 +180,7 @@ function exploreveg_definition_list_item ($atts, $content) {
 
 add_shortcode( 'ev_dl_item', 'exploreveg_definition_list_item' );
 
-function _clean_excerpt () {
+function _exploreveg_clean_excerpt () {
     // I love the Wordpress API!
     global $more;
     $old_more = $more;
@@ -193,7 +193,7 @@ function _clean_excerpt () {
     preg_replace( '/^\s+/', '', $excerpt );
     preg_replace( '/\s+$/', '', $excerpt );
 
-    $thumbnail = _maybe_thumbnail();
+    $thumbnail = exploreveg_thumbnail();
     $added_thumbnail = false;
 
     $paras = preg_split( '/\n+/', $excerpt );
@@ -212,14 +212,20 @@ function _clean_excerpt () {
     return $clean;
 }
 
-function _maybe_thumbnail () {
+function exploreveg_thumbnail ($atts) {
     if ( ! has_post_thumbnail() ) {
         return '';
     }
 
+    extract( shortcode_atts( array(
+		'size' => 'thumbnail',
+	), $atts ) );
+
     $return .= '<a href="' . get_permalink() . '">';
-    $return .= get_the_post_thumbnail( null, 'thumbnail', array( 'class' => 'pull-right' ) );
+    $return .= get_the_post_thumbnail( null, $size, array( 'class' => 'pull-right' ) );
     $return .= '</a>';
 
     return $return;
 }
+
+add_shortcode( 'ev_thumbnail', 'exploreveg_thumbnail' );
