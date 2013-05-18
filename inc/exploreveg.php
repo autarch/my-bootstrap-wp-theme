@@ -193,7 +193,7 @@ function _exploreveg_clean_excerpt () {
     preg_replace( '/^\s+/', '', $excerpt );
     preg_replace( '/\s+$/', '', $excerpt );
 
-    $thumbnail = exploreveg_thumbnail();
+    $thumbnail = exploreveg_thumbnail( array() );
     $added_thumbnail = false;
 
     $paras = preg_split( '/\n+/', $excerpt );
