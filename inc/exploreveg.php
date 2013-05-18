@@ -193,7 +193,7 @@ function _exploreveg_clean_excerpt () {
     preg_replace( '/^\s+/', '', $excerpt );
     preg_replace( '/\s+$/', '', $excerpt );
 
-    $thumbnail = exploreveg_thumbnail( array() );
+    $thumbnail = exploreveg_thumbnail();
     $added_thumbnail = false;
 
     $paras = preg_split( '/\n+/', $excerpt );
@@ -212,7 +212,7 @@ function _exploreveg_clean_excerpt () {
     return $clean;
 }
 
-function exploreveg_thumbnail ($atts) {
+function exploreveg_thumbnail ( $atts=array() ) {
     if ( ! has_post_thumbnail() ) {
         return '';
     }
