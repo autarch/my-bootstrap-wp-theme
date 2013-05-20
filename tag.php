@@ -21,10 +21,18 @@ get_header(); ?>
 
           <header class="page-header">
               <h1 class="page-title"><?php
-                  printf( __( 'Tag Archives: %s', 'the-bootstrap' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+                  $title = single_tag_title( '', false );
+                  $is_weekly_update = preg_match( '/^weekly-update/', $title );
+                  if ($is_weekly_update) {
+                      echo tag_description();
+                  }
+                  else {
+                      printf( __( 'Tag Archives: %s', 'the-bootstrap' ), '<span>' . $title . '</span>' );
+                  }
               ?></h1>
     
-              <?php if ( $tag_description = tag_description() ) {
+              <?php
+              if ( !$is_weekly_update && ( $tag_description = tag_description() ) ) {
                   echo apply_filters( 'tag_archive_meta', '<div class="tag-archive-meta">' . $tag_description . '</div>' );
               } ?>
           </header><!-- .page-header -->
