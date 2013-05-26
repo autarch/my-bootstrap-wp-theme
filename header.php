@@ -41,24 +41,22 @@
 					) ); ?>
                     <?php if ( is_front_page() ) : ?>
                       <div id="front-page-logo">
-                        <img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/vegfest-logo-300x269.png" width="225" height="202">
+                        <img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/tlov-logo-316x138.png" width="316" height="138">
                       </div>
                     <?php else : ?>
                       <a  id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-                        <img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/vegfest-logo-167x150.png" width="167" height="150">
+                        <img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/tlov-logo-172x75.png" width="172" height="75">
                       </a>
                     <?php endif; ?>
                     </a>
                     <?php if ( ! is_front_page() ) : ?>
                     <div id="titles">
-					    <hgroup>
-                            <h1 id="site-title">
-                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-                                    <span><?php bloginfo( 'name' ); ?></span>
-                                </a>
-                            </h1>
-                            <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-					    </hgroup>
+                      <h1 id="site-title">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+                          <span><?php bloginfo( 'name' ); ?></span>
+                        </a>
+                      </h1>
+                      <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
                     </div>
                     <?php endif; ?>
 					
