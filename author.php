@@ -10,11 +10,10 @@
 
 get_header(); ?>
 
-<section id="primary" class="span8">
-
-	<?php tha_content_before(); ?>
-	<div id="content" role="main">
-		<?php tha_content_top();
+      <div class="row">
+        <div class="span9">
+          <?php tha_content_before(); ?>
+          <?php tha_content_top();
 		
 		if ( have_posts() ) :
 			the_post(); ?>
@@ -47,13 +46,14 @@ get_header(); ?>
 			get_template_part( '/partials/content', 'not-found' );
 		endif;
 		
-		tha_content_bottom(); ?>
-	</div><!-- #content -->
-	<?php tha_content_after(); ?>
-</section><!-- #primary -->
+        tha_content_bottom(); ?>
+        </div>
+        <?php
+           tha_content_after();
+           get_sidebar(); ?>
+      </div>
 
 <?php
-get_sidebar();
 get_footer();
 
 
