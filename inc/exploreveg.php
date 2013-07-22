@@ -99,7 +99,7 @@ function exploreveg_front_page_event () {
         );
 
     if ( ! count($events) ) {
-        return '<p>There are no upcoming events right now.</p>';
+        return '<h2>Events</h2><p>There are no upcoming events right now.</p>';
     }
 
     $return = $events[0]->output('<h2>#_EVENTNAME</h2>');
