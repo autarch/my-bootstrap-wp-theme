@@ -77,7 +77,7 @@ function exploreveg_front_page_blog_post () {
         $query->the_post();
 
         $return .= '<h2>' . get_the_title() . '</h2>';
-        $return .= '<p class="byline">' . get_the_date() . ' by ' . get_the_author() . '</p>';
+        $return .= '<p class="byline">Posted on ' . get_the_date() . ' by ' . get_the_author() . '</p>';
         $return .= _exploreveg_clean_excerpt();
     }
 
