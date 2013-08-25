@@ -20,7 +20,7 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
 		<?php
-        if ( '' != get_the_post_thumbnail() ) { 
+        if ( has_post_thumbnail() ) {
             the_post_thumbnail( 'post-thumbnail', array( 'class' => 'pull-right featured-image thumbnail' ) );
         }
 
