@@ -138,6 +138,7 @@ function exploreveg_blockquote ($atts, $content) {
         $classes .= ' with-image';
     }
 
+    $return = '';
     $return .= '<div class="' . $classes . '">';
     $return .= "\n";
     $return .= '<blockquote>' . $content . "\n";
