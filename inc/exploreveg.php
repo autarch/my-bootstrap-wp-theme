@@ -14,6 +14,7 @@ function exploreveg_page_list ($atts) {
                                    'orderby'   => 'title',
                                    'order'     => 'ASC' ) );
 
+    $return = '';
     while ( $query->have_posts() ) {
         $query->the_post();
         $return .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
@@ -47,6 +48,7 @@ function exploreveg_page_include ($atts) {
                                    'orderby'   => 'title',
                                    'order'     => 'ASC' ) );
 
+    $return = '';
     while ( $query->have_posts() ) {
         $query->the_post();
 
@@ -73,6 +75,7 @@ function exploreveg_front_page_blog_post () {
                                   'order'          => 'DESC' ) );
 
 
+    $return = '';
     while ( $query->have_posts() ) {
         $query->the_post();
 
@@ -102,6 +105,7 @@ function exploreveg_front_page_event () {
         return '<h2>Events</h2><p>There are no upcoming events right now.</p>';
     }
 
+    $return = '';
     $return = $events[0]->output('<h2>#_EVENTNAME</h2>');
 
     $return .= $events[0]->output('<h3 class="event-date">#_EVENTDATES</h3>');
@@ -197,6 +201,7 @@ function _exploreveg_clean_excerpt () {
     $thumbnail = exploreveg_thumbnail();
     $added_thumbnail = false;
 
+    $clean = '';
     $paras = preg_split( '/\n+/', $excerpt );
     foreach ( $paras as $p ) {
         if ( ! $added_thumbnail ) {
@@ -222,6 +227,7 @@ function exploreveg_thumbnail ( $atts=array() ) {
 		'size' => 'thumbnail',
 	), $atts ) );
 
+    $return = '';
     $return .= '<a href="' . get_permalink() . '">';
     $return .= get_the_post_thumbnail( null, $size, array( 'class' => 'pull-right' ) );
     $return .= '</a>';
