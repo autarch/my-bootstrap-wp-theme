@@ -236,3 +236,54 @@ function exploreveg_thumbnail ( $atts=array() ) {
 }
 
 add_shortcode( 'ev_thumbnail', 'exploreveg_thumbnail' );
+
+function exploreveg_volunteer_categories ( $atts=array() ) {
+    extract( shortcode_atts( array(
+		'type' => '',
+	), $atts ) );
+
+    if (! $type) {
+        die('The ev_volunteer_categories shortcode requires a type parameter');
+    }
+
+    $type_term = get_term_by( 'slug', $type, 'volunteer_opportunity_tag' );
+
+    if ( is_wp_error($terms) ) {
+        return 'Error: ' . $type_term->get_error_message();
+    }
+
+    if ( ! $type_term || count($type_term) == 0 ) {
+        return "<p>Could not find a volunteer category matching $type.</p>";
+    }
+
+    $terms = get_terms(
+        'volunteer_opportunity_tag',
+        array(
+            'orderby' => 'name',
+            'order'   => 'ASC',
+            'parent'  => $type_term->term_id,
+            'hide_empty' => 0,
+            )
+        );
+
+    if ( is_wp_error($terms) ) {
+        return 'Error: ' . $terms->get_error_message();
+    }
+
+    if ( count($terms) == 0 ) {
+        return "<p>There are no categories of this type ($type).</p>";
+    }
+
+    $return = '<ul>';
+    foreach ( $terms as $term ) {
+        $return .= '<li>';
+        $return .= '<a href="/volunteer/category/' . $term->slug . '">' . $term->name . '</a>';
+        $return .= '<p>' . $term->description . '</p>';
+        $return .= '</li>';
+    }
+    $return .= '</ul>';
+
+    return $return;
+}
+
+add_shortcode( 'ev_volunteer_categories', 'exploreveg_volunteer_categories' );
