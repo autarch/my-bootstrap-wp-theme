@@ -25,20 +25,27 @@ get_header(); ?>
               $tag_slug = $tag->field('slug');
               $opportunities = pods( 'volunteer', array( 'where' => "volunteer_opportunity_tag.slug = '$tag_slug' AND post_status = 'publish'", orderby => 'name ASC', 'limit' => -1 ) );
 
-              if ( $opportunities->total() > 0 ){
+              if ( $opportunities->total() > 0 ) :
                   $opp = $opportunities->total() > 1 ? 'opportunities' : 'opportunity';
                   $be = $opportunities->total() > 1 ? 'are' : 'is';
-
-                  echo '<p>The following ' . strtolower( $tag->display('title') ) . ' volunteer ' . $opp . ' ' . $be . ' available:</p>';
-                  echo '<ul>';
-                  echo $opportunities->template('volunteer-list-item');
-                  echo '</ul>';
-              }
-              else {
-                  echo '<p>No ' . strtolower( $tag->display('title') ) . ' volunteer opportunities are available';
-              }
           ?>
-            <p><a href="/volunteer/">Browse all volunteer opportunities</a>.</p>
+                  <p>
+                    The following <?php echo strtolower( $tag->display('title') ) ?>
+                    volunteer <?php echo $opp ?> <?php echo $be ?> available:
+                  </p>
+                  <ul>
+                    <li>
+                      <a href="/volunteer/<?php echo $opportunities->field('slug') ?>">
+                        <?php echo $opportunities->field('title') ?></a>
+                        <p><?php echo $opportunities->field('summary') ?></p>
+                    </li>
+                  </ul>
+              <?php else : ?>
+                  <p>
+                      No <?php echo strtolower( $tag->display('title') ) ?> volunteer opportunities are available
+                  </p>
+              <?php endif ?>
+            <p><a href="/volunteer/">Browse volunteer opportunities by category</a>.</p>
           </div>
         </div>
         <?php
