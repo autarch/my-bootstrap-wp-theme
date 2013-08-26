@@ -1,5 +1,7 @@
 <?php
 
+set_post_thumbnail_size( 300, 300 );
+
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
 		'tag' => '',
