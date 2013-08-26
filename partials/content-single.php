@@ -20,6 +20,10 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
 		<?php
+        if ( has_post_thumbnail() ) {
+            the_post_thumbnail( 'post-thumbnail', array( 'class' => 'alignright featured-image thumbnail' ) );
+        }
+
 		the_content();
 		the_bootstrap_link_pages(); ?>
 	</div><!-- .entry-content -->
