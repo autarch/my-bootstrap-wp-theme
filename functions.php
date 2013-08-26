@@ -68,6 +68,8 @@ function the_bootstrap_setup() {
 	 * Theme Hook Alliance
 	 */
 	require_if_theme_supports( 'tha_hooks', get_template_directory() . '/inc/tha-theme-hooks.php' );
+
+	require_once( get_template_directory() . '/inc/vegfest-2013.php' );
 	
 	/**
 	 * Including three menu (header-menu, primary and footer-menu).
