@@ -2,6 +2,11 @@
 
 set_post_thumbnail_size( 300, 300 );
 
+/* This is a hack to make sure that wordpress's autop filter doesn't apply to shortcodes */
+remove_filter( 'the_content', 'wpautop' );
+add_filter( 'the_content', 'wpautop' , 99);
+add_filter( 'the_content', 'shortcode_unautop',100 );
+
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
 		'tag' => '',
