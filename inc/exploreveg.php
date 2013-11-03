@@ -136,10 +136,6 @@ function exploreveg_blockquote ($atts, $content) {
 		'image'  => false,
 	), $atts ) );
 
-    if (! $author) {
-        die('The ev_blockquote shortcode requires an author parameter');
-    }
-
     if (! $content) {
         die('The ev_blockquote shortcode requires a quote');
     }
@@ -154,7 +150,9 @@ function exploreveg_blockquote ($atts, $content) {
     $return .= "\n";
     $return .= '<blockquote>' . $content . "\n";
     $return .= "\n";
-    $return .= '<small>' . $author . '</small>';
+    if ($author) {
+        $return .= "\n<small>" . $author . '</small>';
+    }
     $return .= '</blockquote>';
     $return .= '</div>';
 
