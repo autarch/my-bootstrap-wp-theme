@@ -161,6 +161,16 @@ function exploreveg_blockquote ($atts, $content) {
 
 add_shortcode( 'ev_blockquote', 'exploreveg_blockquote' );
 
+function exploreveg_aside ($atts, $content) {
+    if (! $content) {
+        die('The ev_aside shortcode requires content');
+    }
+
+    return '<aside class="span3 pull-right side-note">' . $content . '</aside>';
+}
+
+add_shortcode( 'ev_aside', 'exploreveg_aside' );
+
 function exploreveg_definition_list ($atts, $content) {
     if (! $content) {
         die('The ev_dl shortcode requires list items');
