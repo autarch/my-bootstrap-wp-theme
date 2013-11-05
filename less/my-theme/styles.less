@@ -2,12 +2,7 @@ body {
     background-color: @grayLighter;
     font-family: @sansFontFamily;
     font-size: 16px;
-    line-height: 22px;
     padding-bottom: 10px;
-}
-
-li {
-    line-height: 22px;
 }
 
 div.main {
@@ -403,7 +398,14 @@ img.content-right {
         }
 
         p {
-            margin: 0 0 10px;
+            margin: 0 0 @baseLineHeight / 2;
+
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
     }
 }
