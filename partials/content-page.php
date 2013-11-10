@@ -18,7 +18,11 @@ tha_entry_before(); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content clearfix">
-		<?php
+        <?php if ( has_post_thumbnail() ) : ?>
+        <a class="thumbnail post-thumbnail pull-right span2" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+             <?php the_post_thumbnail( 'medium' ); ?>
+        </a>
+        <?php endif;
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );
 		the_bootstrap_link_pages(); ?>
 	</div><!-- .entry-content -->
