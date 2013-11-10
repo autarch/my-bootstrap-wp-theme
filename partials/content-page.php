@@ -21,8 +21,8 @@ tha_entry_before(); ?>
         <?php
         if ( has_post_thumbnail() ) {
             $full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
-            echo '<a class="thumbnail post-thumbnail pull-right span2" href="' . $full_image_url[0] . '" title="' . the_title_attribute('echo=0') . '">';
-            the_post_thumbnail( 'medium' );
+            echo '<a class="thumbnail post-thumbnail pull-right span3" href="' . $full_image_url[0] . '" title="' . the_title_attribute('echo=0') . '">';
+            the_post_thumbnail();
             echo '</a>';
         }
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );
