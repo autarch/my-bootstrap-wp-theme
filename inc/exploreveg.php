@@ -186,7 +186,6 @@ function exploreveg_definition_list_item ($atts, $content) {
 		'title' => '',
 	), $atts ) );
 
-
     if (! $title) {
         die('The ev_dl_item shortcode requires a title parameter');
     }
@@ -199,6 +198,20 @@ function exploreveg_definition_list_item ($atts, $content) {
 }
 
 add_shortcode( 'ev_dl_item', 'exploreveg_definition_list_item' );
+
+function exploreveg_anchor ($atts) {
+    extract( shortcode_atts( array(
+		'name' => '',
+	), $atts ) );
+
+    if (! $name) {
+        die('The ev_anchor shortcode requires a name parameter');
+    }
+
+    return '<a name="' . $name . '"></a>';
+}
+
+add_shortcode( 'ev_anchor', 'exploreveg_anchor' );
 
 function _exploreveg_clean_excerpt () {
     // I love the Wordpress API!
