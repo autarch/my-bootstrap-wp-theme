@@ -18,11 +18,13 @@ tha_entry_before(); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content clearfix">
-        <?php if ( has_post_thumbnail() ) : ?>
-        <div class="thumbnail post-thumbnail pull-right span2">
-        <?php the_post_thumbnail( 'medium' ); ?>
-        </div>
-        <?php endif;
+        <?php
+        if ( has_post_thumbnail() ) {
+            $full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
+            echo '<a class="thumbnail post-thumbnail pull-right span2" href="' . $full_image_url[0] . '" title="' . the_title_attribute('echo=0') . '">';
+            the_post_thumbnail( 'medium' );
+            echo '</a>';
+        }
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );
 		the_bootstrap_link_pages(); ?>
 	</div><!-- .entry-content -->
