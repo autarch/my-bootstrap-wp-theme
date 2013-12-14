@@ -19,6 +19,11 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
         <?php
+        if ( $parent = $post->post_parent ) {
+            $title = get_the_title($parent);
+            echo '<p id="breadcrumbs"><i class="icon-arrow-left"></i> Back to <a href="' . get_permalink($parent) . '" title="' . $title . '">' . $title . '</a>.</p>';
+        }
+
         if ( has_post_thumbnail() ) {
             $full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
             echo '<a class="thumbnail post-thumbnail pull-right span3" href="' . $full_image_url[0] . '" title="' . the_title_attribute('echo=0') . '">';
