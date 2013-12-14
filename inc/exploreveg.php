@@ -315,3 +315,83 @@ function exploreveg_volunteer_categories ( $atts=array() ) {
 }
 
 add_shortcode( 'ev_volunteer_categories', 'exploreveg_volunteer_categories' );
+
+add_action( 'admin_menu', 'ev_plugin_menu' );
+
+function ev_plugin_menu() {
+	add_options_page( 'Exploreveg Theme Options', 'Theme Options', 'manage_options', 'exploreveg-options', 'ev_plugin_options' );
+}
+
+function ev_plugin_options() {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+
+    $hidden_field_name = 'ev_option_submit';
+    if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
+        update_option('exploreveg-facebook', $_POST['exploreveg-facebook']);
+        update_option('exploreveg-twitter', $_POST['exploreveg-twitter']);
+        update_option('exploreveg-rss', $_POST['exploreveg-rss']);
+        update_option('exploreveg-phone', $_POST['exploreveg-phone']);
+        update_option('exploreveg-announce-form-id', $_POST['exploreveg-announce-form-id']);
+
+        echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
+    }
+
+    $phone_val = get_option('exploreveg-phone');
+    $facebook_val = get_option('exploreveg-facebook');
+    $twitter_val = get_option('exploreveg-twitter');
+    $rss_val = get_option('exploreveg-rss');
+    $announce_form_id_val = get_option('exploreveg-announce-form-id');
+?>
+
+<div id="icon-options-general" class="icon32"><br /></div><h2>Exploreveg Theme Settings</h2>
+
+<form name="ev-options" method="post" action="">
+  <input type="hidden" name="<?php echo $hidden_field_name ?>" value="Y">
+
+  <table class="form-table">
+    <tr valign="top">
+      <th scope="row"><label for="facebook">Facebook Page:</label></th>
+      <td>
+        <input name="exploreveg-facebook" type="text" id="facebook" value="<?php echo $facebook_val ?>" class="regular-text" />
+        <br>
+        This will be used as the link at the top of the page if one is provided.
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="twitter">Twitter Page:</label></th>
+      <td>
+        <input name="exploreveg-twitter" type="text" id="twitter" value="<?php echo $twitter_val ?>" class="regular-text" />
+        <br>
+        This will be used as the link at the top of the page if one is provided.
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="rss">Show RSS icon?</label></th>
+      <td>
+        <input name="exploreveg-rss" type="checkbox" id="rss" value="1" <?php if ($rss_val) { echo 'checked="checked"'; } ?>" />
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="phone">Phone Number:</label></th>
+      <td>
+        <input name="exploreveg-phone" type="text" id="phone" value="<?php echo $phone_val ?>" />
+        <br>
+        This will be shown in the footer if one is provided.
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="announce-form-id">Announce List Signup Form ID:</label></th>
+      <td>
+        <input name="exploreveg-announce-form-id" type="text" id="announce-form--id" value="<?php echo $announce_form_id_val ?>" />
+        <br>
+        The Contact Form 7 form ID for this form, if one exists.
+      </td>
+    </tr>
+  </table>
+  <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"  /></p>
+</form>
+
+<?php
+}

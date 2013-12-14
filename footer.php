@@ -22,8 +22,12 @@
         <div id="colophon">
           <p>
             <strong>Email:</strong> <a href="mailto:info@exploreveg.org">info@exploreveg.org</a>
+<?php
+$phone = get_option('exploreveg-phone');
+if ($phone) :
+?>
             <br>
-            <strong>Phone:</strong> 612-276-2242
+            <strong>Phone:</strong> <?php echo $phone; endif ?>
           </p>
 
           <p id="copyright">

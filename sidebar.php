@@ -18,19 +18,25 @@ tha_sidebars_before(); ?>
               <h2>Get Involved</h2>
 
               <div class="right-side-content">
-                <?php echo do_shortcode( '[contact-form-7 id="150" title="Announce Subscribe"]' ); ?>
+                <?php
+                     $form_id = get_option('exploreveg-announce-form-id');
+                     if ($form_id) {
+                         echo do_shortcode( '[contact-form-7 id="' . $form_id  . '" title="Announce Subscribe"]' );
+                     }
+                ?>
 
                 <p>
                   <a href="/donate" class="btn btn-primary" title="Support our work">Donate</a>
                 </p>
 
                 <p>
-                  <a href="/learn/free-go-veg-kit/" class="btn btn-primary" title="Order a free Vegetarian Starter Kit">Free Go Veg Kit</a>
+                  <a href="/volunteer/" class="btn btn-primary" title="Make it all happen">Volunteer</a>
                 </p>
 
                 <p>
-                  <a href="/volunteer/" class="btn btn-primary" title="Make it all happen">Volunteer</a>
+                  <a href="/learn/free-go-veg-kit/" class="btn btn-primary" title="Order a free Vegetarian Starter Kit">Free Go Veg Kit</a>
                 </p>
+
               </div>
             </div>
 
