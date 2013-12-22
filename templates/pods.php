@@ -1,15 +1,19 @@
 <?php
 /*
-Template Name: Pods Template
+Template Name: Pods Volunteer Page Template
 */
 
 get_header(); ?>
 
       <div class="row">
         <div class="span9">
-          <?php tha_content_before(); ?>
-          <?php tha_content_top(); ?>
-          <?php pods_content(); ?>
+        <?php
+            tha_content_before();
+            tha_content_top();
+            the_post();
+            $post->post_parent = get_page_by_path('volunteer')->ID;
+            get_template_part( '/partials/content', 'page' );
+        ?>
         </div>
         <?php
            tha_content_after();
