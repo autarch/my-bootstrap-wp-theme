@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Pods Volunteer Category Template
+Template Name: Pods Volunteer All Opportunities Template
 */
 
 get_header(); ?>
@@ -9,29 +9,23 @@ get_header(); ?>
         <div class="span9">
           <?php tha_content_before(); ?>
           <?php tha_content_top(); ?>
-          <?php
-              $id = pods_var( 'last', 'url' );
-              $tag = pods( 'volunteer_opportunity_tag', $id, TRUE );
-          ?>
 
           <header>
             <h2 id="page-title">
-              <? echo $tag->display('title') ?> Volunteer Opportunities
+              All Available Volunteer Opportunities
             </h2>
 		  </header><!-- .page-header -->
 
           <div class="entry-content clearfix">
           <?php
-              $tag_slug = $tag->field('slug');
-              $opportunities = pods( 'volunteer', array( 'where' => "volunteer_opportunity_tag.slug = '$tag_slug' AND post_status = 'publish'", orderby => 'name ASC', 'limit' => -1 ) );
+              $opportunities = pods( 'volunteer', array( 'where' => "post_status = 'publish'", orderby => 'name ASC', 'limit' => -1 ) );
 
               if ( $opportunities->total() > 0 ) :
                   $opp = $opportunities->total() > 1 ? 'opportunities' : 'opportunity';
                   $be = $opportunities->total() > 1 ? 'are' : 'is';
           ?>
                   <p>
-                    The following <?php echo strtolower( $tag->display('title') ) ?>
-                    volunteer <?php echo $opp ?> <?php echo $be ?> available:
+                    The following volunteer <?php echo $opp ?> <?php echo $be ?> available:
                   </p>
                   <ul>
                     <li>
@@ -42,11 +36,10 @@ get_header(); ?>
                   </ul>
               <?php else : ?>
                   <p>
-                      No <?php echo strtolower( $tag->display('title') ) ?> volunteer opportunities are available.
+                      No volunteer opportunities are available.
                   </p>
               <?php endif ?>
             <p><a href="/volunteer/">Browse volunteer opportunities by category</a>.</p>
-            <p><a href="/volunteer/all">See all volunteer opportunities</a>.</p>
           </div>
         </div>
         <?php
