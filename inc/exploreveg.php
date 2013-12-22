@@ -24,7 +24,7 @@ function exploreveg_page_list ($atts) {
     $return = '';
     while ( $query->have_posts() ) {
         $query->the_post();
-        $return .= '<h4><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
+        $return .= '<h4 class="page-summary"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
 
         $content = apply_filters( 'the_content', get_the_content() );
         $content = str_replace( ']]>', ']]&gt;', $content );
