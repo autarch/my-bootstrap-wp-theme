@@ -21,6 +21,7 @@ get_header(); ?>
 		  </header><!-- .page-header -->
 
           <div class="entry-content clearfix">
+          <p id="breadcrumbs"><i class="icon-arrow-left"></i> Back to <a href="/volunteer" title="Volunteer with CAA">Volunteer with CAA</a> or <a href="/volunteer/all">see all volunteer opportunities</a>.</p>
           <?php
               $tag_slug = $tag->field('slug');
               $opportunities = pods( 'volunteer', array( 'where' => "volunteer_opportunity_tag.slug = '$tag_slug' AND post_status = 'publish'", orderby => 'name ASC', 'limit' => -1 ) );
@@ -45,8 +46,6 @@ get_header(); ?>
                       No <?php echo strtolower( $tag->display('title') ) ?> volunteer opportunities are available.
                   </p>
               <?php endif ?>
-            <p><a href="/volunteer/">Browse volunteer opportunities by category</a>.</p>
-            <p><a href="/volunteer/all">See all volunteer opportunities</a>.</p>
           </div>
         </div>
         <?php
