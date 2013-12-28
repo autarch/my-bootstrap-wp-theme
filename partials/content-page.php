@@ -19,9 +19,30 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
         <?php
-        if ( $parent = $post->post_parent ) {
-            $title = get_the_title($parent);
-            echo '<p id="breadcrumbs"><i class="icon-arrow-left"></i> Back to <a href="' . get_permalink($parent) . '" title="' . $title . '">' . $title . '</a>.</p>';
+        $breadcrumbs = $post->breadcrumbs;
+        if ( !$breadcrumbs ) {
+            $parent = $post->post_parent;
+            if ($parent) {
+                $breadcrumbs = array(
+                    array(
+                        link => get_permalink($parent),
+                        title => get_the_title($parent),
+                        ),
+                    );
+            }
+        }
+
+        if ($breadcrumbs) {
+            echo '<ul id="breadcrumbs">';
+            $x = 0;
+            foreach ($breadcrumbs as $crumb) {
+                echo '<li>';
+                if ($x++ == 0) {
+                    echo '<i class="icon-arrow-left"></i>';
+                }
+                echo '<a href="' . $crumb['link'] . '" title="' . $crumb['title'] . '">' . $crumb['title'] . '</a></li>';
+            }
+            echo '</ul>';
         }
 
         if ( has_post_thumbnail() ) {

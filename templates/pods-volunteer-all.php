@@ -17,7 +17,9 @@ get_header(); ?>
 		  </header><!-- .page-header -->
 
           <div class="entry-content clearfix">
-          <p id="breadcrumbs"><i class="icon-arrow-left"></i> Back to <a href="/volunteer" title="Volunteer with CAA">Volunteer with CAA</a>.</p>
+          <ul id="breadcrumbs">
+             <li><i class="icon-arrow-left"></i><a href="/volunteer" title="Volunteer with CAA">Volunteer with CAA</a></li>
+          </ul>
           <?php
               $opportunities = pods( 'volunteer', array( 'where' => "post_status = 'publish'", orderby => 'name ASC', 'limit' => -1 ) );
 

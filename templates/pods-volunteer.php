@@ -11,7 +11,17 @@ get_header(); ?>
             tha_content_before();
             tha_content_top();
             the_post();
-            $post->post_parent = get_page_by_path('volunteer')->ID;
+            $volunteer = get_page_by_path('volunteer')->ID;
+            $post->breadcrumbs = array(
+                array(
+                    'link' => get_permalink($volunteer),
+                    'title' => 'Volunteer with CAA',
+                    ),
+                array(
+                    'link' => '/volunteer/all',
+                    'title' => 'All Opportunities',
+                    ),
+                );
             get_template_part( '/partials/content', 'page' );
         ?>
         </div>

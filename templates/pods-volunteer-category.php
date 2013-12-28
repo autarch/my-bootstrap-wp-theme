@@ -21,7 +21,10 @@ get_header(); ?>
 		  </header><!-- .page-header -->
 
           <div class="entry-content clearfix">
-          <p id="breadcrumbs"><i class="icon-arrow-left"></i> Back to <a href="/volunteer" title="Volunteer with CAA">Volunteer with CAA</a> or <a href="/volunteer/all">see all volunteer opportunities</a>.</p>
+          <ul id="breadcrumbs">
+             <li><i class="icon-arrow-left"></i><a href="/volunteer" title="Volunteer with CAA">Volunteer with CAA</a></li>
+             <li><a href="/volunteer/all">All Opportunities</a></li>
+          </ul>
           <?php
               $tag_slug = $tag->field('slug');
               $opportunities = pods( 'volunteer', array( 'where' => "volunteer_opportunity_tag.slug = '$tag_slug' AND post_status = 'publish'", orderby => 'name ASC', 'limit' => -1 ) );
