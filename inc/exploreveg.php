@@ -359,7 +359,9 @@ function exploreveg_post_thumbnail($post) {
         $img = '<a ' . $extra . 'class="' . $classes .'" href="' . $link . '">' . $img . '</a>';
     }
     else {
-        $img = preg_replace( '/class="/', 'class="alignright thumbnail ', $img );
+        if (!$caption) {
+            $img = preg_replace( '/class="/', 'class="alignright thumbnail ', $img );
+        }
     }
 
     if ($caption) {
