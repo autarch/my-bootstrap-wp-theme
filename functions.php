@@ -931,16 +931,22 @@ function the_bootstrap_img_caption_shortcode( $empty, $attr, $content ) {
 		return $content;
 	}
 
+    $img = do_shortcode( str_replace( 'class="thumbnail', 'class="', $content ) );
+    return the_bootstrap_img_caption($img, $id, $align, $width, $caption);
+}
+
+add_filter( 'img_caption_shortcode', 'the_bootstrap_img_caption_shortcode', 10, 3 );
+
+function the_bootstrap_img_caption ($img, $id, $align, $width, $caption) {
 	if ( $id ) {
 		$id = 'id="' . $id . '" ';
 	}
 
 	return '<figure ' . $id . 'class="wp-caption thumbnail ' . $align . '" style="width: '.$width.'px;">
-				' . do_shortcode( str_replace( 'class="thumbnail', 'class="', $content ) ) . '
+				' . $img . '
 				<figcaption class="wp-caption-text">' . $caption . '</figcaption>
 			</figure>';
 }
-add_filter( 'img_caption_shortcode', 'the_bootstrap_img_caption_shortcode', 10, 3 );
 
 
 /**
