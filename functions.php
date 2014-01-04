@@ -26,7 +26,7 @@ function the_bootstrap_setup() {
 	load_theme_textdomain( 'the-bootstrap', get_template_directory() . '/lang' );
 	
 	add_theme_support( 'automatic-feed-links' );
-	
+
 	add_theme_support( 'post-thumbnails' );
 
 	add_theme_support( 'post-formats', array(
@@ -752,27 +752,6 @@ function the_bootstrap_comment_form_field_url( $html ) {
 add_filter( 'comment_form_field_url', 'the_bootstrap_comment_form_field_url');
 
 
-/**
- * Adjusts an attechment link to hold the class of 'thumbnail' and make it look
- * pretty
- *
- * @author	Konstantin Obenland
- * @since	1.0.0 - 05.02.2012
- *
- * @param	string	$link
- * @param	int		$id			Post ID.
- * @param	string	$size		Default is 'thumbnail'. Size of image, either array or string.
- * @param	bool	$permalink	Default is false. Whether to add permalink to image.
- * @param	bool	$icon		Default is false. Whether to include icon.
- * @param	string	$text		Default is false. If string, then will be link text.
- *
- * @return	string
- */
-function the_bootstrap_get_attachment_link( $link, $id, $size, $permalink, $icon, $text ) {
-	return ( ! $text ) ? str_replace( '<a ', '<a class="thumbnail" ', $link ) : $link;
-}
-add_filter( 'wp_get_attachment_link', 'the_bootstrap_get_attachment_link', 10, 6 );
-
 
 /**
  * Adds the 'hero-unit' class for extra big font on sticky posts
@@ -1003,35 +982,6 @@ function the_bootstrap_widget_categories_dropdown_args( $args ) {
 	return $args;
 }
 add_filter( 'widget_categories_dropdown_args', 'the_bootstrap_widget_categories_dropdown_args' );
-
-
-/**
- * Adds the .thumbnail class when images are sent to editor
- * 
- * @author	Konstantin Obenland
- * @since	2.0.0 - 29.08.2012
- * 
- * @param	string	$html
- * @param	int		$id
- * @param	string	$caption
- * @param	string	$title
- * @param	string	$align
- * @param	string	$url
- * @param	string	$size
- * @param	string	$alt
- * 
- * @return	string	Image HTML
- */
-function the_bootstrap_image_send_to_editor( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
-	if ( $url ) {
-		$html = str_replace( '<a ', '<a class="thumbnail" ', $html );
-	} else {
-		$html = str_replace( 'class="', 'class="thumbnail ', $html );
-	}
-
-	return $html;
-}
-add_filter( 'image_send_to_editor', 'the_bootstrap_image_send_to_editor', 10, 8 );
 
 
 /**
