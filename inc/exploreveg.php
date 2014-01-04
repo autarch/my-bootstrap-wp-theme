@@ -390,6 +390,9 @@ function exploreveg_plugin_options() {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
 
+    // XXX - this can be removed once this is deleted from the DB
+    delete_option('exploreveg-custom-sidebar');
+
     $hidden_field_name = 'ev_option_submit';
     if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
         update_option('exploreveg-facebook', $_POST['exploreveg-facebook']);
@@ -397,7 +400,7 @@ function exploreveg_plugin_options() {
         update_option('exploreveg-rss', $_POST['exploreveg-rss']);
         update_option('exploreveg-phone', $_POST['exploreveg-phone']);
         update_option('exploreveg-announce-form-id', $_POST['exploreveg-announce-form-id']);
-        update_option('exploreveg-custom-sidebar', $_POST['exploreveg-custom-sidebar']);
+        update_option('exploreveg-use-custom-sidebar', $_POST['exploreveg-use-custom-sidebar']);
 
         echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
     }
