@@ -326,13 +326,13 @@ function remove_custom_meta_boxes() {
     remove_meta_box('postcustom','page','normal');
 }
 
-add_action( 'admin_menu', 'ev_plugin_menu' );
+add_action( 'admin_menu', 'exploreveg_plugin_menu' );
 
-function ev_plugin_menu() {
-	add_options_page( 'Exploreveg Theme Options', 'Theme Options', 'manage_options', 'exploreveg-options', 'ev_plugin_options' );
+function exploreveg_plugin_menu() {
+	add_options_page( 'Exploreveg Theme Options', 'Theme Options', 'manage_options', 'exploreveg-options', 'exploreveg_plugin_options' );
 }
 
-function ev_plugin_options() {
+function exploreveg_plugin_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
