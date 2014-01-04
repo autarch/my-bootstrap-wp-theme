@@ -34,7 +34,7 @@ tha_sidebars_before(); ?>
                 </p>
 
                 <p>
-                  <a href="/learn/free-go-veg-kit/" class="btn btn-primary" title="Order a free Vegetarian Starter Kit">Free Go Veg Kit</a>
+                  <a href="/programs/free-veg-starter-kit/" class="btn btn-primary" title="Order a free Vegetarian Starter Kit">Free Go Veg Kit</a>
                 </p>
 
               </div>
