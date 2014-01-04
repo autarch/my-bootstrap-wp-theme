@@ -397,6 +397,7 @@ function exploreveg_plugin_options() {
         update_option('exploreveg-rss', $_POST['exploreveg-rss']);
         update_option('exploreveg-phone', $_POST['exploreveg-phone']);
         update_option('exploreveg-announce-form-id', $_POST['exploreveg-announce-form-id']);
+        update_option('exploreveg-custom-sidebar', $_POST['exploreveg-custom-sidebar']);
 
         echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
     }
@@ -406,6 +407,7 @@ function exploreveg_plugin_options() {
     $twitter_val = get_option('exploreveg-twitter');
     $rss_val = get_option('exploreveg-rss');
     $announce_form_id_val = get_option('exploreveg-announce-form-id');
+    $use_custom_sidebar_val = get_option('exploreveg-use-custom-sidebar');
 ?>
 
 <div id="icon-options-general" class="icon32"><br /></div><h2>Exploreveg Theme Settings</h2>
@@ -434,6 +436,8 @@ function exploreveg_plugin_options() {
       <th scope="row"><label for="rss">Show RSS icon?</label></th>
       <td>
         <input name="exploreveg-rss" type="checkbox" id="rss" value="1" <?php if ($rss_val) { echo 'checked="checked"'; } ?>" />
+        <br>
+        Show an RSS icon with the social media icons at the top of the page?
       </td>
     </tr>
     <tr valign="top">
@@ -445,11 +449,19 @@ function exploreveg_plugin_options() {
       </td>
     </tr>
     <tr valign="top">
+      <th scope="row"><label for="use-custom-sidebar">Custom sidebar?</label></th>
+      <td>
+        <input name="exploreveg-use-custom-sidebar" type="checkbox" id="use-custom-sidebar" value="1" <?php if ($use_custom_sidebar_val) { echo 'checked="checked"'; } ?>" />
+        <br>
+        Use the custom exploreveg sidebar?
+      </td>
+    </tr>
+    <tr valign="top">
       <th scope="row"><label for="announce-form-id">Announce List Signup Form ID:</label></th>
       <td>
-        <input name="exploreveg-announce-form-id" type="text" id="announce-form--id" value="<?php echo $announce_form_id_val ?>" />
+        <input name="exploreveg-announce-form-id" type="text" id="announce-form-id" value="<?php echo $announce_form_id_val ?>" />
         <br>
-        The Contact Form 7 form ID for this form, if one exists.
+        The Contact Form 7 form ID for the announce list signup form, if one exists. This only applies to the custom exploreveg sidebar.
       </td>
     </tr>
   </table>

@@ -22,7 +22,7 @@ get_header(); ?>
         </div>
         <?php
            tha_content_after();
-// get_sidebar();
+           get_sidebar();
         ?>
       </div>
 
