@@ -390,9 +390,6 @@ function exploreveg_plugin_options() {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
 
-    // XXX - this can be removed once this is deleted from the DB
-    delete_option('exploreveg-custom-sidebar');
-
     $hidden_field_name = 'ev_option_submit';
     if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
         update_option('exploreveg-facebook', $_POST['exploreveg-facebook']);
