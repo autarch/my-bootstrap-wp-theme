@@ -45,12 +45,8 @@ tha_entry_before(); ?>
             echo '</ul>';
         }
 
-        if ( has_post_thumbnail() ) {
-            $full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
-            echo '<a class="thumbnail post-thumbnail pull-right span3" href="' . $full_image_url[0] . '" title="' . the_title_attribute('echo=0') . '">';
-            the_post_thumbnail();
-            echo '</a>';
-        }
+        exploreveg_post_thumbnail($post);
+
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );
 		the_bootstrap_link_pages(); ?>
 	</div><!-- .entry-content -->

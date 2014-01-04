@@ -320,6 +320,57 @@ function exploreveg_volunteer_categories ( $atts=array() ) {
 
 add_shortcode( 'ev_volunteer_categories', 'exploreveg_volunteer_categories' );
 
+function exploreveg_post_thumbnail($post) {
+    if ( !has_post_thumbnail() ) {
+        return;
+    }
+
+    $caption = get_post_meta( $post->ID, 'featured_image_caption', true );
+    $img = get_the_post_thumbnail();
+
+    $link = '';
+    $extra = '';
+    if ( get_post_meta( $post->ID, 'featured_image_links_to_image', true ) ) {
+        $full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
+        $extra = 'data-toggle="lightbox" ';
+
+        ?>
+<div id="featured-image-lightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="lightbox-content">
+		<img src="<?php echo $full_image_url[0] ?>">
+       <?php if ($caption) : ?>
+		<div class="lightbox-caption"><p><?php echo $caption ?></p></div>
+       <?php endif ?>
+	</div>
+</div>
+       <?php
+
+        $link = '#featured-image-lightbox';
+    }
+    else {
+        $link = get_post_meta( $post->ID, 'featured_image_link', true );
+    }
+
+    if ($link) {
+        $classes = '';
+        if ( !$caption ) {
+            $classes .= 'alignright post-thumbnail thumbnail span3';
+        }
+        $img = '<a ' . $extra . 'class="' . $classes .'" href="' . $link . '">' . $img . '</a>';
+    }
+    else {
+        $img = preg_replace( '/class="/', 'class="alignright thumbnail ', $img );
+    }
+
+    if ($caption) {
+        $img_info = wp_get_attachment_image_src( get_post_thumbnail_id(), 'post-thumbnail' );
+        echo the_bootstrap_img_caption( $img, '', 'alignright', $img_info[1], $caption );
+    }
+    else {
+        echo $img;
+    }
+}
+
 add_action('admin_init','remove_custom_meta_boxes');
 function remove_custom_meta_boxes() {
     remove_meta_box('postcustom','post','normal');

@@ -20,9 +20,7 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
 		<?php
-        if ( has_post_thumbnail() ) {
-            the_post_thumbnail( 'post-thumbnail', array( 'class' => 'pull-right featured-image thumbnail' ) );
-        }
+        exploreveg_post_thumbnail($post);
 
 		the_content();
 
