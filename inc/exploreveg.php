@@ -316,6 +316,12 @@ function exploreveg_volunteer_categories ( $atts=array() ) {
 
 add_shortcode( 'ev_volunteer_categories', 'exploreveg_volunteer_categories' );
 
+add_action('admin_init','remove_custom_meta_boxes');
+function remove_custom_meta_boxes() {
+    remove_meta_box('postcustom','post','normal');
+    remove_meta_box('postcustom','page','normal');
+}
+
 add_action( 'admin_menu', 'ev_plugin_menu' );
 
 function ev_plugin_menu() {
