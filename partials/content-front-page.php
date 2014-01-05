@@ -13,7 +13,7 @@ tha_entry_before(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php tha_entry_top(); ?>
 
-    <div id="front-page-photos">
+    <div id="front-page-photos" class="carousel slide">
       <?php
 		$args = array( 
 			'post_type'      => 'attachment', 
@@ -31,25 +31,40 @@ tha_entry_before(); ?>
             'order'   => 'ASC',
 		);
 
-        $i = 0;
 		$query = new WP_Query($args);
 
+        $indicators = '<ol class="carousel-indicators">';
+        $slides = '<div class="carousel-inner">';
+
+        $i = 0;
+        $active = rand( 0, $query->found_posts - 1 );
 		while ( $query->have_posts() ) {
             $query->the_post();
 			$image = wp_get_attachment_image_src( '', 'full', false );
 			$url = wp_get_attachment_url();
 
-            echo '<div class="front-page-photo"'
-                 . ( $i == 0 ? '' : ' style="display:none"' )
-                 . ' id="front-page-photo-' . $i++  . '">'
-                   . '<img src="' . $image[0]
-                   . '" height="449" width="700" alt="' . $post->post_excerpt . '">'
-                   . '<div class="caption">' . $post->post_excerpt . '</div>'
-                 . '</div>';
+            $indicators .= '<li data-target="#front-page-photos" data-slide-to="' . $i . '"'
+                . ($i == $active ? 'class="active"' : '') . '></li>';
+
+            $slides .='<div class="item' . ($i == $active ? ' active' : '') . '">'
+                . '<img src="' . $image[0]
+                . '" height="449" width="700" alt="' . $post->post_excerpt . '">'
+                . '<div class="carousel-caption">' . $post->post_excerpt . '</div>'
+                . '</div>';
+
+            $i++;
         }
 
+        $indicators .= '</ol>';
+        $slides .= '</div>';
+
         wp_reset_postdata();
+
+        echo $indicators;
+        echo $slides;
       ?>
+      <a class="carousel-control left" href="#front-page-photos" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#front-page-photos" data-slide="next">&rsaquo;</a>
     </div>
 
 	<div id="front-page-content" class="entry-content clearfix">
