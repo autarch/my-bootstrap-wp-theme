@@ -170,7 +170,7 @@ function exploreveg_aside ($atts, $content) {
         die('The ev_aside shortcode requires content');
     }
 
-    return '<aside class="span3 pull-right side-note">' . $content . '</aside>';
+    return '<aside class="col-md-3 pull-right side-note">' . $content . '</aside>';
 }
 
 add_shortcode( 'ev_aside', 'exploreveg_aside' );
@@ -354,7 +354,7 @@ function exploreveg_post_thumbnail($post) {
     if ($link) {
         $classes = '';
         if ( !$caption ) {
-            $classes .= 'alignright post-thumbnail thumbnail span3';
+            $classes .= 'alignright post-thumbnail thumbnail col-md-3';
         }
         $img = '<a ' . $extra . 'class="' . $classes .'" href="' . $link . '">' . $img . '</a>';
     }

@@ -11,7 +11,7 @@
 get_header(); ?>
 
       <div class="row">
-        <div class="span9">
+        <div class="col-md-9">
           <?php tha_content_before(); ?>
           <?php tha_content_top();
 		
@@ -28,7 +28,7 @@ get_header(); ?>
 			if ( get_the_author_meta( 'description' ) ) : ?>
 			<div id="author-info" class="row">
 				<h2 class="span8"><?php printf( __( 'About %s', 'the-bootstrap' ), get_the_author() ); ?></h2>
-				<div id="author-avatar" class="span1">
+				<div id="author-avatar" class="col-md-1">
 					<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'the-bootstrap_author_bio_avatar_size', 70 ) ); ?>
 				</div><!-- #author-avatar -->
 				<div id="author-description" class="span7">

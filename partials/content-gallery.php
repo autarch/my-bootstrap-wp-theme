@@ -40,7 +40,7 @@ tha_entry_before(); ?>
 			$the_bootstrap_images		=	array_slice( $the_bootstrap_images, 0, 10 );
 		?>
 		
-		<div class="span3">
+		<div class="col-md-3">
 			<?php the_excerpt(); ?>
 	
 			<p class="gallery-meta">

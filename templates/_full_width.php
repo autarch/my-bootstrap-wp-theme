@@ -11,7 +11,7 @@
 get_header(); ?>
 
       <div class="row">
-        <div class="span12">
+        <div class="col-md-12">
 	      <?php tha_content_before(); ?>
 	      <div id="content" role="main">
 		    <?php tha_content_top();

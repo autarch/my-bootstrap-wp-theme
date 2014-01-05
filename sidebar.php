@@ -6,13 +6,18 @@
  * @since		1.0.0	- 05.02.2012
  */
 
-tha_sidebars_before();
+tha_sidebars_before(); ?>
+        <section class="widget-area col-md-3" role="complementary">
+<?php
 if ( get_option('exploreveg-use-custom-sidebar') ) {
     include('sidebar-exploreveg.php');
 }
 else {
     include('sidebar-standard.php');
 }
+?>
+        </section>
+<?php
 tha_sidebars_after();
 
 /* End of file sidebar.php */

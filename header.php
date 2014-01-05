@@ -55,7 +55,7 @@
       <header id="site-header">
         <?php tha_header_top(); ?>
         <div class="row">
-          <div id="follow-buttons" class="span12">
+          <div id="follow-buttons" class="col-sm-12">
 <?php
 $facebook = get_option('exploreveg-facebook');
 $twitter = get_option('exploreveg-twitter');
@@ -78,7 +78,7 @@ $rss = get_option('exploreveg-rss');
           </div>
         </div>
         <div class="row">
-          <div class="span12">
+          <div class="col-sm-12">
             <div id="logo">
               <a href="/"><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/caa-logo.png"
                                width="200" height="121"
@@ -93,28 +93,26 @@ $rss = get_option('exploreveg-rss');
               </h2>
             </div>
             <div class="navbar navbar-inverse" id="global-nav">
-              <div class="navbar-inner">
-                <div class="row">
-                  <div class="span9">
-                    <?php wp_nav_menu( array(
-                        'theme_location'    =>  'primary',
-                        'menu_class'        =>  'nav',
-                        'depth'             =>  3,
-                        'fallback_cb'       =>  false,
-                        'walker'            =>  new The_Bootstrap_Nav_Walker,
-                    ) ); ?>
-                  </div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <?php wp_nav_menu( array(
+                      'theme_location'    =>  'primary',
+                      'menu_class'        =>  'navbar-nav',
+                      'depth'             =>  3,
+                      'fallback_cb'       =>  false,
+                      'walker'            =>  new The_Bootstrap_Nav_Walker,
+                  ) ); ?>
+                </div>
 
-                  <div class="span3">
-                    <form action="<?php echo bloginfo('url'); ?>/"
-                          method="get" id="searchform" class="navbar-form navbar-search">
-                      <div class="input-append">
-                        <input type="text" name="s"
-                               value="<?php echo get_search_query() ?>" placeholder="Search"
-                               ><button class="btn"><i class="icon-search"></i></button>
-                      </div>
-                    </form>
-                  </div>
+                <div class="col-sm-3">
+                  <form action="<?php echo bloginfo('url'); ?>/"
+                        method="get" id="searchform" class="navbar-form navbar-search">
+                    <div class="input-append">
+                      <input type="text" name="s"
+                             value="<?php echo get_search_query() ?>" placeholder="Search"
+                             ><button class="btn"><i class="icon-search"></i></button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

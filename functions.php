@@ -238,8 +238,8 @@ function the_bootstrap_register_scripts_styles() {
 		 * Styles
 		 */
 		wp_register_style(
-			'my-bootstrap',
-			get_template_directory_uri() . "/compiled-style.css",
+			'compiled-css',
+			get_template_directory_uri() . "/css/compiled-style.css",
 			array(),
 			$theme_version
 		);
@@ -311,24 +311,7 @@ add_action( 'comment_form_before', 'the_bootstrap_comment_reply' );
  * @return	void
  */
 function the_bootstrap_print_styles() {
-	if ( is_child_theme() ) {
-		wp_enqueue_style( 'the-bootstrap-child', get_stylesheet_uri(), array( 'the-bootstrap' ) );
-	} else {
-		wp_enqueue_style( 'my-bootstrap' );
-	}
-	
-	if ( 'static' != the_bootstrap_options()->navbar_position ) {
-		$top_bottom	=	str_replace( 'navbar-fixed-', '', the_bootstrap_options()->navbar_position );
-		$css		=	"body > .container{margin-{$top_bottom}:68px;}@media(min-width: 980px){body > .container{margin-{$top_bottom}:58px;}}";
-	
-		if ( is_admin_bar_showing() AND 'top' == $top_bottom )
-			$css	.=	'.navbar.navbar-fixed-top{margin-top:28px;}';
-	
-		if ( function_exists( 'wp_add_inline_style' ) )
-			wp_add_inline_style( 'the-bootstrap', $css );
-		else
-			echo "<style type='text/css'>\n{$css}\n</style>\n";
-	}
+    wp_enqueue_style( 'compiled-css' );
 }
 add_action( 'wp_enqueue_scripts', 'the_bootstrap_print_styles' );
 
@@ -583,7 +566,7 @@ function the_bootstrap_comment( $comment, $args, $depth ) {
 	
 		<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 			<p class="row">
-				<strong class="ping-label span1"><?php _e( 'Pingback:', 'the-bootstrap' ); ?></strong>
+				<strong class="ping-label col-md-1"><?php _e( 'Pingback:', 'the-bootstrap' ); ?></strong>
 				<span class="span7"><?php comment_author_link(); edit_comment_link( __( 'Edit', 'the-bootstrap' ), '<span class="sep">&nbsp;</span><span class="edit-link label">', '</span>' ); ?></span>
 			</p>
 	
@@ -593,7 +576,7 @@ function the_bootstrap_comment( $comment, $args, $depth ) {
 		
 		<li  id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 			<article id="comment-<?php comment_ID(); ?>" class="comment row">
-				<div class="comment-author-avatar span1<?php if ($offset) echo " offset{$offset}"; ?>">
+				<div class="comment-author-avatar col-md-1<?php if ($offset) echo " offset{$offset}"; ?>">
 					<?php echo get_avatar( $comment, 70 ); ?>
 				</div>
 				<footer class="comment-meta span<?php echo $span; ?>">

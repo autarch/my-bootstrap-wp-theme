@@ -1,5 +1,4 @@
-        <div class="span3">
-          <div id="right-nav">
+
 	        <?php tha_sidebar_top(); ?>
             <div
                <?php if ( is_front_page() ) { echo 'id="front-page-actions" '; } ?>
@@ -71,4 +70,4 @@ EOF;
 
 	        <?php tha_sidebar_bottom(); ?>
           </div>
-       </div>
+

@@ -1,4 +1,3 @@
-<section id="secondary" class="widget-area span3" role="complementary">
 	<?php tha_sidebar_top();
 	
 	if ( ! dynamic_sidebar( 'main' ) ) {
@@ -20,4 +19,3 @@
 	} // end sidebar widget area
 	
 	tha_sidebar_bottom(); ?>
-</section><!-- #secondary .widget-area -->
