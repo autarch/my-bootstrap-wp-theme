@@ -219,30 +219,21 @@ add_action( 'widgets_init', 'the_bootstrap_widgets_init' );
  * @return	void
  */
 function the_bootstrap_register_scripts_styles() {
-
 	if ( ! is_admin() ) {
 		$theme_version = _the_bootstrap_version();
 		$suffix = ( defined('SCRIPT_DEBUG') AND SCRIPT_DEBUG ) ? '' : '.min';
-			
+
 		/**
 		 * Scripts
 		 */
 		wp_register_script(
-			'tw-bootstrap',
-			get_template_directory_uri() . "/js/bootstrap{$suffix}.js",
+			'compiled-js',
+			get_template_directory_uri() . "/js/compiled-js{$suffix}.js",
 			array('jquery'),
-			'2.0.3',
+			'2.3.2',
 			true
 		);
-		
-		wp_register_script(
-			'the-bootstrap',
-			get_template_directory_uri() . "/js/the-bootstrap{$suffix}.js",
-			array('tw-bootstrap'),
-			$theme_version,
-			true
-		);
-				
+
 		/**
 		 * Styles
 		 */
@@ -266,7 +257,7 @@ add_action( 'init', 'the_bootstrap_register_scripts_styles' );
  * @return	void
  */
 function the_bootstrap_print_scripts() {
-	wp_enqueue_script( 'the-bootstrap' );
+	wp_enqueue_script( 'compiled-js' );
 }
 add_action( 'wp_enqueue_scripts', 'the_bootstrap_print_scripts' );
 
