@@ -7,7 +7,7 @@
  */
 
 tha_sidebars_before(); ?>
-        <section class="widget-area col-md-3" role="complementary">
+        <section class="widget-area col-sm-3 col-xs-12">
 <?php
 if ( get_option('exploreveg-use-custom-sidebar') ) {
     include('sidebar-exploreveg.php');

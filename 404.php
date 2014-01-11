@@ -12,7 +12,7 @@
 get_header(); ?>
 
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-sm-9 col-xs-12">
           <?php tha_content_before(); ?>
           <?php tha_content_top(); ?>
           <?php tha_entry_before(); ?>

@@ -92,30 +92,29 @@ $rss = get_option('exploreveg-rss');
                 <?php bloginfo( 'description' ); ?>
               </h2>
             </div>
-            <div class="navbar navbar-inverse" id="global-nav">
+            <nav class="navbar navbar-inverse navbar-default" id="global-nav" role="navigation">
               <div class="row">
-                <div class="col-sm-9">
+                <div class="col-sm-9 col-xs-12">
                   <?php wp_nav_menu( array(
                       'theme_location'    =>  'primary',
-                      'menu_class'        =>  'navbar-nav',
+                      'menu_class'        =>  'nav navbar-nav',
                       'depth'             =>  3,
                       'fallback_cb'       =>  false,
                       'walker'            =>  new The_Bootstrap_Nav_Walker,
                   ) ); ?>
                 </div>
-
-                <div class="col-sm-3">
+                <div class="col-sm-3 col-xs-12">
                   <form action="<?php echo bloginfo('url'); ?>/"
                         method="get" id="searchform" class="navbar-form navbar-search">
-                    <div class="input-append">
-                      <input type="text" name="s"
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="s"
                              value="<?php echo get_search_query() ?>" placeholder="Search"
-                             ><button class="btn"><i class="icon-search"></i></button>
+                             ><button type="submit" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                   </form>
                 </div>
               </div>
-            </div>
+            </nav>
           </div>
         </div>
       <?php tha_header_bottom(); ?>

@@ -13,7 +13,7 @@ tha_entry_before(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php tha_entry_top(); ?>
 
-    <div id="front-page-photos" class="carousel slide">
+    <div id="front-page-photos" class="carousel slide hidden-xs">
       <?php
 		$args = array( 
 			'post_type'      => 'attachment', 
@@ -44,12 +44,12 @@ tha_entry_before(); ?>
 			$url = wp_get_attachment_url();
 
             $indicators .= '<li data-target="#front-page-photos" data-slide-to="' . $i . '"'
-                . ($i == $active ? 'class="active"' : '') . '></li>';
+                . ($i == $active ? ' class="active"' : '') . '></li>';
 
             $slides .='<div class="item' . ($i == $active ? ' active' : '') . '">'
                 . '<img src="' . $image[0]
                 . '" height="449" width="700" alt="' . $post->post_excerpt . '">'
-                . '<div class="carousel-caption">' . $post->post_excerpt . '</div>'
+                 . '<div class="carousel-caption"><h3>' . $post->post_excerpt . '</h3></div>'
                 . '</div>';
 
             $i++;
@@ -63,8 +63,12 @@ tha_entry_before(); ?>
         echo $indicators;
         echo $slides;
       ?>
-      <a class="carousel-control left" href="#front-page-photos" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#front-page-photos" data-slide="next">&rsaquo;</a>
+      <a class="carousel-control left" href="#front-page-photos" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="carousel-control right" href="#front-page-photos" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
 
 	<div id="front-page-content" class="entry-content clearfix">

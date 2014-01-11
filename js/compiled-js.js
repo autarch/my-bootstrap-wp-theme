@@ -2276,7 +2276,6 @@ jQuery(function($){
 	$( '#content [rel="tooltip"]' ).tooltip();
 	$( '#content [rel="popover"]' ).popover();
 	$( '.alert' ).alert();
-	$( '.carousel' ).carousel();
 });(function () {
      var $ = jQuery;
 
@@ -2318,6 +2317,8 @@ jQuery(function($){
 
      $(document).ready(
          function () {
+             $("#front-page-photos").carousel( { interval: false } );
+
              instrumentWPCF7Form("announce-subscribe");
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 

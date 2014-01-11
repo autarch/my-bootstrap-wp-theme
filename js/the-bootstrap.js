@@ -7,5 +7,4 @@ jQuery(function($){
 	$( '#content [rel="tooltip"]' ).tooltip();
 	$( '#content [rel="popover"]' ).popover();
 	$( '.alert' ).alert();
-	$( '.carousel' ).carousel();
 });

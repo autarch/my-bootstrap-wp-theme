@@ -39,6 +39,8 @@
 
      $(document).ready(
          function () {
+             $("#front-page-photos").carousel( { interval: false } );
+
              instrumentWPCF7Form("announce-subscribe");
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 
