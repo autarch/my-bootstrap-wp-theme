@@ -38,7 +38,7 @@ tha_entry_before(); ?>
             foreach ($breadcrumbs as $crumb) {
                 echo '<li>';
                 if ($x++ == 0) {
-                    echo '<i class="icon-arrow-left"></i>';
+                    echo '<span class="glyphicon glyphicon-arrow-left"></span> ';
                 }
                 echo '<a href="' . $crumb['link'] . '" title="' . $crumb['title'] . '">' . $crumb['title'] . '</a></li>';
             }

@@ -320,6 +320,35 @@ function exploreveg_volunteer_categories ( $atts=array() ) {
 
 add_shortcode( 'ev_volunteer_categories', 'exploreveg_volunteer_categories' );
 
+function exploreveg_clearfix() {
+    return '<div class="clearfix"></div>';
+}
+
+add_shortcode( 'ev_clearfix', 'exploreveg_clearfix' );
+
+function exploreveg_galleries ($atts, $content) {
+    $rows = array_chunk( array_filter( preg_split('/\n+/', $content), "_exploreveg_non_empty" ), 4 );
+
+    $return = '';
+    foreach ( $rows as $row ) {
+        $return .= '<div class="row">';
+        foreach ( $row as $gallery ) {
+            $return .= '<div class="col-md-3 col-sm-6 col-xs-6">';
+            $return .= do_shortcode($gallery);
+            $return .= '</div>';
+        }
+        $return .= '</div>';
+    }
+
+    return $return;
+}
+
+function _exploreveg_non_empty ($value) {
+    return preg_match( '/\S/', $value );
+}
+
+add_shortcode( 'ev_galleries', 'exploreveg_galleries' );
+
 function exploreveg_post_thumbnail($post) {
     if ( !has_post_thumbnail() ) {
         return;
