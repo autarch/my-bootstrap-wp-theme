@@ -1,8 +1,8 @@
           <div id="right-nav">
 	        <?php tha_sidebar_top(); ?>
             <div
-               <?php if ( is_front_page() ) { echo 'id="front-page-actions" '; } ?>
-               class="right-side-actions">
+              <?php if ( is_front_page() ) { echo 'id="front-page-actions" '; } ?>
+              class="right-side-actions">
 
               <h2>Get Involved</h2>
 
