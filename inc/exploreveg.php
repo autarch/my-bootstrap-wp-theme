@@ -250,25 +250,6 @@ function _exploreveg_clean_excerpt () {
     return $clean;
 }
 
-function exploreveg_thumbnail ( $atts=array() ) {
-    if ( ! has_post_thumbnail() ) {
-        return '';
-    }
-
-    extract( shortcode_atts( array(
-		'size' => 'thumbnail',
-	), $atts ) );
-
-    $return = '';
-    $return .= '<a href="' . get_permalink() . '">';
-    $return .= get_the_post_thumbnail( null, $size, array( 'class' => 'pull-right' ) );
-    $return .= '</a>';
-
-    return $return;
-}
-
-add_shortcode( 'ev_thumbnail', 'exploreveg_thumbnail' );
-
 function exploreveg_volunteer_categories ( $atts=array() ) {
     extract( shortcode_atts( array(
 		'type' => '',
