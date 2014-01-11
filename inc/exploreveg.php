@@ -34,7 +34,7 @@ function exploreveg_page_list ($atts) {
         $content = str_replace( ']]>', ']]&gt;', $content );
 
         $first_200 = substr( $content, 0, 200 );
-        preg_match( '/(?:<p>)?(.+\.)[ <\n]/', $first_200, $matches );
+        preg_match( '/(?:<p>)?(.+\.)[ <[\r\n]+/', $first_200, $matches );
         $return .= '<p>' . $matches[1] . ' <a href="' . get_permalink() . '">Learn more</a>.</p>';
     }
 
@@ -234,8 +234,9 @@ function _exploreveg_clean_excerpt () {
     $added_thumbnail = false;
 
     $clean = '';
-    $paras = preg_split( '/\n+/', $excerpt );
+    $paras = preg_split( '/[\r\n]+/', $excerpt );
     foreach ( $paras as $p ) {
+        error_log($p);
         if ( ! $added_thumbnail ) {
             $clean .= "<p>$thumbnail$p</p>";
             $added_thumbnail = true;
@@ -327,7 +328,7 @@ function exploreveg_clearfix() {
 add_shortcode( 'ev_clearfix', 'exploreveg_clearfix' );
 
 function exploreveg_galleries ($atts, $content) {
-    $rows = array_chunk( array_filter( preg_split('/\n+/', $content), "_exploreveg_non_empty" ), 4 );
+    $rows = array_chunk( array_filter( preg_split('/[\r\n]+/', $content), "_exploreveg_non_empty" ), 4 );
 
     $return = '';
     foreach ( $rows as $row ) {
