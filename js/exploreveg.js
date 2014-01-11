@@ -41,6 +41,14 @@
          function () {
              $("#front-page-photos").carousel( { interval: false } );
 
+             $(document).delegate(
+                 '*[data-toggle="lightbox"]', 'click',
+                 function(event) {
+	                 event.preventDefault();
+	                 return $(this).ekkoLightbox();
+                 }
+             );
+
              instrumentWPCF7Form("announce-subscribe");
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 

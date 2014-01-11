@@ -20,14 +20,14 @@ get_header(); ?>
                 get_template_part( '/partials/content', 'single' );
             } ?>
 		
-            <h3 class="assistive-text"><?php _e( 'Post navigation', 'the-bootstrap' ); ?></h3>
+            <h3 class="sr-only"><?php _e( 'Post navigation', 'the-bootstrap' ); ?></h3>
 
             <div class="row">
-		      <div class="span4">
+		      <div class="col-md-6 col-xs-6">
 		        <span class="previous"><?php previous_post_link( '%link', sprintf( '&larr;&nbsp;%1$s', __( 'Previous Post', 'the-bootstrap' ) ) ); ?></span>
               </div>
 
-		      <div class="span4">
+		      <div class="col-md-6 col-xs-6">
                 <span class="next"><?php next_post_link( '%link', sprintf( '%1$s&nbsp;&rarr;', __( 'Next Post', 'the-bootstrap' ) ) ); ?></span>
               </div>
             </div>
