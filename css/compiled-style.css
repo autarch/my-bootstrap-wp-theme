@@ -7844,18 +7844,6 @@ p.byline {
   margin-bottom: 6px;
 }
 
-#vsk-request .wpcf7-list-item {
-  display: block;
-}
-
-#vsk-request .wpcf7-list-item input[type="radio"] {
-  margin: 0 2px 4px 0;
-}
-
-#vsk-request .wpcf7-list-item label {
-  display: inline;
-}
-
 .em-search-wrapper form {
   display: none;
 }
