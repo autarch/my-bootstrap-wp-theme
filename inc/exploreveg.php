@@ -137,6 +137,7 @@ add_shortcode( 'ev_front_page_event', 'exploreveg_front_page_event' );
 function exploreveg_blockquote ($atts, $content) {
     extract( shortcode_atts( array(
 		'author' => '',
+        'big'  => false,
 		'image'  => false,
 	), $atts ) );
 
@@ -144,7 +145,7 @@ function exploreveg_blockquote ($atts, $content) {
         die('The ev_blockquote shortcode requires a quote');
     }
 
-    $classes = 'sidekick-unit';
+    $classes = $big ? 'sidekick-unit big' : 'sidekick-unit';
     if ($image) {
         $classes .= ' with-image';
     }
