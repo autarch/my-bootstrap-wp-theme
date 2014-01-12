@@ -8,8 +8,8 @@ function better_wpautop($pee){
 
 /* This is a hack to make sure that wordpress's autop filter doesn't apply to shortcodes */
 remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'better_wpautop' , 99);
-add_filter( 'the_content', 'shortcode_unautop',100 );
+add_filter( 'the_content', 'better_wpautop');
+add_filter( 'the_content', 'shortcode_unautop', 100 );
 
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
