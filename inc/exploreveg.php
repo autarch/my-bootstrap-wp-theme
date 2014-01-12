@@ -34,7 +34,7 @@ function exploreveg_page_list ($atts) {
         $content = str_replace( ']]>', ']]&gt;', $content );
 
         $first_200 = substr( $content, 0, 200 );
-        preg_match( '/(?:<p>)?(.+\.)[ <[\r\n]+/', $first_200, $matches );
+        preg_match( '/(?:<p>)?(.+[\\.!\\?])[ <[\r\n]+/', $first_200, $matches );
         $return .= '<p>' . $matches[1] . ' <a href="' . get_permalink() . '">Learn more</a>.</p>';
     }
 
