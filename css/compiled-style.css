@@ -7951,6 +7951,16 @@ img.content-right {
 .sidekick-unit.big {
   font-size: 20px;
   line-height: 27px;
+  color: white;
+  background-color: #8ab95b;
+}
+
+.sidekick-unit.big blockquote {
+  border-left: 5px solid #719e43;
+}
+
+.sidekick-unit.big blockquote small {
+  color: #eeeeee;
 }
 
 #social-buttons {
