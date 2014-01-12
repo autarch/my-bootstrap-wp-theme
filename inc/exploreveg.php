@@ -13,8 +13,8 @@ add_filter( 'the_content', 'shortcode_unautop', 100 );
 
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
-		'tag' => '',
-	), $atts ) );
+        'tag' => '',
+    ), $atts ) );
 
     if (! $tag) {
         die('The ev_page_list shortcode requires a tag parameter');
@@ -47,8 +47,8 @@ add_shortcode( 'ev_page_list', 'exploreveg_page_list' );
 
 function exploreveg_page_include ($atts) {
     extract( shortcode_atts( array(
-		'tag' => '',
-	), $atts ) );
+        'tag' => '',
+    ), $atts ) );
 
     if (! $tag) {
         die('The ev_page_include shortcode requires a tag parameter');
@@ -136,10 +136,10 @@ add_shortcode( 'ev_front_page_event', 'exploreveg_front_page_event' );
 
 function exploreveg_blockquote ($atts, $content) {
     extract( shortcode_atts( array(
-		'author' => '',
+        'author' => '',
         'big'  => false,
-		'image'  => false,
-	), $atts ) );
+        'image'  => false,
+    ), $atts ) );
 
     if (! $content) {
         die('The ev_blockquote shortcode requires a quote');
@@ -188,8 +188,8 @@ add_shortcode( 'ev_dl', 'exploreveg_definition_list' );
 
 function exploreveg_definition_list_item ($atts, $content) {
     extract( shortcode_atts( array(
-		'title' => '',
-	), $atts ) );
+        'title' => '',
+    ), $atts ) );
 
     if (! $title) {
         die('The ev_dl_item shortcode requires a title parameter');
@@ -206,8 +206,8 @@ add_shortcode( 'ev_dl_item', 'exploreveg_definition_list_item' );
 
 function exploreveg_anchor ($atts) {
     extract( shortcode_atts( array(
-		'name' => '',
-	), $atts ) );
+        'name' => '',
+    ), $atts ) );
 
     if (! $name) {
         die('The ev_anchor shortcode requires a name parameter');
@@ -258,8 +258,8 @@ function exploreveg_thumbnail ( $atts=array() ) {
     }
 
     extract( shortcode_atts( array(
-		'size' => 'thumbnail',
-	), $atts ) );
+        'size' => 'thumbnail',
+    ), $atts ) );
 
     $return = '';
     $return .= '<a href="' . get_permalink() . '">';
@@ -273,8 +273,8 @@ add_shortcode( 'ev_thumbnail', 'exploreveg_thumbnail' );
 
 function exploreveg_volunteer_categories ( $atts=array() ) {
     extract( shortcode_atts( array(
-		'type' => '',
-	), $atts ) );
+        'type' => '',
+    ), $atts ) );
 
     if (! $type) {
         die('The ev_volunteer_categories shortcode requires a type parameter');
@@ -392,13 +392,13 @@ function remove_custom_meta_boxes() {
 add_action( 'admin_menu', 'exploreveg_plugin_menu' );
 
 function exploreveg_plugin_menu() {
-	add_options_page( 'Exploreveg Theme Options', 'Theme Options', 'manage_options', 'exploreveg-options', 'exploreveg_plugin_options' );
+    add_options_page( 'Exploreveg Theme Options', 'Theme Options', 'manage_options', 'exploreveg-options', 'exploreveg_plugin_options' );
 }
 
 function exploreveg_plugin_options() {
-	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	}
+    if ( !current_user_can( 'manage_options' ) )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+    }
 
     $hidden_field_name = 'ev_option_submit';
     if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
