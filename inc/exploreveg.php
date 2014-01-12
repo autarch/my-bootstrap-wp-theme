@@ -356,8 +356,33 @@ function exploreveg_post_thumbnail($post) {
         return;
     }
 
+    $ev_licenses = array(
+        'CC BY-SA 3.0 US' => array(
+            'url' => 'http://creativecommons.org/licenses/by-sa/3.0/us/',
+            'image' => '/wp-content/themes/exploreveg-test/img/by-sa.png',
+            ),
+        );
+
     $caption = get_post_meta( $post->ID, 'featured_image_caption', true );
     $img = get_the_post_thumbnail();
+
+    $attachment_id = get_post_thumbnail_id();
+    if ( $author = get_post_meta( $attachment_id, 'credit-tracker-author', true ) ) {
+        if ($caption) {
+            $caption .= '<br>';
+        }
+        $caption .= '&copy; <small>' . htmlspecialchars($author);
+
+        if ( $license = get_post_meta( $attachment_id, 'credit-tracker-license', true ) ) {
+            error_log("$license = $ev_licenses[$license]");
+
+            if ( $url = $ev_licenses[$license]['url'] ) {
+                $caption .= ' - <a href="' . $url . '">' . $license . '</a>';
+            }
+        }
+
+        $caption .= '</small>';
+    }
 
     $link = '';
     $extra = '';
