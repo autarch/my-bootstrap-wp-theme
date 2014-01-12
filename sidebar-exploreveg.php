@@ -23,7 +23,7 @@
                 </p>
 
                 <p>
-                  <a href="/programs/free-veg-starter-kit/" class="btn btn-primary" title="Order a free Vegetarian Starter Kit">Free Go Veg Kit</a>
+                  <a href="/programs/free-veg-starter-guide/" class="btn btn-primary" title="Order a free Vegetarian Starter Guide">Free Go Veg Guide</a>
                 </p>
 
               </div>
