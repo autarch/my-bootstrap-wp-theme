@@ -11,10 +11,9 @@ get_header(); ?>
             tha_content_before();
             tha_content_top();
             the_post();
-            $volunteer = get_page_by_path('volunteer')->ID;
             $post->breadcrumbs = array(
                 array(
-                    'link' => get_permalink($volunteer),
+                    'link' => '/volunteer/',
                     'title' => 'Volunteer with CAA',
                     ),
                 array(
