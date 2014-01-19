@@ -48,7 +48,7 @@ tha_entry_before(); ?>
 
             $slides .='<div class="item' . ($i == $active ? ' active' : '') . '">'
                 . '<img src="' . $image[0]
-                . '" height="449" width="700" alt="' . $post->post_excerpt . '">'
+                . '" height="483" width="753" alt="' . $post->post_excerpt . '">'
                  . '<div class="carousel-caption"><h3>' . $post->post_excerpt . '</h3></div>'
                 . '</div>';
 
