@@ -22,26 +22,7 @@ get_header(); ?>
           </ul>
           <?php
               $opportunities = pods( 'volunteer', array( 'where' => "post_status = 'publish'", orderby => 'name ASC', 'limit' => -1 ) );
-
-              if ( $opportunities->total() > 0 ) :
-                  $opp = $opportunities->total() > 1 ? 'opportunities' : 'opportunity';
-                  $be = $opportunities->total() > 1 ? 'are' : 'is';
-          ?>
-                  <p>
-                    The following volunteer <?php echo $opp ?> <?php echo $be ?> available:
-                  </p>
-                  <ul>
-                    <li>
-                      <a href="/volunteer/<?php echo $opportunities->field('slug') ?>">
-                        <?php echo $opportunities->field('title') ?></a>
-                        <p><?php echo $opportunities->field('summary') ?></p>
-                    </li>
-                  </ul>
-              <?php else : ?>
-                  <p>
-                      No volunteer opportunities are available.
-                  </p>
-              <?php endif ?>
+              exploreveg_volunteer_opportunities($opportunities); ?>
           </div>
         </div>
         <?php

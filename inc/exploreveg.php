@@ -408,6 +408,33 @@ function exploreveg_post_thumbnail($post) {
     }
 }
 
+function exploreveg_volunteer_opportunities( $opportunities, $type='' ) {
+    if ( $opportunities->total() > 0 ) :
+        $opp = $opportunities->total() > 1 ? 'opportunities' : 'opportunity';
+        $be = $opportunities->total() > 1 ? 'are' : 'is';
+    ?>
+    <p>
+         The following <?php echo $type ?>
+         volunteer <?php echo $opp ?> <?php echo $be ?> available:
+    </p>
+    <ul>
+      <?php while ( $opportunities->fetch() ) : ?>
+      <li>
+        <a href="/volunteer/<?php echo $opportunities->field('slug') ?>">
+          <?php echo $opportunities->field('title') ?></a>
+        <?php if ( $summary = $opportunities->field('summary') ) : ?>
+        <p><?php echo $summary ?></p>
+        <?php endif ?>
+      </li>
+      <?php endwhile ?>
+    </ul>
+    <?php else : ?>
+    <p>
+      No <?php echo $type ?> volunteer opportunities are available.
+    </p>
+    <?php endif;
+}
+
 add_action('admin_init','remove_custom_meta_boxes');
 function remove_custom_meta_boxes() {
     remove_meta_box('postcustom','post','normal');
