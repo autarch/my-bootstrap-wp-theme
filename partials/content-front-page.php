@@ -41,15 +41,20 @@ tha_entry_before(); ?>
 		while ( $query->have_posts() ) {
             $query->the_post();
 			$image = wp_get_attachment_image_src( '', 'full', false );
-			$url = wp_get_attachment_url();
 
             $indicators .= '<li data-target="#front-page-photos" data-slide-to="' . $i . '"'
                 . ($i == $active ? ' class="active"' : '') . '></li>';
 
-            $slides .='<div class="item' . ($i == $active ? ' active' : '') . '">'
-                . '<img src="' . $image[0]
-                . '" height="483" width="753" alt="' . $post->post_excerpt . '">'
-                 . '<div class="carousel-caption"><h3>' . $post->post_excerpt . '</h3></div>'
+            $img = '<img src="' . $image[0]
+                . '" height="483" width="753" alt="' . $post->post_excerpt . '">';
+
+            if ( $link = get_post_meta( $post->ID, "link_from_front_page", true ) ) {
+                $img = '<a href="' . $link . '">' . $img . '</a>';
+            }
+
+            $slides .= '<div class="item' . ($i == $active ? ' active' : '') . '">'
+                . $img
+                . '<div class="carousel-caption"><h3>' . $post->post_excerpt . '</h3></div>'
                 . '</div>';
 
             $i++;
