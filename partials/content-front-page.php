@@ -46,7 +46,7 @@ tha_entry_before(); ?>
                 . ($i == $active ? ' class="active"' : '') . '></li>';
 
             $img = '<img src="' . $image[0]
-                . '" height="483" width="753" alt="' . $post->post_excerpt . '">';
+                . '" height="483" width="724" alt="' . $post->post_excerpt . '">';
 
             if ( $link = get_post_meta( $post->ID, "link_from_front_page", true ) ) {
                 $img = '<a href="' . $link . '">' . $img . '</a>';
