@@ -221,14 +221,13 @@ add_action( 'widgets_init', 'the_bootstrap_widgets_init' );
 function the_bootstrap_register_scripts_styles() {
 	if ( ! is_admin() ) {
 		$theme_version = _the_bootstrap_version();
-		$suffix = ( defined('SCRIPT_DEBUG') AND SCRIPT_DEBUG ) ? '' : '.min';
 
 		/**
 		 * Scripts
 		 */
 		wp_register_script(
 			'compiled-js',
-			get_template_directory_uri() . "/js/compiled-js{$suffix}.js",
+			get_template_directory_uri() . "/js/compiled-js.js",
 			array('jquery'),
 			'2.3.2',
 			true
