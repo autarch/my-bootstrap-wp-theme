@@ -65,7 +65,7 @@ EOF;
                         'limit'   => 5,
                         'order'   => 'ASC',
                         'orderby' => 'event_start',
-                        'format' => $event_format,
+                        'format'  => $event_format,
                         )
                     );
               ?>
