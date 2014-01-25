@@ -263,7 +263,7 @@ function exploreveg_thumbnail ( $atts=array() ) {
     ), $atts ) );
 
     if ($single) {
-        return exploreveg_post_thumbnail();
+        return exploreveg_post_thumbnail($post);
     }
     else {
         $return = '';
@@ -276,6 +276,12 @@ function exploreveg_thumbnail ( $atts=array() ) {
 }
 
 add_shortcode( 'ev_thumbnail', 'exploreveg_thumbnail' );
+
+function exploreveg_image_fixup ($atts, $content) {
+    return preg_replace( '/^\s*(.*<img[^>]+>.*?)\s*<p>/', "<p>$1", do_shortcode($content) );
+}
+
+add_shortcode( 'ev_image_fixup', 'exploreveg_image_fixup' );
 
 function exploreveg_volunteer_categories ( $atts=array() ) {
     extract( shortcode_atts( array(
