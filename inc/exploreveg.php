@@ -106,14 +106,15 @@ function exploreveg_front_page_event () {
     $events = EM_Events::get(
         array(
             'scope'   => 'future',
-            'limit'   => 5,
+            'tag'     => 'ev-front-page',
+            'limit'   => 1,
             'order'   => 'ASC',
             'orderby' => 'event_start',
             )
         );
 
     if ( ! count($events) ) {
-        return '<h2>Events</h2><p>There are no upcoming events right now.</p>';
+        return '';
     }
 
     $return = '';
