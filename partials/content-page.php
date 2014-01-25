@@ -46,7 +46,7 @@ tha_entry_before(); ?>
         }
 
         if (! $post->no_thumbnail) {
-            exploreveg_post_thumbnail($post);
+            echo exploreveg_post_thumbnail($post);
         }
 
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );

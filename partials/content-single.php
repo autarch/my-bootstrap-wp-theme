@@ -20,7 +20,7 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
 		<?php
-        exploreveg_post_thumbnail($post);
+        echo exploreveg_post_thumbnail($post);
 
 		the_content();
 

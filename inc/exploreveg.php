@@ -258,15 +258,21 @@ function exploreveg_thumbnail ( $atts=array() ) {
     }
 
     extract( shortcode_atts( array(
-        'size' => 'thumbnail',
+        'size'   => 'thumbnail',
+        'single' => false,
     ), $atts ) );
 
-    $return = '';
-    $return .= '<a href="' . get_permalink() . '">';
-    $return .= get_the_post_thumbnail( null, $size, array( 'class' => 'alignright post-thumbnail thumbnail' ) );
-    $return .= '</a>';
+    if ($single) {
+        return exploreveg_post_thumbnail();
+    }
+    else {
+        $return = '';
+        $return .= '<a href="' . get_permalink() . '">';
+        $return .= get_the_post_thumbnail( null, $size, array( 'class' => 'alignright post-thumbnail thumbnail' ) );
+        $return .= '</a>';
 
-    return $return;
+        return $return;
+    }
 }
 
 add_shortcode( 'ev_thumbnail', 'exploreveg_thumbnail' );
@@ -401,10 +407,10 @@ function exploreveg_post_thumbnail($post) {
 
     if ($caption) {
         $img_info = wp_get_attachment_image_src( get_post_thumbnail_id(), 'post-thumbnail' );
-        echo the_bootstrap_img_caption( $img, '', 'alignright', $img_info[1], $caption );
+        return the_bootstrap_img_caption( $img, '', 'alignright', $img_info[1], $caption );
     }
     else {
-        echo $img;
+        return $img;
     }
 }
 
