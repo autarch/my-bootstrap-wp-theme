@@ -45,7 +45,9 @@ tha_entry_before(); ?>
             echo '</ul>';
         }
 
-        exploreveg_post_thumbnail($post);
+        if (! $post->no_thumbnail) {
+            exploreveg_post_thumbnail($post);
+        }
 
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );
 		the_bootstrap_link_pages(); ?>
