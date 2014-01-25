@@ -237,7 +237,6 @@ function _exploreveg_clean_excerpt () {
     $clean = '';
     $paras = preg_split( '/[\r\n]+/', $excerpt );
     foreach ( $paras as $p ) {
-        error_log($p);
         if ( ! $added_thumbnail ) {
             $clean .= "<p>$thumbnail$p</p>";
             $added_thumbnail = true;
