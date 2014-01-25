@@ -7863,19 +7863,29 @@ figure figcaption {
   margin-right: 6px;
 }
 
+#location-map {
+  float: right !important;
+  margin: 0 0 15px 15px;
+}
+
 .em-map-balloon .em-map-balloon-content {
   padding-bottom: 0 !important;
   line-height: 14px !important;
 }
 
-.em-map-balloon .em-map-balloon-content h2 {
-  margin-top: 0;
-  font-size: 18px;
-  line-height: 20px;
+.em-map-balloon .em-map-balloon-content h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .em-map-balloon .em-map-balloon-content p:last-child {
   margin-bottom: 0;
+}
+
+.em-map-balloon .em-map-balloon-content #google-map-address {
+  display: none;
 }
 
 p.byline {

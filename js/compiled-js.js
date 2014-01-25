@@ -2368,4 +2368,15 @@ jQuery(function($){
              instrumentWPCF7Form("vsk-request");
          }
      );
+
+     $(document).bind(
+         'em_maps_location_hook',
+         function (e, map, infowindow, marker) {
+             var address = $("#google-map-address").text().replace(/,\s+(?:,|$)/g, "");
+             if ( address && address.length ) {
+                 var url = "https://maps.google.com/maps?q=" + encodeURIComponent(address);
+                 $("#location-map").append('<a href="' + url + '">View this location on Google Maps</a>');
+             }
+         }
+     );
 })();
