@@ -263,7 +263,7 @@ function exploreveg_thumbnail ( $atts=array() ) {
 
     $return = '';
     $return .= '<a href="' . get_permalink() . '">';
-    $return .= get_the_post_thumbnail( null, $size, array( 'class' => 'pull-right' ) );
+    $return .= get_the_post_thumbnail( null, $size, array( 'class' => 'alignright' ) );
     $return .= '</a>';
 
     return $return;
