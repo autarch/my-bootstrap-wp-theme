@@ -58,6 +58,7 @@ function the_bootstrap_content_nav() {
         foreach ( $links as $link ) {
             echo '<li>' . $link . '</li>';
         }
+        echo '</ul>';
     }
 }
 endif;
