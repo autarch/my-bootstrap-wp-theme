@@ -22,7 +22,7 @@ get_header(); ?>
 
           <article>
             <header>
-              <h2 id="page-title"><?php echo $title ?></h1>
+              <h2 id="page-title"><?php echo $title ?></h2>
             </header>
 
           <?php
