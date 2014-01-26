@@ -23,11 +23,10 @@ tha_entry_before(); ?>
         the_title( '<h2 id="page-title"><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', 'the-bootstrap' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">', '</a></h2>' );
     }
         
-    if ( 'post' == get_post_type() ) : ?>
-        <div class="entry-meta">
-            <?php the_bootstrap_posted_on(); ?>
-        </div><!-- .entry-meta -->
-    <?php endif; ?>
+    if ( 'post' == get_post_type() ) {
+        exploreveg_show_entry_meta();
+    }
+    ?>
     </header><!-- .entry-header -->
 
     <?php if ( is_search() ) : // Only display Excerpts for Search ?>

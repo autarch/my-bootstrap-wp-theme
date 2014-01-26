@@ -14,8 +14,10 @@ tha_entry_before(); ?>
 	<?php tha_entry_top(); ?>
 	
 	<header>
-		<?php the_title( '<h2 id="page-title">', '</h2>' ); ?>
-		<div class="entry-meta"><?php the_bootstrap_posted_on(); ?></div><!-- .entry-meta -->
+		<?php
+        the_title( '<h2 id="page-title">', '</h2>' );
+        exploreveg_show_entry_meta(32);
+        ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content clearfix">

@@ -457,6 +457,13 @@ function exploreveg_show_all_posts() {
     echo '</div>';
 }
 
+function exploreveg_show_entry_meta() {
+    echo '<div class="entry-meta">';
+    echo get_avatar( get_the_author_meta( 'user_email', get_the_author_meta( 'ID' ) ), 24 );
+    the_bootstrap_posted_on();
+    echo '</div>';
+}
+
 add_action('admin_init','remove_custom_meta_boxes');
 function remove_custom_meta_boxes() {
     remove_meta_box('postcustom','post','normal');
