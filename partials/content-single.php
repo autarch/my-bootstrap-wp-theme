@@ -16,7 +16,7 @@ tha_entry_before(); ?>
 	<header>
 		<?php
         the_title( '<h2 id="page-title">', '</h2>' );
-        exploreveg_show_entry_meta(32);
+        exploreveg_show_entry_meta();
         ?>
 	</header><!-- .entry-header -->
 
