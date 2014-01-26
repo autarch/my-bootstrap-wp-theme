@@ -48,14 +48,17 @@ function the_bootstrap_content_nav() {
 		'format'	=>	$format,
 		'total'		=>	$wp_query->max_num_pages,
 		'current'	=>	$paged,
-		'mid_size'	=>	3,
-		'type'		=>	'list',
+		'mid_size'	=>	5,
+		'type'		=>	'array',
 		'add_args'	=>	array_map( 'urlencode', $query_args )
 	) );
 
 	if ( $links ) {
-		echo "<nav class=\"pagination pagination-centered clearfix\">{$links}</nav>";
-	}
+        echo '<ul class="pagination">';
+        foreach ( $links as $link ) {
+            echo '<li>' . $link . '</li>';
+        }
+    }
 }
 endif;
 
