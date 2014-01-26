@@ -3,7 +3,7 @@
  *
  * Template Name: Recent News
  *
- * @author 	Dave Rolsky
+ * @author  Dave Rolsky
  * @package My Bootstrap - exploreveg
  */
 
@@ -29,29 +29,26 @@ get_header(); ?>
               )
           );
           ?>
+          <article>
+            <header>
+              <h2 id="page-title"><?php the_title(); ?></h2>
+            </header><!-- .page-header -->
 
-          <header class="page-header">
-            <h1 class="page-title"><?php the_title(); ?></h1>
-		  </header><!-- .page-header -->
-
-          <div class="posts">
-            <?php
-            if ( have_posts() ) :
-                while ( have_posts() ) {
-                   the_post();
-                    get_template_part( '/partials/content', get_post_format() );
-                }
-                the_bootstrap_content_nav();
-            ?>
-          </div>
-        <?php
+          <?php
+          if ( have_posts() ) :
+              exploreveg_show_all_posts();
           else :
-              get_template_part( '/partials/content', 'not-found' );
+              ?>
+            <div class="entry-content clearfix">
+              <p>There are no blog posts yet. That's weird, huh?</p>
+            </div>
+          <?php
           endif;
 
           $wp_query = clone $temp_query;
 
           tha_content_bottom(); ?>
+          </article>
         </div>
         <?php
            tha_content_after();

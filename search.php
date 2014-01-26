@@ -16,28 +16,28 @@ get_header(); ?>
         <div class="col-sm-9 col-xs-12">
           <?php tha_content_before(); ?>
           <?php tha_content_top();
-        
-        if ( have_posts() ) : ?>
 
-          <header class="page-header">
-              <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'the-bootstrap' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-          </header>
-    
-          <div class="posts">
-            <?php
-              while ( have_posts() ) {
-                  the_post();
-                  get_template_part( '/partials/content', get_post_format() );
-              }
-              the_bootstrap_content_nav();
-            ?>
-          </div>
-        <?php
-        else :
-            get_template_part( '/partials/content', 'not-found' );
-        endif;
+          $title = have_posts() ? 'Search Results for: ' . get_search_query() : 'No Results Found';
+          ?>
+
+          <article>
+            <header>
+              <h2 id="page-title"><?php echo $title ?></h1>
+            </header>
+
+          <?php
+          if ( have_posts() ) :
+              exploreveg_show_all_posts();
+          else :
+              ?>
+            <div class="entry-content clearfix">
+              <p>Nothing on the site matched your search. Please try again with different keywords</p>
+            </div>
+          <?php
+          endif;
         
-        tha_content_bottom(); ?>
+          tha_content_bottom(); ?>
+          </article>
         </div>
         <?php
            tha_content_after();

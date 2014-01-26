@@ -14,7 +14,7 @@ tha_entry_before(); ?>
 	<?php tha_entry_top(); ?>
 	
 	<header class="page-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title( '<h2 id="page-title">', '</h2>' ); ?>
 		<div class="entry-meta"><?php the_bootstrap_posted_on(); ?></div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
