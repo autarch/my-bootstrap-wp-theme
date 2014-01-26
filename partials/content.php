@@ -14,25 +14,20 @@ tha_entry_before(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php tha_entry_top(); ?>
     
-    <header class="page-header">
-    <?php if ( is_sticky() AND is_home() ) : ?>
-        <?php the_title( '<h1 class="entry-title"><a href="' . get_permalink() . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'the-bootstrap' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">', '</a></h1>' ); ?>
-        <h3 class="entry-format"><?php _e( 'Featured', 'the-bootstrap' ); ?></h3>
+    <header>
     <?php
-        else :
-            if ($is_multi_post) {
-                the_title( '<h3 class="entry-title"><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', 'the-bootstrap' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">', '</a></h3>' );
-            }
-            else {
-                the_title( '<h2 id="page-title"><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', 'the-bootstrap' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">', '</a></h2>' );
-            }
-        endif;
+    if ($is_multi_post) {
+        the_title( '<h3 class="entry-title"><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', 'the-bootstrap' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">', '</a></h3>' );
+    }
+    else {
+        the_title( '<h2 id="page-title"><a href="' . get_permalink() .'" title="' . sprintf( esc_attr__( 'Permalink to %s', 'the-bootstrap' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">', '</a></h2>' );
+    }
         
-        if ( 'post' == get_post_type() ) : ?>
+    if ( 'post' == get_post_type() ) : ?>
         <div class="entry-meta">
             <?php the_bootstrap_posted_on(); ?>
         </div><!-- .entry-meta -->
-        <?php endif; ?>
+    <?php endif; ?>
     </header><!-- .entry-header -->
 
     <?php if ( is_search() ) : // Only display Excerpts for Search ?>
