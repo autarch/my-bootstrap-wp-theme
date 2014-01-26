@@ -31,7 +31,7 @@ get_header(); ?>
           else :
               ?>
             <div class="entry-content clearfix">
-              <p>Nothing on the site matched your search. Please try again with different keywords</p>
+              <p>Nothing on the site matched your search. Please try again with different keywords.</p>
             </div>
           <?php
           endif;
