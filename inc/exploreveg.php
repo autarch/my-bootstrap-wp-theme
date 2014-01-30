@@ -371,7 +371,11 @@ function exploreveg_post_thumbnail($post) {
     $ev_licenses = array(
         'CC BY-SA 3.0 US' => array(
             'url' => 'http://creativecommons.org/licenses/by-sa/3.0/us/',
-            'image' => '/wp-content/themes/exploreveg-test/img/by-sa.png',
+            'image' => get_template_directory() . '/img/by-sa.png',
+            ),
+        'CC BY-NC-SA 2.0 Generic' => array(
+            'url' => 'http://creativecommons.org/licenses/by-nc-sa/2.0/',
+            'image' => get_template_directory() . '/img/by-nc-sa.png',
             ),
         );
 
@@ -383,13 +387,22 @@ function exploreveg_post_thumbnail($post) {
         if ($caption) {
             $caption .= '<br>';
         }
-        $caption .= '&copy; <small>' . htmlspecialchars($author);
+        $caption .= '&copy; <small>';
+        if ( $publisher = get_post_meta( $attachment_id, 'credit-tracker-publisher', true ) ) {
+            $caption .= '<a href="' . $publisher . '">';
+        }
+        $caption .= htmlspecialchars($author);
+        if ($publisher) {
+            $caption .= '</a>';
+        }
 
         if ( $license = get_post_meta( $attachment_id, 'credit-tracker-license', true ) ) {
-            error_log("$license = $ev_licenses[$license]");
-
+            $caption .= '<br>';
             if ( $url = $ev_licenses[$license]['url'] ) {
-                $caption .= ' - <a href="' . $url . '">' . $license . '</a>';
+                $caption .= 'Licensed under <a href="' . $url . '">' . $license . '</a>';
+            }
+            else {
+                $caption .= $license;
             }
         }
 
