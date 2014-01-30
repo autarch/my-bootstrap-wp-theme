@@ -377,6 +377,9 @@ function exploreveg_post_thumbnail($post) {
             'url' => 'http://creativecommons.org/licenses/by-nc-sa/2.0/',
             'image' => get_template_directory() . '/img/by-nc-sa.png',
             ),
+        'CC BY 2.0 Generic' => array(
+            'url' => 'http://creativecommons.org/licenses/by/2.0/',
+            ),
         );
 
     $caption = get_post_meta( $post->ID, 'featured_image_caption', true );
