@@ -22,7 +22,7 @@ get_header(); ?>
 		
             <h3 class="sr-only"><?php _e( 'Post navigation', 'the-bootstrap' ); ?></h3>
 
-            <div class="row">
+            <div id="post-navigation" class="row">
 		      <div class="col-md-6 col-xs-6">
 		        <span class="previous"><?php previous_post_link( '%link', sprintf( '&larr;&nbsp;%1$s', __( 'Previous Post', 'the-bootstrap' ) ) ); ?></span>
               </div>
