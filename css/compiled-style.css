@@ -7914,7 +7914,12 @@ p.byline {
   margin: 0 0 20px 20px;
 }
 
-.previous {
+#post-navigation {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#post-navigation .previous {
   float: right;
 }
 
@@ -8004,7 +8009,7 @@ img.content-right {
 }
 
 .sidekick-unit.with-image {
-  width: 65%;
+  width: 50%;
 }
 
 .sidekick-unit blockquote {
@@ -8084,11 +8089,13 @@ figure {
 .alignright {
   float: right;
   margin: 0 0 20px 20px;
+  clear: both;
 }
 
 .alignleft {
   float: left;
   margin: 0 20px 20px 0;
+  clear: both;
 }
 
 .clearfix:before,
