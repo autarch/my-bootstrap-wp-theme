@@ -45,7 +45,7 @@ $rss = get_option('exploreveg-rss');
                ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/twitter.png"
                      height="24" width="24" alt="Twitter icon"></a>
 <?php endif; if($rss) : ?>
-            <a href="#" title="Subscribe to our news feed"
+            <a href="/feed/" title="Subscribe to our news feed"
                ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png"
                      height="24" width="24" alt="RSS icon"></a>
 <?php endif; ?>
