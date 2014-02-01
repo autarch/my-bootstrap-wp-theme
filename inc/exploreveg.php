@@ -368,49 +368,14 @@ function exploreveg_post_thumbnail($post) {
         return;
     }
 
-    $ev_licenses = array(
-        'CC BY-SA 3.0 US' => array(
-            'url' => 'http://creativecommons.org/licenses/by-sa/3.0/us/',
-            'image' => get_template_directory() . '/img/by-sa.png',
-            ),
-        'CC BY-NC-SA 2.0 Generic' => array(
-            'url' => 'http://creativecommons.org/licenses/by-nc-sa/2.0/',
-            'image' => get_template_directory() . '/img/by-nc-sa.png',
-            ),
-        'CC BY 2.0 Generic' => array(
-            'url' => 'http://creativecommons.org/licenses/by/2.0/',
-            ),
-        );
-
     $caption = get_post_meta( $post->ID, 'featured_image_caption', true );
     $img = get_the_post_thumbnail();
 
-    $attachment_id = get_post_thumbnail_id();
-    if ( $author = get_post_meta( $attachment_id, 'credit-tracker-author', true ) ) {
-        if ($caption) {
-            $caption .= '<br>';
-        }
-        $caption .= '&copy; <small>';
-        if ( $publisher = get_post_meta( $attachment_id, 'credit-tracker-publisher', true ) ) {
-            $caption .= '<a href="' . $publisher . '">';
-        }
-        $caption .= htmlspecialchars($author);
-        if ($publisher) {
-            $caption .= '</a>';
-        }
-
-        if ( $license = get_post_meta( $attachment_id, 'credit-tracker-license', true ) ) {
-            $caption .= '<br>';
-            if ( $url = $ev_licenses[$license]['url'] ) {
-                $caption .= 'Licensed under <a href="' . $url . '">' . $license . '</a>';
-            }
-            else {
-                $caption .= $license;
-            }
-        }
-
-        $caption .= '</small>';
+    $license_caption = _exploreveg_license_caption( get_post_thumbnail_id() );
+    if ($caption && $license_caption) {
+        $caption .= '<br>';
     }
+    $caption .= $license_caption;
 
     $link = '';
     $extra = '';
@@ -447,6 +412,84 @@ function exploreveg_post_thumbnail($post) {
     else {
         return $img . $lb_div;
     }
+}
+
+function exploreveg_image_license ($atts, $content) {
+    $content = do_shortcode($content);
+
+    $content = preg_replace('/[\r\n]*$/', '',  preg_replace( '/[\r\n]/', '', $content ) );
+
+    $matches = array();
+    if ( preg_match( '/wp-image-(\d+)/', $content, $matches ) ) {
+        $license_caption = _exploreveg_license_caption( $matches[1] );
+        if ( preg_match( '/<figure/', $content ) ) {
+            return preg_replace(
+                '|(<figcaption[^>]+?>)(.+?)(</figcaption>)|',
+                '$1$2<br>' . $license_caption . '$3',
+                $content );
+        }
+        else {
+            $align_re = '/(align(?:right|left|center|none))/';
+            $align = '';
+            if ( preg_match( $align_re, $content, $matches ) ) {
+                $align = $matches[1];
+                $content = preg_replace( $align_re, '', $content );
+            }
+
+            preg_match( '/width="(\d+)"/', $content, $matches );
+            $width = $matches[1];
+
+            return the_bootstrap_img_caption( $content, $attachment_id, $align, $width, $license_caption );
+        }
+    }
+
+    return $content;
+}
+
+add_shortcode( 'ev_image_license', 'exploreveg_image_license' );
+
+function _exploreveg_license_caption ($attachment_id) {
+    $author = get_post_meta( $attachment_id, 'credit-tracker-author', true );
+    if ( ! $author ) {
+        return '';
+    }
+
+    $ev_licenses = array(
+        'CC BY-SA 3.0 US' => array(
+            'url' => 'http://creativecommons.org/licenses/by-sa/3.0/us/',
+            'image' => get_template_directory() . '/img/by-sa.png',
+            ),
+        'CC BY-NC-SA 2.0 Generic' => array(
+            'url' => 'http://creativecommons.org/licenses/by-nc-sa/2.0/',
+            'image' => get_template_directory() . '/img/by-nc-sa.png',
+            ),
+        'CC BY 2.0 Generic' => array(
+            'url' => 'http://creativecommons.org/licenses/by/2.0/',
+            ),
+        );
+
+    $caption .= '&copy; <small>';
+    if ( $publisher = get_post_meta( $attachment_id, 'credit-tracker-publisher', true ) ) {
+        $caption .= '<a href="' . $publisher . '">';
+    }
+    $caption .= htmlspecialchars($author);
+    if ($publisher) {
+        $caption .= '</a>';
+    }
+
+    if ( $license = get_post_meta( $attachment_id, 'credit-tracker-license', true ) ) {
+        $caption .= '<br>';
+        if ( $url = $ev_licenses[$license]['url'] ) {
+            $caption .= 'Licensed under <a href="' . $url . '">' . $license . '</a>';
+        }
+        else {
+            $caption .= $license;
+        }
+    }
+
+    $caption .= '</small>';
+
+    return $caption;
 }
 
 function exploreveg_volunteer_opportunities( $opportunities, $type='' ) {
