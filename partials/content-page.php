@@ -49,6 +49,10 @@ tha_entry_before(); ?>
             echo exploreveg_post_thumbnail($post);
         }
 
+        if ($post->prepend) {
+            echo $post->prepend;
+        }
+
 		the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'the-bootstrap' ) );
 		the_bootstrap_link_pages(); ?>
 	</div><!-- .entry-content -->
