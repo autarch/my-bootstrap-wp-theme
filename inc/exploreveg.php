@@ -414,11 +414,24 @@ function exploreveg_post_thumbnail($post) {
 
     $link = '';
     $extra = '';
+    $lb_div = '';
     if ( !( $link = get_post_meta( $post->ID, 'featured_image_link', true ) ) ) {
-        $extra = 'data-toggle="lightbox" data-footer="' . htmlspecialchars($caption) . '"';
-
         $full_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
         $link = $full_image[0];
+
+        $extra = 'data-toggle="lightbox" href="#featured-image-lightbox"';
+        $lb_div = "
+<div id='featured-image-lightbox' class='lightbox fade'  tabindex='-1' role='dialog' aria-hidden='true'>
+    <div class='lightbox-dialog'>
+        <div class='lightbox-content'>
+            <img src='$link'>
+            <div class='lightbox-caption'>
+                $caption
+            </div>
+        </div>
+    </div>
+</div>
+";
     }
 
     $classes = '';
@@ -429,10 +442,10 @@ function exploreveg_post_thumbnail($post) {
 
     if ($caption) {
         $img_info = wp_get_attachment_image_src( get_post_thumbnail_id(), 'post-thumbnail' );
-        return the_bootstrap_img_caption( $img, '', 'alignright', $img_info[1], $caption );
+        return the_bootstrap_img_caption( $img, '', 'alignright', $img_info[1], $caption ) . $lb_div;
     }
     else {
-        return $img;
+        return $img . $lb_div;
     }
 }
 
