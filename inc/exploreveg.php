@@ -242,12 +242,12 @@ function _exploreveg_clean_excerpt () {
             $clean .= "<p>$thumbnail$p</p>";
             $added_thumbnail = true;
         }
-        else {
+        else if ($p) {
             $clean .= "<p>$p</p>";
         }
     }
 
-    $clean .= '<a href="' . get_permalink() . '">Continue reading<span class="meta-nav">→</span></a>';
+    $clean .= '<p><a href="' . get_permalink() . '">Continue reading<span class="meta-nav">→</span></a></p>';
 
     return $clean;
 }
