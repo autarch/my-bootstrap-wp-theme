@@ -109,7 +109,7 @@ function exploreveg_front_page_event () {
             'tag'     => 'ev-front-page',
             'limit'   => 1,
             'order'   => 'ASC',
-            'orderby' => 'event_start',
+            'orderby' => 'event_start_date',
             )
         );
 
