@@ -233,6 +233,19 @@ function the_bootstrap_register_scripts_styles() {
 			true
 		);
 
+        /* Hack to work around bwp-minify using the same cache files for sites
+         * that use the same scripts */
+        $server_js = $_SERVER['SERVER_NAME'] . '.js';
+        if ( file_exists( get_template_directory() . '/js/' . $server_js ) ) {
+            wp_register_script(
+                'per-server-js',
+                get_template_directory_uri() . '/js/' . $server_js,
+                array(),
+                '1.0.0',
+                true
+                );
+        }
+
 		/**
 		 * Styles
 		 */
@@ -242,6 +255,17 @@ function the_bootstrap_register_scripts_styles() {
 			array(),
 			$theme_version
 		);
+
+        $server_css = $_SERVER['SERVER_NAME'] . '.css';
+        $per_site_css = get_template_directory_uri() . '/css/' . $server_css;
+        if ( file_exists($per_site_css) ) {
+            wp_register_style(
+                $server_css,
+                $per_site_css,
+                array('compiled-css'),
+                $theme_version
+                );
+        }
 	}
 }
 add_action( 'init', 'the_bootstrap_register_scripts_styles' );
@@ -257,6 +281,7 @@ add_action( 'init', 'the_bootstrap_register_scripts_styles' );
  */
 function the_bootstrap_print_scripts() {
 	wp_enqueue_script( 'compiled-js' );
+	wp_enqueue_script( 'per-server-js' );
 }
 add_action( 'wp_enqueue_scripts', 'the_bootstrap_print_scripts' );
 
@@ -311,6 +336,7 @@ add_action( 'comment_form_before', 'the_bootstrap_comment_reply' );
  */
 function the_bootstrap_print_styles() {
     wp_enqueue_style( 'compiled-css' );
+    wp_enqueue_style( 'per-server-css' );
 }
 add_action( 'wp_enqueue_scripts', 'the_bootstrap_print_styles' );
 
