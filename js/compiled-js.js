@@ -2396,15 +2396,35 @@ jQuery(function($){
              modal.modal("show");
          };
 
+         var submit = form.find('input[type="submit"]');
+         if ( ! submit.length ) {
+             submit = form.find('button[type="submit"]');
+         }
+
+         submit.attr( "data-loading-text", "Submitting ..." );
+         form.submit(
+             function () {
+                 submit.button("loading");
+                 return true;
+             }
+         );
+
          container.on(
              "mailsent.wpcf7",
              function () {
                  displayModal("Success!");
+                 submit.button("reset");
+             }
+         ).on(
+             "invalid.wpcf7",
+             function () {
+                 submit.button("reset");
              }
          ).on(
              "mailfailed.wpcf7",
              function () {
                  displayModal("Error");
+                 submit.button("reset");
              }
          );
      };
