@@ -57,6 +57,70 @@
          );
      };
 
+     function lightboxifyImages () {
+         var x = 1;
+         $('article img[class*="wp-image-"]').each(
+             function () {
+                 if ( $(this).hasClass("wp-post-image") ) {
+                     return;
+                 }
+
+                 var link = $(this).parent();
+                 var full_image = link.attr("href");
+                 if ( ! full_image ) {
+                     return;
+                 }
+
+                 if ( ! full_image.match(/(?:png|jpe?g|gif)$/) ) {
+                     return;
+                 }
+
+                 var caption;
+                 if ( link.parent().is("figure") ) {
+                     caption = link.parent().find("figcaption").contents().clone();
+                 }
+
+                 var lb = $("<div/>");
+                 lb.addClass("lightbox fade");
+                 lb.attr( "id", "auto-lightbox-" + x++ )
+                   .attr( "tabindex", "-1" )
+                   .attr( "role", "dialog" )
+                   .attr( "aria-hidden", "true" );
+
+                 var lb_dialog = $("<div/>");
+                 lb_dialog.addClass("lightbox-dialog");
+
+                 var lb_content = $("<div/>");
+                 lb_content.addClass("lightbox-content");
+
+                 var lb_img = $("<img/>");
+                 lb_img.attr( "src", full_image );
+
+                 lb.append(lb_dialog);
+                 lb_dialog.append(lb_content);
+                 lb_content.append(lb_img);
+
+                 if (caption) {
+                     lb_content.append( $('<div class="lightbox-caption"/>').append(caption) );
+                 }
+
+                 lb.insertAfter(link);
+
+                 link.click(
+                     function () {
+                         lb.lightbox();
+                         return false;
+                     }
+                 );
+
+                 if ( $(this).hasClass("alignright") ) {
+                     $(this).removeClass("alignright");
+                     link.addClass("thumbnail alignright");
+                 }
+             }
+         );
+     }
+
      $(document).ready(
          function () {
              $("#front-page-photos").carousel( { interval: false } );
@@ -65,6 +129,8 @@
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 
              instrumentWPCF7Form("vsk-request");
+
+             lightboxifyImages();
          }
      );
 
