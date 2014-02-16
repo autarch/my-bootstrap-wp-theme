@@ -38,38 +38,46 @@ $rss = get_option('exploreveg-rss');
 
 <?php if ($facebook) : ?>
             <a href="<?php echo $facebook ?>" title="Follow us on Facebook"
-               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/facebook.png"
+               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/facebook.png"
                      height="24" width="24" alt="Facebook icon"></a>
 <?php endif; if($twitter) : ?>
             <a href="<?php echo $twitter ?>" title="Follow us on Twitter"
-               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/twitter.png"
+               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/twitter.png"
                      height="24" width="24" alt="Twitter icon"></a>
 <?php endif; if($rss) : ?>
             <a href="/feed/" title="Subscribe to our news feed"
                rel="alternate" type="application/rss+xml"
-               ><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/rss.png"
+               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/rss.png"
                      height="24" width="24" alt="RSS icon"></a>
 <?php endif; ?>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-12">
-            <div id="logo">
-              <a href="/"><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/caa-logo.png"
-                               width="200" height="121"
-                               alt="Compassionate Action for Animals Logo"></a>
-            </div>
-            <div id="name-and-tagline">
-              <h1>
-                <a href="/"><?php bloginfo( 'name' ); ?></a>
-              </h1>
-              <h2 id="tagline">
-                <?php bloginfo( 'description' ); ?>
-              </h2>
-            </div>
-            <nav class="navbar navbar-inverse navbar-default" id="global-nav" role="navigation">
-              <div class="row">
-                <div class="col-sm-9 col-xs-12">
+          <div class="col-sm-3 col-xs-12">
+            <a href="/"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/caa-logo.png"
+                             width="200" height="121"
+                             alt="Compassionate Action for Animals Logo"></a>
+          </div>
+          <div id="name-and-tagline" class="col-sm-9 col-xs-12">
+            <h1>
+              <a href="/"><?php
+                             $blog_name = get_bloginfo('name');
+                             if ( strcmp( $blog_name, 'CAA Test' ) == 0 ) {
+                                 echo 'Compassionate Action for Animals';
+                             }
+                             else {
+                                 echo $blog_name;
+                             } ?></a>
+            </h1>
+            <h2 id="tagline">
+              <?php bloginfo( 'description' ); ?>
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <nav class="navbar navbar-inverse navbar-default col-sm-12 col-xs-12" id="global-nav" role="navigation">
+            <div class="row">
+              <div class="col-sm-9 col-xs-12">
                   <?php wp_nav_menu( array(
                       'theme_location'    =>  'primary',
                       'menu_class'        =>  'nav navbar-nav',
@@ -77,20 +85,19 @@ $rss = get_option('exploreveg-rss');
                       'fallback_cb'       =>  false,
                       'walker'            =>  new The_Bootstrap_Nav_Walker,
                   ) ); ?>
-                </div>
-                <div class="col-sm-3 col-xs-12">
-                  <form action="<?php echo bloginfo('url'); ?>/"
-                        method="get" id="searchform" class="navbar-form navbar-search">
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="s"
-                             value="<?php echo get_search_query() ?>" placeholder="Search"
-                             ><button type="submit" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                  </form>
-                </div>
               </div>
-            </nav>
-          </div>
+              <div class="col-sm-3 col-xs-12">
+                <form action="<?php bloginfo('url'); ?>/"
+                      method="get" id="searchform" class="navbar-form navbar-search">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="s"
+                           value="<?php echo get_search_query() ?>" placeholder="Search"
+                           ><button type="submit" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </nav>
         </div>
       <?php tha_header_bottom(); ?>
       </header>

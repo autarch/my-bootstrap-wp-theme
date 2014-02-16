@@ -7612,18 +7612,6 @@ div.main {
   margin-left: 4px;
 }
 
-#site-header #logo {
-  display: inline;
-  float: left;
-  width: 200px;
-  height: 121px;
-}
-
-#site-header #name-and-tagline {
-  margin-left: 210px;
-  clear: none;
-}
-
 #site-header #name-and-tagline h1 {
   margin-top: 37px;
   margin-bottom: 2px;
@@ -7660,17 +7648,10 @@ div.main {
 
 #global-nav {
   padding-left: 0;
-  margin-top: 25px;
+  margin-top: 15px;
   clear: both;
   font-family: Gudea, "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 0;
-}
-
-@media (min-width: 992px) {
-  #global-nav {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
 }
 
 #global-nav .navbar-nav li {
