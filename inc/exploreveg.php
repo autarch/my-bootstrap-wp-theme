@@ -20,10 +20,16 @@ function exploreveg_page_list ($atts) {
         die('The ev_page_list shortcode requires a tag parameter');
     }
 
-    $query = new WP_Query ( array( 'post_type' => 'page',
-                                   'tag'       => $tag,
-                                   'orderby'   => 'title',
-                                   'order'     => 'ASC' ) );
+    $query = new WP_Query(
+        array(
+            'post_type'      => 'page',
+            'post_status'    => 'publish',
+            'tag'            => $tag,
+            'orderby'        => 'title',
+            'order'          => 'ASC',
+            'posts_per_page' => -1,
+            )
+        );
 
     $return = '';
     while ( $query->have_posts() ) {
@@ -54,10 +60,15 @@ function exploreveg_page_include ($atts) {
         die('The ev_page_include shortcode requires a tag parameter');
     }
 
-    $query = new WP_Query ( array( 'post_type' => 'page',
-                                   'tag'       => $tag,
-                                   'orderby'   => 'title',
-                                   'order'     => 'ASC' ) );
+    $query = new WP_Query(
+        array( 'post_type'      => 'page',
+               'post_status'    => 'publish',
+               'tag'            => $tag,
+               'orderby'        => 'title',
+               'order'          => 'ASC',
+               'posts_per_page' => -1,
+            )
+        );
 
     $return = '';
     while ( $query->have_posts() ) {
@@ -79,11 +90,16 @@ function exploreveg_page_include ($atts) {
 add_shortcode( 'ev_page_include', 'exploreveg_page_include' );
 
 function exploreveg_front_page_blog_post () {
-    $query = new WP_Query( array( 'post_type'      => 'post',
-                                  'posts_per_page' => 1,
-                                  'tag'            => 'ev-front-page',
-                                  'orderby'        => 'post_date',
-                                  'order'          => 'DESC' ) );
+    $query = new WP_Query(
+        array(
+            'post_type'      => 'post',
+            'post_status'    => 'publish',
+            'tag'            => 'ev-front-page',
+            'orderby'        => 'post_date',
+            'order'          => 'DESC',
+            'posts_per_page' => 1,
+            )
+        );
 
 
     $return = '';
