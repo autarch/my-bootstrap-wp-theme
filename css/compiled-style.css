@@ -7754,8 +7754,8 @@ div.main {
 }
 
 #right-nav h2 a,
-#right-nav h2 a:hover,
-#right-nav h2 a:visited {
+#right-nav h2 btn:hover,
+#right-nav h2 btn:visited {
   color: #ffffff;
 }
 
@@ -7826,7 +7826,7 @@ div.main {
   white-space: normal;
 }
 
-#right-nav .right-side-actions a,
+#right-nav .right-side-actions a.btn,
 #right-nav .right-side-actions button,
 #right-nav .right-side-actions input[type="submit"] {
   display: block;
@@ -7835,13 +7835,13 @@ div.main {
   font-weight: bold;
 }
 
-#right-nav .right-side-actions a i,
+#right-nav .right-side-actions a.btn i,
 #right-nav .right-side-actions button i,
 #right-nav .right-side-actions input[type="submit"] i {
   vertical-align: 0;
 }
 
-#right-nav .right-side-actions p:last-child a {
+#right-nav .right-side-actions p:last-child a.btn {
   margin-bottom: 5px;
 }
 
