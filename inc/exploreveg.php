@@ -32,6 +32,7 @@ function exploreveg_page_list ($atts) {
         );
 
     $return = '';
+
     while ( $query->have_posts() ) {
         $query->the_post();
         $return .= '<h4 class="page-summary"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
@@ -406,9 +407,17 @@ function exploreveg_post_thumbnail($post) {
     <div class='lightbox-dialog'>
         <div class='lightbox-content'>
             <img src='$link'>
+";
+
+        if ($caption) {
+            $lb_div .= "
             <div class='lightbox-caption'>
                 $caption
             </div>
+";
+        }
+
+        $lb_div .= "
         </div>
     </div>
 </div>
