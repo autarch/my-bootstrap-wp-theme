@@ -7,6 +7,9 @@
               <h2>Get Involved</h2>
 
               <div class="right-side-content">
+                <p>
+                  Subscribe to our <a href="/weekly-update/">weekly update</a>:
+                </p>
                 <?php
                      $form_id = get_option('exploreveg-announce-form-id');
                      if ($form_id) {
