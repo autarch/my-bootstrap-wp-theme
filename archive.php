@@ -24,8 +24,8 @@ get_header(); ?>
 
           if ( have_posts() ) : ?>
 
-          <header class="page-header">
-            <h1 class="page-title">
+          <header>
+            <h2 id="page-title">
               <?php
               if ( is_day() ) :
                   printf( __( 'Daily Archives: %s', 'the-bootstrap' ), '<span>' . get_the_date() . '</span>' );
@@ -34,9 +34,14 @@ get_header(); ?>
               elseif ( is_year() ) :
                   printf( __( 'Yearly Archives: %s', 'the-bootstrap' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
               else :
-                  _e( 'Blog Archives', 'the-bootstrap' );
+                  if ( is_post_type_archive('weekly_update') ) {
+                      _e( 'Weekly Update', 'the-bootstrap' );
+                  }
+                  else {
+                      _e( 'Blog Archives', 'the-bootstrap' );
+                  }
               endif; ?>
-            </h1>
+            </h2>
           </header><!-- .page-header -->
 
           <div class="posts">
