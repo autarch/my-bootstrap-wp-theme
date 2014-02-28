@@ -18,7 +18,7 @@
              modal.find("h3").text(title);
 
              var response = $.parseJSON( form.data("jqxhr").responseText );
-             console.log(response);
+
              modal.find(".modal-body").children().detach();
              modal.find(".modal-body").append( '<p>' + response.message + '</p>' );
              modal.modal("show");
@@ -129,6 +129,8 @@
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 
              instrumentWPCF7Form("vsk-request");
+
+             instrumentWPCF7Form("speaker-submission");
 
              lightboxifyImages();
          }
