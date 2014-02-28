@@ -587,6 +587,7 @@ function exploreveg_plugin_options() {
         update_option('exploreveg-announce-form-id', $_POST['exploreveg-announce-form-id']);
         update_option('exploreveg-use-custom-sidebar', $_POST['exploreveg-use-custom-sidebar']);
         update_option('exploreveg-logo', $_POST['exploreveg-logo']);
+        update_option('exploreveg-fb-app-id', $_POST['exploreveg-fb-app-id']);
 
         echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
     }
@@ -598,6 +599,7 @@ function exploreveg_plugin_options() {
     $announce_form_id_val = get_option('exploreveg-announce-form-id');
     $use_custom_sidebar_val = get_option('exploreveg-use-custom-sidebar');
     $logo_val = get_option('exploreveg-logo');
+    $fb_app_id_val = get_option('exploreveg-fb-app-id');
 ?>
 
 <div id="icon-options-general" class="icon32"><br /></div><h2>Exploreveg Theme Settings</h2>
@@ -612,6 +614,14 @@ function exploreveg_plugin_options() {
         <input name="exploreveg-facebook" type="text" id="facebook" value="<?php echo $facebook_val ?>" class="regular-text" />
         <br>
         This will be used as the link at the top of the page if one is provided.
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="app-id">Facebook App ID:</label></th>
+      <td>
+        <input name="exploreveg-fb-app-id" type="text" id="app-id" value="<?php echo $fb_app_id_val ?>" class="regular-text" />
+        <br>
+        This will be used to connect to Facebook Apps if provided.
       </td>
     </tr>
     <tr valign="top">

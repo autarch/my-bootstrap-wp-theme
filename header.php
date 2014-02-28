@@ -21,6 +21,30 @@
         
         <?php tha_head_bottom(); ?>
         <?php wp_head(); ?>
+
+<?php
+$fb_app_id = get_option('exploreveg-fb-app-id');
+if ($fb_app_id) :
+?>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<?php echo $fb_app_id ?>',
+      status     : true,
+      xfbml      : true
+    });
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<?php endif ?>
     </head>
     
     <body <?php body_class(); ?>>
