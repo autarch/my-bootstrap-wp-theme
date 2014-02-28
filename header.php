@@ -54,9 +54,26 @@ $rss = get_option('exploreveg-rss');
         </div>
         <div class="row">
           <div class="col-sm-3 col-xs-12">
-            <a href="/"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/caa-logo.png"
-                             width="200" height="121"
-                             alt="Compassionate Action for Animals Logo"></a>
+            <a href="/"><img <?php
+                             echo 'src="';
+                             bloginfo('stylesheet_directory');
+                             $logo = get_option('exploreveg-logo');
+                             if (!$logo) {
+                                 $logo = 'caa';
+                             }
+
+                             echo  '/img/' . $logo . '-logo.png';
+                             echo '" ';
+
+                             $dims = $logo == 'caa'
+                                           ? array( 200, 121 )
+                                           : array( 200, 179 );
+                             echo "width='$dims[0]' height='$dims[1]'";
+                             $alt = $logo == 'caa'
+                                          ? 'Compassionate Action for Animals'
+                                          : 'Twin Cities Veg Fest';
+                             echo "alt='$alt logo'";
+                             ?></a>
           </div>
           <div id="name-and-tagline" class="col-sm-9 col-xs-12">
             <h1>

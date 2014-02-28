@@ -586,6 +586,7 @@ function exploreveg_plugin_options() {
         update_option('exploreveg-phone', $_POST['exploreveg-phone']);
         update_option('exploreveg-announce-form-id', $_POST['exploreveg-announce-form-id']);
         update_option('exploreveg-use-custom-sidebar', $_POST['exploreveg-use-custom-sidebar']);
+        update_option('exploreveg-logo', $_POST['exploreveg-logo']);
 
         echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
     }
@@ -596,6 +597,7 @@ function exploreveg_plugin_options() {
     $rss_val = get_option('exploreveg-rss');
     $announce_form_id_val = get_option('exploreveg-announce-form-id');
     $use_custom_sidebar_val = get_option('exploreveg-use-custom-sidebar');
+    $logo_val = get_option('exploreveg-logo');
 ?>
 
 <div id="icon-options-general" class="icon32"><br /></div><h2>Exploreveg Theme Settings</h2>
@@ -626,6 +628,17 @@ function exploreveg_plugin_options() {
         <input name="exploreveg-rss" type="checkbox" id="rss" value="1" <?php if ($rss_val) { echo 'checked="checked"'; } ?>" />
         <br>
         Show an RSS icon with the social media icons at the top of the page?
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="logo">Choose a logo:</label></th>
+      <td>
+        <select name="exploreveg-logo">
+          <option value="caa" <?php if ($logo_val && $logo_val == "caa") { echo 'selected'; } ?>>CAA</option>
+          <option value="tcvf" <?php if ($logo_val && $logo_val == "tcvf") { echo 'selected'; } ?>>Twin Cities Veg Fest</option>
+        </select>
+        <br>
+        Pick a logo to use (CAA or Twin Cities Veg Fest)
       </td>
     </tr>
     <tr valign="top">
