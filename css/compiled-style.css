@@ -7860,6 +7860,10 @@ div.main {
   line-height: 20px;
 }
 
+#right-nav span.post-date {
+  display: block;
+}
+
 header .entry-meta {
   margin-bottom: 10px;
 }
