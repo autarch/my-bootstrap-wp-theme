@@ -7640,12 +7640,6 @@ div.main {
   color: #5cb7b4;
 }
 
-@media (min-width: 992px) {
-  #site-header #name-and-tagline #tagline {
-    margin-left: 22em;
-  }
-}
-
 #global-nav {
   padding-left: 0;
   margin-top: 15px;
