@@ -1,3 +1,4 @@
+    <div id="right-nav">
 	<?php tha_sidebar_top();
 	
 	if ( ! dynamic_sidebar( 'main' ) ) {
@@ -19,3 +20,4 @@
 	} // end sidebar widget area
 	
 	tha_sidebar_bottom(); ?>
+    </div>
