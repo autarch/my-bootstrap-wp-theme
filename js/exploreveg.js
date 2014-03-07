@@ -132,6 +132,10 @@
 
              instrumentWPCF7Form("speaker-submission");
 
+             instrumentWPCF7Form("sponsor-info");
+
+             instrumentWPCF7Form("exhibitor-application");
+
              lightboxifyImages();
          }
      );
