@@ -8126,6 +8126,10 @@ img.content-right {
   overflow: hidden;
 }
 
+#social-buttons .col-xs-12 {
+  margin-top: 10px;
+}
+
 #social-buttons .social-button {
   float: left;
 }
