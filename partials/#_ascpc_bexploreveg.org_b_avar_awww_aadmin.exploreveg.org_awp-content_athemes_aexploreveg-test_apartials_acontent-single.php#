@@ -30,7 +30,7 @@ tha_entry_before(); ?>
 	</div><!-- .entry-content -->
 
     <div id="social-buttons" class="row">
-      <div class="col-md-4 col-xs-12 social-button">
+      <div class="col-md-4 col-xs-12">
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
@@ -41,11 +41,11 @@ tha_entry_before(); ?>
         <div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
       </div>
 
-      <div class="col-md-4 col-xs-12 social-button">
+      <div class="col-md-4 col-xs-12">
         <a href="https://twitter.com/share" class="twitter-share-button social-button" data-via="exploreveg">Tweet</a>
       </div>
 
-      <div class="col-md-4 col-xs-12 social-button">
+      <div class="col-md-4 col-xs-12">
         <!-- Place this tag where you want the +1 button to render. -->
         <div class="g-plusone social-button"></div>
         <!-- Place this tag after the last +1 button tag. -->
