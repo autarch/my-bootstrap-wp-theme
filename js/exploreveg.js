@@ -57,7 +57,7 @@
          );
      };
 
-     function lightboxifyImages () {
+     var lightboxifyImages = function () {
          var x = 1;
          $('article img[class*="wp-image-"]').each(
              function () {
@@ -119,7 +119,7 @@
                  }
              }
          );
-     }
+     };
 
      $(document).ready(
          function () {

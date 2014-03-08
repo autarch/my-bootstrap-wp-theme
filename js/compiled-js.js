@@ -2429,7 +2429,7 @@ jQuery(function($){
          );
      };
 
-     function lightboxifyImages () {
+     var lightboxifyImages = function () {
          var x = 1;
          $('article img[class*="wp-image-"]').each(
              function () {
@@ -2491,7 +2491,7 @@ jQuery(function($){
                  }
              }
          );
-     }
+     };
 
      $(document).ready(
          function () {
