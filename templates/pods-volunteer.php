@@ -21,13 +21,6 @@ get_header(); ?>
                     'title' => 'All Opportunities',
                     ),
                 );
-            $post->prepend = '
-          <p>
-            Are you interested in this position?
-            Please <a href="http://volunteer.exploreveg.org">fill out our
-            volunteer form</a>.
-          </p>
-';
 
             get_template_part( '/partials/content', 'page' );
         ?>
