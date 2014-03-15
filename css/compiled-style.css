@@ -7878,6 +7878,11 @@ div.main {
   display: block;
 }
 
+.standard-sidebar p {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
 header .entry-meta {
   margin-bottom: 10px;
 }

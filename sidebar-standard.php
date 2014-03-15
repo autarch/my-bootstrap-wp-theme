@@ -1,4 +1,4 @@
-    <div id="right-nav">
+    <div id="right-nav" class="standard-sidebar">
 	<?php tha_sidebar_top();
 	
 	if ( ! dynamic_sidebar( 'main' ) ) {
