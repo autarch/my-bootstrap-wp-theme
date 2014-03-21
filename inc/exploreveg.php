@@ -386,10 +386,15 @@ function exploreveg_post_thumbnail($post) {
     }
 
     $caption = get_post_meta( $post->ID, 'featured_image_caption', true );
+    if ( !$caption ) {
+        $image_post = get_post( get_post_thumbnail_id( $post->ID ) );
+        $caption = $image_post->post_excerpt;
+    }
+
     $img = get_the_post_thumbnail();
 
     $license_caption = _exploreveg_license_caption( get_post_thumbnail_id() );
-    if ($caption && $license_caption) {
+    if ( $caption && $license_caption ) {
         $caption .= '<br>';
     }
     $caption .= $license_caption;
