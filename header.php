@@ -9,11 +9,35 @@
  */
 
 ?>
+<?php
+$logo = get_option('exploreveg-logo');
+if (!$logo) {
+    $logo = 'caa';
+}
+
+$logo_dims = array(
+    'caa'  => array( 200, 121 ),
+    'tcvf' => array( 200, 179 ),
+    'tlov' => array( 316, 138 ),
+    );
+
+$logo_alts = array(
+    'caa'  => 'Compassionate Action for Animals',
+    'tcvf' => 'Twin Cities Veg Fest',
+    'tlov' => 'Their Lives, Our Voices',
+    );
+
+$logo_width = $logo == 'tlov' ? 4 : 3;
+
+$favicon = $logo . '-favicon.ico';
+?>
+
 <!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
     <head>
         <?php tha_head_top(); ?>
         <link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="shortcut icon" href="<?php bloginfo('stylesheet_directory') ?>/img/<?php echo $favicon ?>" />
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
@@ -77,26 +101,6 @@ $rss = get_option('exploreveg-rss');
           </div>
         </div>
         <div class="row">
-<?php
-$logo = get_option('exploreveg-logo');
-if (!$logo) {
-    $logo = 'caa';
-}
-
-$logo_dims = array(
-    'caa'  => array( 200, 121 ),
-    'tcvf' => array( 200, 179 ),
-    'tlov' => array( 316, 138 ),
-    );
-
-$logo_alts = array(
-    'caa'  => 'Compassionate Action for Animals',
-    'tcvf' => 'Twin Cities Veg Fest',
-    'tlov' => 'Their Lives, Our Voices',
-    );
-
-$logo_width = $logo == 'tlov' ? 4 : 3;
-?>
 
           <div class="col-sm-<?php echo $logo_width ?> col-xs-12">
             <a href="/"><img <?php
