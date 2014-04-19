@@ -46,6 +46,9 @@ $favicon = $logo . '-favicon.ico';
         <?php tha_head_bottom(); ?>
         <?php wp_head(); ?>
 
+    </head>
+
+    <body <?php body_class(); ?>>
 <?php
 $fb_app_id = get_option('exploreveg-fb-app-id');
 if ($fb_app_id) :
@@ -69,9 +72,6 @@ if ($fb_app_id) :
   }(document, 'script', 'facebook-jssdk'));
 </script>
 <?php endif ?>
-    </head>
-    
-    <body <?php body_class(); ?>>
 
     <div class="container main">
       <header id="site-header">
