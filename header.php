@@ -79,8 +79,13 @@ if ($fb_app_id) :
         <div class="row">
           <div id="follow-buttons" class="col-sm-12">
 <?php
+/* All icons are from http://www.iconsdb.com/ */
+
 $facebook = get_option('exploreveg-facebook');
 $twitter = get_option('exploreveg-twitter');
+$tumblr = get_option('exploreveg-tumblr');
+$pinterest = get_option('exploreveg-pinterest');
+$instagram = get_option('exploreveg-instagram');
 $rss = get_option('exploreveg-rss');
 ?>
 
@@ -92,6 +97,18 @@ $rss = get_option('exploreveg-rss');
             <a href="<?php echo $twitter ?>" title="Follow us on Twitter"
                ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/twitter.png"
                      height="24" width="24" alt="Twitter icon"></a>
+<?php endif; if($tumblr) : ?>
+            <a href="<?php echo $tumblr ?>" title="Follow us on Tumblr"
+               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/tumblr.png"
+                     height="24" width="24" alt="Tumblr icon"></a>
+<?php endif; if($pinterest) : ?>
+            <a href="<?php echo $pinterest ?>" title="Follow us on Pinterest"
+               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/pinterest.png"
+                     height="24" width="24" alt="Pinterest icon"></a>
+<?php endif; if($instagram) : ?>
+            <a href="<?php echo $instagram ?>" title="Follow us on Instagram"
+               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/instagram.png"
+                     height="24" width="24" alt="Instagram icon"></a>
 <?php endif; if($rss) : ?>
             <a href="/feed/" title="Subscribe to our news feed"
                rel="alternate" type="application/rss+xml"

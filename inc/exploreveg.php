@@ -587,6 +587,9 @@ function exploreveg_plugin_options() {
     if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
         update_option('exploreveg-facebook', $_POST['exploreveg-facebook']);
         update_option('exploreveg-twitter', $_POST['exploreveg-twitter']);
+        update_option('exploreveg-tumblr', $_POST['exploreveg-tumblr']);
+        update_option('exploreveg-pinterest', $_POST['exploreveg-pinterest']);
+        update_option('exploreveg-instagram', $_POST['exploreveg-instagram']);
         update_option('exploreveg-rss', $_POST['exploreveg-rss']);
         update_option('exploreveg-phone', $_POST['exploreveg-phone']);
         update_option('exploreveg-announce-form-id', $_POST['exploreveg-announce-form-id']);
@@ -600,6 +603,9 @@ function exploreveg_plugin_options() {
     $phone_val = get_option('exploreveg-phone');
     $facebook_val = get_option('exploreveg-facebook');
     $twitter_val = get_option('exploreveg-twitter');
+    $tumblr_val = get_option('exploreveg-tumblr');
+    $pinterest_val = get_option('exploreveg-pinterest');
+    $instagram_val = get_option('exploreveg-instagram');
     $rss_val = get_option('exploreveg-rss');
     $announce_form_id_val = get_option('exploreveg-announce-form-id');
     $use_custom_sidebar_val = get_option('exploreveg-use-custom-sidebar');
@@ -633,6 +639,30 @@ function exploreveg_plugin_options() {
       <th scope="row"><label for="twitter">Twitter Page:</label></th>
       <td>
         <input name="exploreveg-twitter" type="text" id="twitter" value="<?php echo $twitter_val ?>" class="regular-text" />
+        <br>
+        This will be used as the link at the top of the page if one is provided.
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="tumblr">Tumblr Page:</label></th>
+      <td>
+        <input name="exploreveg-tumblr" type="text" id="tumblr" value="<?php echo $tumblr_val ?>" class="regular-text" />
+        <br>
+        This will be used as the link at the top of the page if one is provided.
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="pinterest">Pinterest Page:</label></th>
+      <td>
+        <input name="exploreveg-pinterest" type="text" id="pinterest" value="<?php echo $pinterest_val ?>" class="regular-text" />
+        <br>
+        This will be used as the link at the top of the page if one is provided.
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="instagram">Instagram Page:</label></th>
+      <td>
+        <input name="exploreveg-instagram" type="text" id="instagram" value="<?php echo $instagram_val ?>" class="regular-text" />
         <br>
         This will be used as the link at the top of the page if one is provided.
       </td>
