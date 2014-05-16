@@ -7669,13 +7669,23 @@ div.main {
   border: 0;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #global-nav form {
     padding-left: 19px;
     margin-top: 2px;
   }
   #global-nav form input {
     width: 162px;
+  }
+}
+
+#global-nav form #search-button {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  #global-nav form #search-button {
+    display: inline;
   }
 }
 

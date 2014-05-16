@@ -167,7 +167,7 @@ $rss = get_option('exploreveg-rss');
                   <div class="form-group">
                     <input type="text" class="form-control" name="s"
                            value="<?php echo get_search_query() ?>" placeholder="Search"
-                           ><button type="submit" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-search"></i></button>
+                           ><button type="submit" class="btn btn-default navbar-btn" id="search-button"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
                 </form>
               </div>
