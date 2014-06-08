@@ -556,10 +556,42 @@ function exploreveg_volunteer_opportunities( $opportunities, $type='' ) {
     <?php endif;
 }
 
-function exploreveg_show_all_posts() {
+function exploreveg_posts_by_category ($atts) {
+    extract( shortcode_atts( array(
+        'category' => '',
+    ), $atts ) );
+
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+    $query = new WP_Query(
+        array(
+            'post_type'      => 'post',
+            'posts_per_page' => 10,
+            'paged'          => $paged,
+            'category_name'  => $category,
+            )
+        );
+
+    if ( $query->have_posts() ) {
+        _show_all_posts($query);
+    }
+    else {
+        echo '
+            <div class="entry-content clearfix">
+              <p>There are no blog posts yet. That\'s weird, huh?</p>
+            </div>
+            ';
+    }
+
+    wp_reset_postdata();
+}
+
+add_shortcode( 'ev_posts_by_category', 'exploreveg_posts_by_category' );
+
+function _show_all_posts($query) {
     echo '<div class="posts">';
-    while ( have_posts() ) {
-        the_post();
+    while ( $query->have_posts() ) {
+        $query->the_post();
         get_template_part( '/partials/content', get_post_format() );
     }
     the_bootstrap_content_nav();
