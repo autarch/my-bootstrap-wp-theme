@@ -8183,6 +8183,10 @@ img.content-right {
   text-align: left;
 }
 
+.wp-audio-shortcode {
+  clear: both;
+}
+
 /* Various standard WordPress styles */
 
 figure {
