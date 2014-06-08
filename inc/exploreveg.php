@@ -573,29 +573,41 @@ function exploreveg_posts_by_category ($atts) {
         );
 
     if ( $query->have_posts() ) {
-        _show_all_posts($query);
+        return _show_all_posts($query);
     }
     else {
-        echo '
+        return '
             <div class="entry-content clearfix">
               <p>There are no blog posts yet. That\'s weird, huh?</p>
             </div>
             ';
     }
 
-    wp_reset_postdata();
 }
 
 add_shortcode( 'ev_posts_by_category', 'exploreveg_posts_by_category' );
 
 function _show_all_posts($query) {
-    echo '<div class="posts">';
+    global $is_multi_post;
+    $is_multi_post = 1;
+
+    $content = '<div class="posts">';
+
+    ob_start();
     while ( $query->have_posts() ) {
         $query->the_post();
         get_template_part( '/partials/content', get_post_format() );
     }
     the_bootstrap_content_nav();
-    echo '</div>';
+
+    $content .= ob_get_contents();
+    ob_end_clean();
+
+    $content .= '</div>';
+
+    wp_reset_postdata();
+
+    return $content;
 }
 
 function exploreveg_show_entry_meta() {
