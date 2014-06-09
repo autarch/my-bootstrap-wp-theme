@@ -614,6 +614,10 @@ function exploreveg_show_entry_meta() {
     echo '<div class="entry-meta">';
     echo get_avatar( get_the_author_meta( 'user_email', get_the_author_meta( 'ID' ) ), 24 );
     the_bootstrap_posted_on();
+    $post = get_post();
+    if ( $guest_author = get_post_meta( $post->ID, 'guest_author', true ) ) {
+        echo '<p class="guest-author"><em>Written by ' . $guest_author . '</em></p>';
+    }
     echo '</div>';
 }
 
