@@ -7915,6 +7915,10 @@ header .entry-meta {
   text-align: middle;
 }
 
+.entry-meta .guest-author {
+  margin-top: 5px;
+}
+
 #author-bio {
   font-size: 90%;
 }
