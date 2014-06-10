@@ -37,7 +37,7 @@ get_header(); ?>
           if ( have_posts() ) :
               the_post();
               rewind_posts();
-              exploreveg_show_all_posts();
+              echo exploreveg_show_all_posts($wp_query);
           else :
           ?>
           <div class="entry-content clearfix">

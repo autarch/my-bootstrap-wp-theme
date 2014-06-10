@@ -573,7 +573,7 @@ function exploreveg_posts_by_category ($atts) {
         );
 
     if ( $query->have_posts() ) {
-        return _show_all_posts($query);
+        return exploreveg_show_all_posts($query);
     }
     else {
         return '
@@ -587,7 +587,7 @@ function exploreveg_posts_by_category ($atts) {
 
 add_shortcode( 'ev_posts_by_category', 'exploreveg_posts_by_category' );
 
-function _show_all_posts($query) {
+function exploreveg_show_all_posts($query) {
     global $is_multi_post;
     $is_multi_post = 1;
 
