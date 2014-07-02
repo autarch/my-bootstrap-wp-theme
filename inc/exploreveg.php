@@ -491,36 +491,40 @@ function _exploreveg_license_caption ($attachment_id) {
         return '';
     }
 
-    $ev_licenses = array(
-        'CC BY-SA 3.0 US' => array(
-            'url' => 'http://creativecommons.org/licenses/by-sa/3.0/us/',
-            'image' => get_template_directory() . '/img/by-sa.png',
-            ),
-        'CC BY-NC-SA 2.0 Generic' => array(
-            'url' => 'http://creativecommons.org/licenses/by-nc-sa/2.0/',
-            'image' => get_template_directory() . '/img/by-nc-sa.png',
-            ),
-        'CC BY 2.0 Generic' => array(
-            'url' => 'http://creativecommons.org/licenses/by/2.0/',
-            ),
-        );
-
     $caption .= '&copy; <small>';
-    if ( $publisher = get_post_meta( $attachment_id, 'credit-tracker-publisher', true ) ) {
-        $caption .= '<a href="' . $publisher . '">';
+
+    $link = get_post_meta( $attachment_id, 'credit-tracker-link', true );
+    // We used the publisher field for links before there was a link field
+    if (!$link) {
+        $link = get_post_meta( $attachment_id, 'credit-tracker-publisher', true );
+    }
+
+    if ($link) {
+        $caption .= '<a href="' . $link . '">';
     }
     $caption .= htmlspecialchars($author);
-    if ($publisher) {
+    if ($link) {
         $caption .= '</a>';
     }
 
     if ( $license = get_post_meta( $attachment_id, 'credit-tracker-license', true ) ) {
         $caption .= '<br>';
-        if ( $url = $ev_licenses[$license]['url'] ) {
-            $caption .= 'Licensed under <a href="' . $url . '">' . $license . '</a>';
+
+        if ( preg_match( '/^CC\s+([a-zA-Z\-]+)\s+([\d\.]+)(?:\s+(\w+))$/', $license, $matches ) ) {
+            $license_url =
+                'http://creativecommons.org/licenses/'
+                . strtolower( $matches[1] )
+                . '/'
+                . $matches[2];
+
+            if ( $matches[3] && ! preg_match( '/^(?:unported|generic)$/i', $matches[3] ) ) {
+                $license_url .= '/' . strtolower( $matches[3] );
+            }
+
+            $caption .= 'Licensed under <a href="' . $license_url . '">' . $license . '</a>';
         }
         else {
-            $caption .= $license;
+            $caption .= 'Licensed under ' . $license;
         }
     }
 
