@@ -515,10 +515,11 @@ function _exploreveg_license_caption ($attachment_id) {
                 'http://creativecommons.org/licenses/'
                 . strtolower( $matches[1] )
                 . '/'
-                . $matches[2];
+                . $matches[2]
+                . '/';
 
             if ( $matches[3] && ! preg_match( '/^(?:unported|generic)$/i', $matches[3] ) ) {
-                $license_url .= '/' . strtolower( $matches[3] );
+                $license_url .= strtolower( $matches[3] ) . '/';
             }
 
             $caption .= 'Licensed under <a href="' . $license_url . '">' . $license . '</a>';
