@@ -603,7 +603,7 @@ function exploreveg_show_all_posts($query) {
         $query->the_post();
         get_template_part( '/partials/content', get_post_format() );
     }
-    the_bootstrap_content_nav();
+    the_bootstrap_content_nav($query);
 
     $content .= ob_get_contents();
     ob_end_clean();

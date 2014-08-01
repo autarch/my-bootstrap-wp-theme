@@ -25,8 +25,12 @@ if ( ! function_exists( 'the_bootstrap_content_nav' ) ) :
  *
  * @return	void
  */
-function the_bootstrap_content_nav() {
+function the_bootstrap_content_nav($query = NULL) {
 	global $wp_query, $wp_rewrite;
+
+    if (!$query) {
+        $query = $wp_query;
+    }
 
 	$paged			=	( get_query_var( 'paged' ) ) ? intval( get_query_var( 'paged' ) ) : 1;
 
@@ -39,14 +43,14 @@ function the_bootstrap_content_nav() {
 	}
 	$pagenum_link	=	remove_query_arg( array_keys( $query_args ), $pagenum_link );
 	$pagenum_link	=	trailingslashit( $pagenum_link ) . '%_%';
-	
+
 	$format			=	( $wp_rewrite->using_index_permalinks() AND ! strpos( $pagenum_link, 'index.php' ) ) ? 'index.php/' : '';
 	$format			.=	$wp_rewrite->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
-	
+
 	$links	=	paginate_links( array(
 		'base'		=>	$pagenum_link,
 		'format'	=>	$format,
-		'total'		=>	$wp_query->max_num_pages,
+		'total'		=>	$query->max_num_pages,
 		'current'	=>	$paged,
 		'mid_size'	=>	5,
 		'type'		=>	'array',
