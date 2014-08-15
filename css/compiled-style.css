@@ -8191,6 +8191,33 @@ img.content-right {
   clear: both;
 }
 
+/* TCVF site styles */
+
+#tcvf-schedule th,
+#tcvf-schedule td {
+  padding: 5px;
+}
+
+#tcvf-schedule .speaker {
+  background-color: #fce9e1;
+}
+
+#tcvf-schedule .cooking-demo {
+  background-color: #e1fce8;
+}
+
+#tcvf-schedule .kids-area {
+  background-color: #e1fcfc;
+}
+
+#tcvf-schedule .exhibitor-hall {
+  background-color: #fcfce1;
+}
+
+#tcvf-schedule .closed {
+  text-align: center;
+}
+
 /* Various standard WordPress styles */
 
 figure {
