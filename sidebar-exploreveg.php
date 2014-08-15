@@ -26,7 +26,7 @@
                 </p>
 
                 <p>
-                  <a href="/programs/free-veg-starter-guide/" class="btn btn-primary" title="Order a free Vegetarian Starter Guide">Free Go Veg Guide</a>
+                  <a href="/how-to-go-veg/" class="btn btn-primary" title="Learn more about reducing your consumption of animal products">How to Go Veg</a>
                 </p>
 
               </div>
