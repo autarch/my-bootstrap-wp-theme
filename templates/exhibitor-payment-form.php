@@ -110,8 +110,7 @@ You can pay through PayPal using the form below.
 
 <address>
 Compassionate Action for Animals<br>
-2100 1st Ave S<br>
-Suite 200<br>
+2100 1st Ave S, Suite 200<br>
 Minneapolis, MN 55404
 </address>
 
