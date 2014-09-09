@@ -8214,6 +8214,14 @@ img.content-right {
   background-color: #fcfce1;
 }
 
+.tcvf-exhibitor {
+  clear: both;
+}
+
+.speaker {
+  clear: both;
+}
+
 /* Various standard WordPress styles */
 
 figure {
