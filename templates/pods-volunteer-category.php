@@ -16,7 +16,7 @@ get_header(); ?>
 
           <header>
             <h2 id="page-title">
-              <? echo $tag->display('title') ?> Volunteer Opportunities
+              <?php echo $tag->display('title') ?> Volunteer Opportunities
             </h2>
 		  </header><!-- .page-header -->
 

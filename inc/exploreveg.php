@@ -635,7 +635,7 @@ function remove_custom_meta_boxes() {
 add_action( 'admin_menu', 'exploreveg_plugin_menu' );
 
 function exploreveg_plugin_menu() {
-    add_options_page( 'Exploreveg Theme Options', 'Theme Options', 'manage_options', 'exploreveg-options', 'exploreveg_plugin_options' );
+    add_theme_page( 'Exploreveg Theme Options', 'Theme Options', 'manage_options', 'exploreveg-options', 'exploreveg_plugin_options' );
 }
 
 function exploreveg_plugin_options() {

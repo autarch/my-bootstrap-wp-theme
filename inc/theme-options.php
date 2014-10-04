@@ -250,7 +250,6 @@ function the_bootstrap_settings_field_radio( $args ) {
 function the_bootstrap_theme_options_render_page() {
 	?>
 	<div class="wrap">
-		<?php screen_icon(); ?>
 		<h2><?php esc_html_e( 'The Bootstrap Theme Options', 'the-bootstrap' ); ?></h2>
 		<?php settings_errors(); ?>
 

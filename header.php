@@ -37,7 +37,7 @@ $favicon = $logo . '-favicon.ico';
     <head>
         <?php tha_head_top(); ?>
         <link rel="profile" href="http://gmpg.org/xfn/11" />
-		<link rel="shortcut icon" href="<?php bloginfo('stylesheet_directory') ?>/img/<?php echo $favicon ?>" />
+		<link rel="shortcut icon" href="<?php echo esc_url(get_stylesheet_directory_uri()) ?>/img/<?php echo $favicon ?>" />
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
@@ -91,28 +91,28 @@ $rss = get_option('exploreveg-rss');
 
 <?php if ($facebook) : ?>
             <a href="<?php echo $facebook ?>" title="Follow us on Facebook"
-               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/facebook.png"
+               ><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/facebook.png"
                      height="24" width="24" alt="Facebook icon"></a>
 <?php endif; if($twitter) : ?>
             <a href="<?php echo $twitter ?>" title="Follow us on Twitter"
-               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/twitter.png"
+               ><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/twitter.png"
                      height="24" width="24" alt="Twitter icon"></a>
 <?php endif; if($tumblr) : ?>
             <a href="<?php echo $tumblr ?>" title="Follow us on Tumblr"
-               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/tumblr.png"
+               ><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/tumblr.png"
                      height="24" width="24" alt="Tumblr icon"></a>
 <?php endif; if($pinterest) : ?>
             <a href="<?php echo $pinterest ?>" title="Follow us on Pinterest"
-               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/pinterest.png"
+               ><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/pinterest.png"
                      height="24" width="24" alt="Pinterest icon"></a>
 <?php endif; if($instagram) : ?>
             <a href="<?php echo $instagram ?>" title="Follow us on Instagram"
-               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/instagram.png"
+               ><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/instagram.png"
                      height="24" width="24" alt="Instagram icon"></a>
 <?php endif; if($rss) : ?>
             <a href="/feed/" title="Subscribe to our news feed"
                rel="alternate" type="application/rss+xml"
-               ><img src="<?php bloginfo('stylesheet_directory'); ?>/img/rss.png"
+               ><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/rss.png"
                      height="24" width="24" alt="RSS icon"></a>
 <?php endif; ?>
           </div>
@@ -122,7 +122,7 @@ $rss = get_option('exploreveg-rss');
           <div class="col-sm-<?php echo $logo_width ?> col-xs-12">
             <a href="/"><img <?php
                              echo 'src="';
-                             bloginfo('stylesheet_directory');
+                             echo esc_url(get_stylesheet_directory_uri());
 
                              echo  '/img/' . $logo . '-logo.png';
                              echo '" ';
@@ -162,7 +162,7 @@ $rss = get_option('exploreveg-rss');
                   ) ); ?>
               </div>
               <div class="col-sm-3 col-xs-12">
-                <form action="<?php bloginfo('url'); ?>/"
+                <form action="<?php echo esc_url(home_url()); ?>/"
                       method="get" id="searchform" class="navbar-form navbar-search">
                   <div class="form-group">
                     <input type="text" class="form-control" name="s"

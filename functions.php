@@ -162,12 +162,6 @@ function the_bootstrap_custom_background_setup() {
 	) );
 	
 	add_theme_support( 'custom-background', $args );
-	
-	if ( ! function_exists( 'wp_get_theme' ) ) {
-		// Compat: Versions of WordPress prior to 3.4.
-		define( 'BACKGROUND_COLOR', $args['default-color'] );
-		add_custom_background();
-	}
 }
 add_action( 'after_setup_theme', 'the_bootstrap_custom_background_setup' );
 
@@ -991,16 +985,7 @@ add_action( 'template_redirect', 'the_bootstrap_content_width' );
  * @return	string	The Bootstrap version
  */
 function _the_bootstrap_version() {
-	
-	if ( function_exists( 'wp_get_theme' ) ) {
-		$theme_version	=	wp_get_theme()->get( 'Version' );
-	}
-	else {
-		$theme_data		=	get_theme_data( get_template_directory() . '/style.css' );
-		$theme_version	=	$theme_data['Version'];
-	}
-	
-	return $theme_version;
+    return wp_get_theme()->get( 'Version' );
 }
 
 /* End of file functions.php */
