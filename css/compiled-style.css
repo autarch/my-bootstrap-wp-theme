@@ -7923,6 +7923,12 @@ header .entry-meta {
   font-size: 90%;
 }
 
+@media (max-width: 480px) {
+  .entry-content .alignright {
+    float: none;
+  }
+}
+
 .entry-content > h3,
 .entry-content #featured-image-lightbox + h3 {
   margin-top: 0;
