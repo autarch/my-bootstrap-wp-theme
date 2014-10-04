@@ -256,6 +256,7 @@ function _exploreveg_clean_excerpt () {
     $excerpt = preg_replace( '/^\s+/', '', $excerpt );
     $excerpt = preg_replace( '/\s+$/', '', $excerpt );
 
+    $excerpt = preg_replace( '/\[caption[^\]]+\].+?\[\/caption\]/', '', $excerpt );
     $excerpt = preg_replace( '/(?:<a[^>]+>\s*)<img[^>]+>(?:\s*<\/a>)/', '', $excerpt );
 
     $thumbnail = exploreveg_thumbnail();
