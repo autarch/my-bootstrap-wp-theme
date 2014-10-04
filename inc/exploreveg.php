@@ -253,8 +253,10 @@ function _exploreveg_clean_excerpt () {
 
     $more = $old_more;
 
-    preg_replace( '/^\s+/', '', $excerpt );
-    preg_replace( '/\s+$/', '', $excerpt );
+    $excerpt = preg_replace( '/^\s+/', '', $excerpt );
+    $excerpt = preg_replace( '/\s+$/', '', $excerpt );
+
+    $excerpt = preg_replace( '/(?:<a[^>]+>\s*)<img[^>]+>(?:\s*<\/a>)/', '', $excerpt );
 
     $thumbnail = exploreveg_thumbnail();
     $added_thumbnail = false;
