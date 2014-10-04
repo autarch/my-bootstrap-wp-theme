@@ -15,12 +15,6 @@ if (!$logo) {
     $logo = 'caa';
 }
 
-$logo_dims = array(
-    'caa'  => array( 200, 121 ),
-    'tcvf' => array( 200, 179 ),
-    'tlov' => array( 316, 138 ),
-    );
-
 $logo_alts = array(
     'caa'  => 'Compassionate Action for Animals',
     'tcvf' => 'Twin Cities Veg Fest',
@@ -127,10 +121,7 @@ $rss = get_option('exploreveg-rss');
                              echo  '/img/' . $logo . '-logo.png';
                              echo '" ';
 
-                             $width = $logo_dims[$logo][0];
-                             $height = $logo_dims[$logo][1];
-                             echo "width='$width' height='$height'";
-                             echo " alt='$logo_alts[$logo] logo'>";
+                             echo " id='$logo-logo' alt='$logo_alts[$logo] logo'>";
                              ?></a>
           </div>
           <div id="name-and-tagline" class="col-sm-<?php echo 12- $logo_width ?> col-xs-12">
