@@ -8022,6 +8022,13 @@ header .entry-meta {
   }
 }
 
+@media (max-width: 1200px) {
+  .entry-content iframe {
+    width: 500px !important;
+    height: 281px !important;
+  }
+}
+
 .entry-content > h3,
 .entry-content #featured-image-lightbox + h3 {
   margin-top: 0;
