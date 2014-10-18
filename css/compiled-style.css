@@ -7908,21 +7908,28 @@ div.main {
 @media (max-width: 480px) {
   #right-nav .right-side-actions form input[type="text"],
   #right-nav .right-side-actions form input[type="email"] {
-    width: auto;
+    width: 180px;
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 992px) {
+  #right-nav .right-side-actions form input[type="text"],
+  #right-nav .right-side-actions form input[type="email"] {
+    width: 220px;
+  }
+}
+
+@media (max-width: 1200px) {
   #right-nav .right-side-actions form input[type="text"],
   #right-nav .right-side-actions form input[type="email"] {
     width: 120px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #right-nav .right-side-actions form input[type="text"],
   #right-nav .right-side-actions form input[type="email"] {
-    width: 170px;
+    width: 220px;
   }
 }
 
