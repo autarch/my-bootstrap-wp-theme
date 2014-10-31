@@ -26,7 +26,7 @@
                 </p>
 
                 <p>
-                  <a href="/how-to-go-veg/" class="btn btn-primary" title="Learn more about reducing your consumption of animal products">Veg Resources</a>
+                  <a href="/veg-resources/" class="btn btn-primary" title="Learn more about reducing your consumption of animal products">Veg Resources</a>
                 </p>
 
               </div>
