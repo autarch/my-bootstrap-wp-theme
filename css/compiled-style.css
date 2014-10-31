@@ -7825,6 +7825,10 @@ div.main {
   }
 }
 
+#front-page-content .front-page-video {
+  text-align: center;
+}
+
 #front-page-content h2 {
   padding-top: 20px;
   margin-top: 20px;
@@ -7837,8 +7841,10 @@ div.main {
   border-top: 0;
 }
 
-#front-page-content h2:first-child {
+#front-page-content h2:first-of-type {
+  padding-top: 0;
   margin-top: 20px;
+  border-top: 0;
 }
 
 #front-page-content h3.event-date {
