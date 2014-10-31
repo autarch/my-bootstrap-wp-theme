@@ -11,6 +11,72 @@ remove_filter( 'the_content', 'wpautop' );
 add_filter( 'the_content', 'better_wpautop', 11 );
 add_filter( 'the_content', 'shortcode_unautop', 12 );
 
+function exploreveg_front_page_photos ($atts) {
+    $args = array( 
+        'post_type'      => 'attachment', 
+        'post_mime_type' => 'image',
+        'post_status'    => 'inherit',
+        'posts_per_page' => -1,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'media-tags',
+                'terms'    => 'ev-front-page',
+                'field'    => 'slug',
+                )
+            ),
+        'orderby' => 'title',
+        'order'   => 'ASC',
+		);
+
+    $query = new WP_Query($args);
+
+    $indicators = '<ol class="carousel-indicators">';
+    $slides = '<div class="carousel-inner">';
+
+    $i = 0;
+    $active = rand( 0, $query->found_posts - 1 );
+    while ( $query->have_posts() ) {
+        $query->the_post();
+        $image = wp_get_attachment_image_src( '', 'full', false );
+
+        $indicators .= '<li data-target="#front-page-photos" data-slide-to="' . $i . '"'
+            . ($i == $active ? ' class="active"' : '') . '></li>';
+
+        $img = '<img src="' . $image[0]
+            . '" height="483" width="724" alt="' . $post->post_excerpt . '">';
+
+        if ( $link = get_post_meta( $post->ID, "link_from_front_page", true ) ) {
+            $img = '<a href="' . $link . '">' . $img . '</a>';
+        }
+
+        $slides .= '<div class="item' . ($i == $active ? ' active' : '') . '">'
+            . $img
+            . '<div class="carousel-caption"><h3>' . $post->post_excerpt . '</h3></div>'
+            . '</div>';
+
+        $i++;
+    }
+
+    $indicators .= '</ol>';
+    $slides .= '</div>';
+
+    wp_reset_postdata();
+
+    return '<div id="front-page-photos" class="carousel slide hidden-xs">'
+        . $indicators
+        . $slides
+        . '
+      <a class="carousel-control left" href="#front-page-photos" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="carousel-control right" href="#front-page-photos" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>';
+}
+
+add_shortcode( 'ev_front_page_photos', 'exploreveg_front_page_photos' );
+
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
         'tag' => '',
