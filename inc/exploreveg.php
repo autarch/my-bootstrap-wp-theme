@@ -80,6 +80,8 @@ add_shortcode( 'ev_front_page_photos', 'exploreveg_front_page_photos' );
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
         'tag' => '',
+        'list' => false,
+        'empty' => '',
     ), $atts ) );
 
     if (! $tag) {
@@ -99,19 +101,39 @@ function exploreveg_page_list ($atts) {
 
     $return = '';
 
+    if ($list) {
+        $return .= '<ul>';
+    }
+
+    $count = 0;
     while ( $query->have_posts() ) {
+        $count++;
         $query->the_post();
-        $return .= '<h4 class="page-summary"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
 
-        $content = apply_filters( 'the_content', get_the_content() );
-        $content = str_replace( ']]>', ']]&gt;', $content );
+        if ($list) {
+            $return .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+        }
+        else {
+            $return .= '<h4 class="page-summary"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
 
-        $first_200 = substr( $content, 0, 200 );
-        preg_match( '/(?:<p>)?(.+[\\.!\\?])[ <[\r\n]+/', $first_200, $matches );
-        $return .= '<p>' . $matches[1] . ' <a href="' . get_permalink() . '">Learn more</a>.</p>';
+            $content = apply_filters( 'the_content', get_the_content() );
+            $content = str_replace( ']]>', ']]&gt;', $content );
+
+            $first_200 = substr( $content, 0, 200 );
+            preg_match( '/(?:<p>)?(.+[\\.!\\?])[ <[\r\n]+/', $first_200, $matches );
+            $return .= '<p>' . $matches[1] . ' <a href="' . get_permalink() . '">Learn more</a>.</p>';
+        }
+    }
+
+    if (!$count) {
+        return $empty;
     }
 
     wp_reset_postdata();
+
+    if ($list) {
+        $return .= '</ul>';
+    }
 
     return $return;
 }
@@ -376,6 +398,7 @@ function exploreveg_image_fixup ($atts, $content) {
 
 add_shortcode( 'ev_image_fixup', 'exploreveg_image_fixup' );
 
+/* XXX - remove this once we switch to the new volunteer org system */
 function exploreveg_volunteer_categories ( $atts=array() ) {
     extract( shortcode_atts( array(
         'type' => '',
@@ -426,6 +449,28 @@ function exploreveg_volunteer_categories ( $atts=array() ) {
 }
 
 add_shortcode( 'ev_volunteer_categories', 'exploreveg_volunteer_categories' );
+
+function exploreveg_volunteer_events ($atts) {
+    $event_format = '<li><a href="#_EVENTURL">#_EVENTNAME</a> on #_EVENTDATES, #_EVENTTIMES</li>';
+
+    $events_list = EM_Events::output(
+        array(
+            'scope'   => 'future',
+            'order'   => 'ASC',
+            'orderby' => 'event_start_date',
+            'format'  => $event_format,
+            'tag'     => 'ev-volunteer-opportunity',
+            )
+        );
+
+    if ( !preg_match( '/<li>/', $events_list ) ) {
+        return "<p>There are no upcoming events where we need volunteers (or the site is having problems, because that's pretty unlikely).</p>";
+    }
+
+    return '<ul>' . $events_list . '</ul>';
+}
+
+add_shortcode( 'ev_volunteer_events', 'exploreveg_volunteer_events' );
 
 function exploreveg_clearfix() {
     return '<div class="clearfix"></div>';
