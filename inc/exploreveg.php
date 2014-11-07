@@ -77,6 +77,16 @@ function exploreveg_front_page_photos ($atts) {
 
 add_shortcode( 'ev_front_page_photos', 'exploreveg_front_page_photos' );
 
+function exploreveg_front_page_video ($atts, $content) {
+    if (! $content) {
+        die('The ev_front_page_video shortcode requires a quote');
+    }
+
+    return '<div class="front-page-video">' . do_shortcode($content) . '</div>';
+}
+
+add_shortcode( 'ev_front_page_video', 'exploreveg_front_page_video' );
+
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
         'tag' => '',
