@@ -653,7 +653,7 @@ function _exploreveg_license_caption ($attachment_id) {
         $caption .= 'Licensed under <a href="' . $license_url . '">' . $license . '</a>';
     }
     else {
-        $caption .= 'Licensed under ' . $license;
+        $caption .= $license;
     }
 
     $caption .= '</small>';
