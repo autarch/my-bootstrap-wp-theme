@@ -615,7 +615,12 @@ function _exploreveg_license_caption ($attachment_id) {
         return '';
     }
 
-    $caption .= '&copy; <small>';
+    $license = get_post_meta( $attachment_id, 'credit-tracker-license', true );
+    if ( ! $license ) {
+        return '';
+    }
+
+    $caption .= '<small>&copy; ';
 
     $link = get_post_meta( $attachment_id, 'credit-tracker-link', true );
     // We used the publisher field for links before there was a link field
@@ -631,26 +636,24 @@ function _exploreveg_license_caption ($attachment_id) {
         $caption .= '</a>';
     }
 
-    if ( $license = get_post_meta( $attachment_id, 'credit-tracker-license', true ) ) {
-        $caption .= '<br>';
+    $caption .= '<br>';
 
-        if ( preg_match( '/^CC\s+([a-zA-Z\-]+)\s+([\d\.]+)(?:\s+(\w+))$/', $license, $matches ) ) {
-            $license_url =
-                'http://creativecommons.org/licenses/'
-                . strtolower( $matches[1] )
-                . '/'
-                . $matches[2]
-                . '/';
+    if ( preg_match( '/^CC\s+([a-zA-Z\-]+)\s+([\d\.]+)(?:\s+(\w+))$/', $license, $matches ) ) {
+        $license_url =
+            'http://creativecommons.org/licenses/'
+            . strtolower( $matches[1] )
+            . '/'
+            . $matches[2]
+            . '/';
 
-            if ( $matches[3] && ! preg_match( '/^(?:unported|generic)$/i', $matches[3] ) ) {
-                $license_url .= strtolower( $matches[3] ) . '/';
-            }
-
-            $caption .= 'Licensed under <a href="' . $license_url . '">' . $license . '</a>';
+        if ( $matches[3] && ! preg_match( '/^(?:unported|generic)$/i', $matches[3] ) ) {
+            $license_url .= strtolower( $matches[3] ) . '/';
         }
-        else {
-            $caption .= 'Licensed under ' . $license;
-        }
+
+        $caption .= 'Licensed under <a href="' . $license_url . '">' . $license . '</a>';
+    }
+    else {
+        $caption .= 'Licensed under ' . $license;
     }
 
     $caption .= '</small>';
