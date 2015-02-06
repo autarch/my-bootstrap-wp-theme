@@ -8310,6 +8310,10 @@ img.content-right {
   clear: both;
 }
 
+.gallery .row {
+  margin-bottom: 15px;
+}
+
 /* TCVF site styles */
 
 #tcvf-schedule th,
