@@ -467,7 +467,12 @@ function exploreveg_volunteer_categories ( $atts=array() ) {
 
 add_shortcode( 'ev_volunteer_categories', 'exploreveg_volunteer_categories' );
 
-function exploreveg_volunteer_events ($atts) {
+function exploreveg_event_list ($atts) {
+    extract( shortcode_atts( array(
+        'tag' => '',
+        'empty' => '',
+    ), $atts ) );
+
     $event_format = '<li><a href="#_EVENTURL">#_EVENTNAME</a> on #_EVENTDATES, #_EVENTTIMES</li>';
 
     $events_list = EM_Events::output(
@@ -476,18 +481,18 @@ function exploreveg_volunteer_events ($atts) {
             'order'   => 'ASC',
             'orderby' => 'event_start_date',
             'format'  => $event_format,
-            'tag'     => 'ev-volunteer-opportunity',
+            'tag'     => $tag,
             )
         );
 
     if ( !preg_match( '/<li>/', $events_list ) ) {
-        return "<p>There are no upcoming events where we need volunteers (or the site is having problems, because that's pretty unlikely).</p>";
+        return $empty;
     }
 
     return '<ul>' . $events_list . '</ul>';
 }
 
-add_shortcode( 'ev_volunteer_events', 'exploreveg_volunteer_events' );
+add_shortcode( 'ev_event_list', 'exploreveg_event_list' );
 
 function exploreveg_clearfix() {
     return '<div class="clearfix"></div>';
