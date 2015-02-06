@@ -92,13 +92,14 @@ function exploreveg_page_list ($atts) {
         'tag' => '',
         'list' => false,
         'empty' => '',
+        'by_date' => false
     ), $atts ) );
 
     if (! $tag) {
         die('The ev_page_list shortcode requires a tag parameter');
     }
 
-    $query = new WP_Query(
+    $params =
         array(
             'post_type'      => 'page',
             'post_status'    => 'publish',
@@ -106,8 +107,14 @@ function exploreveg_page_list ($atts) {
             'orderby'        => 'title',
             'order'          => 'ASC',
             'posts_per_page' => -1,
-            )
         );
+
+    if ($by_date) {
+        $params['orderby'] = 'post_date';
+        $params['order'] = 'DESC';
+    }
+
+    $query = new WP_Query($params);
 
     $return = '';
 
