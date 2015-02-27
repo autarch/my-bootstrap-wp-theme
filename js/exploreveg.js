@@ -1,6 +1,23 @@
 (function () {
      var $ = jQuery;
 
+     var modalHTML = '<div class="modal fade">'
++ '  <div class="modal-dialog">'
++ '    <div class="modal-content">'
++ '      <div class="modal-header">'
++ '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
++ '        <h3 id="response-header"></h3>'
++ '      </div>'
++ '      <div class="modal-body">'
++ '        <p id="response-text"></p>'
++ '      </div>'
++ '      <div class="modal-footer">'
++ '        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
++ '      </div>'
++ '    </div>'
++ '  </div>'
++ '</div>';
+
      var instrumentWPCF7Form = function (id) {
          var marker = $( "#" + id );
          if ( ! marker.length ) {
@@ -12,7 +29,13 @@
 
          form.find(".wpcf7-response-output").detach();
 
+         form.find('input[type="radio"]').parent().parent().wrap($('<div class="radio">'));
+
          var modal = $( "#" + id + "-modal" );
+         if (!modal.length) {
+             modal = $(modalHTML);
+             form.append(modal);
+         }
 
          var displayModal = function (title) {
              modal.find("h3").text(title);
@@ -128,7 +151,7 @@
              instrumentWPCF7Form("announce-subscribe");
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 
-             instrumentWPCF7Form("vsk-request");
+             instrumentWPCF7Form("veg-pledge");
 
              instrumentWPCF7Form("speaker-submission");
 
