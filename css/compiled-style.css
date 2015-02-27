@@ -8309,6 +8309,13 @@ img.content-right {
   margin-bottom: 15px;
 }
 
+.wpcf7-list-item-label {
+  /* This removes some extra spacing that cf7 adds by inserting a &nbsp; between
+       the radio button and its label. */
+
+  margin-left: -0.8em;
+}
+
 /* TCVF site styles */
 
 #tcvf-schedule th,
