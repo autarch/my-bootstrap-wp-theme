@@ -2390,7 +2390,7 @@ jQuery(function($){
 + '  </div>'
 + '</div>';
 
-     var instrumentWPCF7Form = function (id) {
+     var instrumentWPCF7Form = function (id, addModal) {
          var marker = $( "#" + id );
          if ( ! marker.length ) {
              return;
@@ -2404,7 +2404,7 @@ jQuery(function($){
          form.find('input[type="radio"]').parent().parent().wrap($('<div class="radio">'));
 
          var modal = $( "#" + id + "-modal" );
-         if (!modal.length) {
+         if (!modal.length && addModal) {
              modal = $(modalHTML);
              form.append(modal);
          }
@@ -2523,7 +2523,7 @@ jQuery(function($){
              instrumentWPCF7Form("announce-subscribe");
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 
-             instrumentWPCF7Form("veg-pledge");
+             instrumentWPCF7Form("veg-pledge", false);
 
              instrumentWPCF7Form("speaker-submission");
 

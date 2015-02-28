@@ -18,7 +18,7 @@
 + '  </div>'
 + '</div>';
 
-     var instrumentWPCF7Form = function (id) {
+     var instrumentWPCF7Form = function (id, addModal) {
          var marker = $( "#" + id );
          if ( ! marker.length ) {
              return;
@@ -32,7 +32,7 @@
          form.find('input[type="radio"]').parent().parent().wrap($('<div class="radio">'));
 
          var modal = $( "#" + id + "-modal" );
-         if (!modal.length) {
+         if (!modal.length && addModal) {
              modal = $(modalHTML);
              form.append(modal);
          }
@@ -60,24 +60,26 @@
              }
          );
 
-         container.on(
-             "mailsent.wpcf7",
-             function () {
-                 displayModal("Success!");
-                 submit.button("reset");
-             }
-         ).on(
-             "invalid.wpcf7",
-             function () {
-                 submit.button("reset");
-             }
-         ).on(
-             "mailfailed.wpcf7",
-             function () {
-                 displayModal("Error");
-                 submit.button("reset");
-             }
-         );
+         if (modal.length) {
+             container.on(
+                 "mailsent.wpcf7",
+                 function () {
+                     displayModal("Success!");
+                     submit.button("reset");
+                 }
+             ).on(
+                 "invalid.wpcf7",
+                 function () {
+                     submit.button("reset");
+                 }
+             ).on(
+                 "mailfailed.wpcf7",
+                 function () {
+                     displayModal("Error");
+                     submit.button("reset");
+                 }
+             );
+         }
      };
 
      var lightboxifyImages = function () {
@@ -151,7 +153,7 @@
              instrumentWPCF7Form("announce-subscribe");
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 
-             instrumentWPCF7Form("veg-pledge");
+             instrumentWPCF7Form("veg-pledge", false);
 
              instrumentWPCF7Form("speaker-submission");
 
