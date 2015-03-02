@@ -385,17 +385,25 @@ function _exploreveg_clean_excerpt () {
 }
 
 function exploreveg_thumbnail ( $atts=array() ) {
-    if ( ! has_post_thumbnail() ) {
+    # We accept a post_id param for the benefit of events, which do not seem
+    # to populate $post.
+    extract( shortcode_atts( array(
+        'size'    => 'thumbnail',
+        'single'  => false,
+        'post_id' => 0,
+    ), $atts ) );
+
+    if (!$post_id) {
+        $post_id = $post->ID;
+    }
+
+    if ( ! has_post_thumbnail($post_id) ) {
         return '';
     }
 
-    extract( shortcode_atts( array(
-        'size'   => 'thumbnail',
-        'single' => false,
-    ), $atts ) );
-
     if ($single) {
-        return exploreveg_post_thumbnail($post);
+        echo "<br>POST ID = " . $post_id . "<br>";
+        return exploreveg_post_thumbnail($post_id);
     }
     else {
         $return = '';
@@ -524,14 +532,14 @@ function _exploreveg_non_empty ($value) {
 
 add_shortcode( 'ev_galleries', 'exploreveg_galleries' );
 
-function exploreveg_post_thumbnail($post) {
-    if ( !has_post_thumbnail() ) {
+function exploreveg_post_thumbnail($post_id) {
+    if ( !has_post_thumbnail($post_id) ) {
         return;
     }
 
-    $caption = get_post_meta( $post->ID, 'featured_image_caption', true );
+    $caption = get_post_meta( $post_id, 'featured_image_caption', true );
     if ( !$caption ) {
-        $image_post = get_post( get_post_thumbnail_id( $post->ID ) );
+        $image_post = get_post( get_post_thumbnail_id( $post_id ) );
         $caption = $image_post->post_excerpt;
     }
 
@@ -546,7 +554,7 @@ function exploreveg_post_thumbnail($post) {
     $link = '';
     $extra = '';
     $lb_div = '';
-    if ( !( $link = get_post_meta( $post->ID, 'featured_image_link', true ) ) ) {
+    if ( !( $link = get_post_meta( $post_id, 'featured_image_link', true ) ) ) {
         $full_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
         $link = $full_image[0];
 

@@ -22,7 +22,7 @@ tha_entry_before(); ?>
 
 	<div class="entry-content clearfix">
 		<?php
-        echo exploreveg_post_thumbnail($post);
+        echo exploreveg_post_thumbnail( $post->ID );
 
 		the_content();
 

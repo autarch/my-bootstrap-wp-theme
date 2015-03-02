@@ -46,7 +46,7 @@ tha_entry_before(); ?>
         }
 
         if (! $post->no_thumbnail) {
-            echo exploreveg_post_thumbnail($post);
+            echo exploreveg_post_thumbnail( $post->ID );
         }
 
         if ($post->prepend) {
