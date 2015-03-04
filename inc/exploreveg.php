@@ -402,7 +402,6 @@ function exploreveg_thumbnail ( $atts=array() ) {
     }
 
     if ($single) {
-        echo "<br>POST ID = " . $post_id . "<br>";
         return exploreveg_post_thumbnail($post_id);
     }
     else {
