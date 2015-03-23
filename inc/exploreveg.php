@@ -708,8 +708,9 @@ function exploreveg_volunteer_opportunities( $opportunities, $type='' ) {
     <?php endif;
 }
 
-function exploreveg_posts_by_category ($atts) {
+function exploreveg_posts ($atts) {
     extract( shortcode_atts( array(
+        'post_type' => 'post',
         'category' => '',
     ), $atts ) );
 
@@ -717,7 +718,7 @@ function exploreveg_posts_by_category ($atts) {
 
     $query = new WP_Query(
         array(
-            'post_type'      => 'post',
+            'post_type'      => $post_type,
             'posts_per_page' => 10,
             'paged'          => $paged,
             'category_name'  => $category,
@@ -737,7 +738,7 @@ function exploreveg_posts_by_category ($atts) {
 
 }
 
-add_shortcode( 'ev_posts_by_category', 'exploreveg_posts_by_category' );
+add_shortcode( 'ev_posts', 'exploreveg_posts' );
 
 function exploreveg_show_all_posts($query) {
     global $is_multi_post;
