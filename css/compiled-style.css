@@ -7727,6 +7727,30 @@ div.main {
   }
 }
 
+#site-header #name-and-tagline #sub-tagline {
+  margin-top: 4px;
+  margin-bottom: 0;
+  clear: none;
+  font-size: 22px;
+  font-weight: normal;
+  color: black;
+}
+
+@media (max-width: 992px) {
+  #site-header #name-and-tagline #sub-tagline {
+    font-size: 15px;
+    line-height: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #site-header #name-and-tagline #sub-tagline {
+    margin-top: 2px;
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+
 #global-nav {
   padding-left: 0;
   margin-top: 15px;

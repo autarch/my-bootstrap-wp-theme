@@ -138,6 +138,12 @@ $rss = get_option('exploreveg-rss');
             <h2 id="tagline">
               <?php bloginfo( 'description' ); ?>
             </h2>
+<?php
+    $sub_tagline = get_option('exploreveg-sub-tagline');
+    if ($sub_tagline) {
+        echo '<h3 id="sub-tagline">' . $sub_tagline . '</h3>';
+    }
+?>
           </div>
         </div>
         <div class="row">

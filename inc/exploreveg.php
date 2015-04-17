@@ -793,6 +793,7 @@ function exploreveg_plugin_options() {
 
     $hidden_field_name = 'ev_option_submit';
     if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
+        update_option('exploreveg-sub-tagline', $_POST['exploreveg-sub-tagline']);
         update_option('exploreveg-facebook', $_POST['exploreveg-facebook']);
         update_option('exploreveg-twitter', $_POST['exploreveg-twitter']);
         update_option('exploreveg-tumblr', $_POST['exploreveg-tumblr']);
@@ -808,13 +809,14 @@ function exploreveg_plugin_options() {
         echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
     }
 
-    $phone_val = get_option('exploreveg-phone');
+    $sub_tagline_val = get_option('exploreveg-sub-tagline');
     $facebook_val = get_option('exploreveg-facebook');
     $twitter_val = get_option('exploreveg-twitter');
     $tumblr_val = get_option('exploreveg-tumblr');
     $pinterest_val = get_option('exploreveg-pinterest');
     $instagram_val = get_option('exploreveg-instagram');
     $rss_val = get_option('exploreveg-rss');
+    $phone_val = get_option('exploreveg-phone');
     $announce_form_id_val = get_option('exploreveg-announce-form-id');
     $use_custom_sidebar_val = get_option('exploreveg-use-custom-sidebar');
     $logo_val = get_option('exploreveg-logo');
@@ -828,7 +830,12 @@ function exploreveg_plugin_options() {
 
   <table class="form-table">
     <tr valign="top">
-      <th scope="row"><label for="facebook">Facebook Page:</label></th>
+      <th scope="row"><label for="sub-tagline">Sub Tagline:</label></th>
+      <td>
+        <input name="exploreveg-sub-tagline" type="text" id="sub-tagline" value="<?php echo $sub_tagline_val ?>" class="regular-text" />
+        <br>
+        This will appear below the blog title and description as an &lt;h3&gt; tag with the "sub-tagline" class.
+      </td>
       <td>
         <input name="exploreveg-facebook" type="text" id="facebook" value="<?php echo $facebook_val ?>" class="regular-text" />
         <br>
