@@ -2432,24 +2432,26 @@ jQuery(function($){
              }
          );
 
-         container.on(
-             "mailsent.wpcf7",
-             function () {
-                 displayModal("Success!");
-                 submit.button("reset");
-             }
-         ).on(
-             "invalid.wpcf7",
-             function () {
-                 submit.button("reset");
-             }
-         ).on(
-             "mailfailed.wpcf7",
-             function () {
-                 displayModal("Error");
-                 submit.button("reset");
-             }
-         );
+         if (modal.length) {
+             container.on(
+                 "mailsent.wpcf7",
+                 function () {
+                     displayModal("Success!");
+                     submit.button("reset");
+                 }
+             ).on(
+                 "invalid.wpcf7",
+                 function () {
+                     submit.button("reset");
+                 }
+             ).on(
+                 "mailfailed.wpcf7",
+                 function () {
+                     displayModal("Error");
+                     submit.button("reset");
+                 }
+             );
+         }
      };
 
      var lightboxifyImages = function () {
