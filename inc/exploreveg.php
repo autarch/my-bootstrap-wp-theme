@@ -661,18 +661,24 @@ function _exploreveg_license_caption ($attachment_id) {
 
     $caption .= '<br>';
 
-    if ( preg_match( '/^CC\s+([a-zA-Z\-]+)\s+([\d\.]+)(?:\s+(\w+))$/', $license, $matches ) ) {
-        $license_url =
-            'http://creativecommons.org/licenses/'
-            . strtolower( $matches[1] )
-            . '/'
-            . $matches[2]
-            . '/';
+    $license_url = '';
+    if ( preg_match( '/^CC\s+([a-zA-Z\-]+)\s+([\d\.]+)(?:\s+(\w+))?$/', $license, $matches ) ) {
+        $license_url = 'http://creativecommons.org/licenses/'
+                     . strtolower( $matches[1] )
+                     . '/'
+                     . $matches[2]
+                     . '/';
 
         if ( $matches[3] && ! preg_match( '/^(?:unported|generic)$/i', $matches[3] ) ) {
             $license_url .= strtolower( $matches[3] ) . '/';
         }
+    }
+    else if ( preg_match( '/^CC0\s+([0-9\.]+)(?:\s+(\w+))?$/', $license, $matches )  ){
+        $license_url = 'http://creativecommons.org/publicdomain/zero/'
+                     . $matches[1];
+    }
 
+    if ($license_url) {
         $caption .= 'Licensed under <a href="' . $license_url . '">' . $license . '</a>';
     }
     else {
