@@ -132,13 +132,16 @@ function exploreveg_page_list ($atts) {
         }
         else {
             $return .= '<h4 class="page-summary"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
+            if ($by_date) {
+                $return .= '<time class="entry-date">' . get_the_date() . '</time>';
+            }
 
             $content = apply_filters( 'the_content', get_the_content() );
             $content = str_replace( ']]>', ']]&gt;', $content );
 
             $first_200 = substr( $content, 0, 200 );
             preg_match( '/(?:<p>)?(.+[\\.!\\?])[ <[\r\n]+/', $first_200, $matches );
-            $return .= '<p>' . $matches[1] . ' <a href="' . get_permalink() . '">Learn more</a>.</p>';
+            $return .= '<p>' . $matches[1] . ' <a href="' . get_permalink() . '">Read more</a>.</p>';
         }
     }
 
