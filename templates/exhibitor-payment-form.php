@@ -21,7 +21,7 @@ You can pay through PayPal using the form below.
 <form action="https://www.paypal.com/cgi-bin/webscr" id="exhibitor-payment" method="post">
   <input type="hidden" name="cmd" value="_xclick">
   <input type="hidden" name="currency_code" value="USD">
-  <input type="hidden" name="item_name" value="Twin Cities Veg Fest 2014 Exhibitor Payment">
+  <input type="hidden" name="item_name" value="Twin Cities Veg Fest Exhibitor Payment">
   <input type="hidden" id="paypal-amount" name="amount" value="">
   <input type="hidden" name="business" value="paypal@exploreveg.org">
 
