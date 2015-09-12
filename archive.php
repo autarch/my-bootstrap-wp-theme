@@ -37,6 +37,9 @@ get_header(); ?>
                   if ( is_post_type_archive('weekly_update') ) {
                       _e( 'Weekly Update', 'the-bootstrap' );
                   }
+                  else if ( is_post_type_archive('volunteer_newsletter') ) {
+                      _e( 'Volunteer Newsletter', 'the-bootstrap' );
+                  }
                   else {
                       _e( 'Blog Archives', 'the-bootstrap' );
                   }
