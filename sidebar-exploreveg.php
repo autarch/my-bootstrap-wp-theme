@@ -67,7 +67,7 @@ EOF;
                         'scope'   => 'future',
                         'limit'   => 5,
                         'order'   => 'ASC',
-                        'orderby' => 'event_start_date',
+                        'orderby' => 'event_start_date,event_start_time',
                         'format'  => $event_format,
                         )
                     );
