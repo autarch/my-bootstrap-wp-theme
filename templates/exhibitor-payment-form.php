@@ -50,6 +50,13 @@ You can pay through PayPal using the form below.
     </div>
 
     <div class="radio">
+      <label id="aa-label" for="np">
+        <input id="aa" type="radio" name="type" value="Non-profit" />
+        Animal Advocacy Non-profit - $50
+      </label>
+    </div>
+
+    <div class="radio">
       <label id="artist-label" for="artist">
         <input id="artist" type="radio" name="type" value="Artist" />
         Artist - $25
@@ -128,6 +135,7 @@ Minneapolis, MN 55404
          "fc": 200,
          "fp": 150,
          "np": 100,
+         "aa": 50,
          "artist": 25
      };
 
