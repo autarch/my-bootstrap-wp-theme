@@ -90,24 +90,28 @@ add_shortcode( 'ev_front_page_video', 'exploreveg_front_page_video' );
 function exploreveg_page_list ($atts) {
     extract( shortcode_atts( array(
         'tag' => '',
+        'type' => 'page',
         'list' => false,
         'empty' => '',
-        'by_date' => false
+        'by_date' => false,
+        'limit' => -1,
     ), $atts ) );
 
-    if (! $tag) {
-        die('The ev_page_list shortcode requires a tag parameter');
+    if (! ($tag || $type != "page")) {
+        die('The ev_page_list shortcode requires a tag or type parameter');
     }
 
     $params =
         array(
-            'post_type'      => 'page',
+            'post_type'      => $type,
             'post_status'    => 'publish',
-            'tag'            => $tag,
             'orderby'        => 'title',
             'order'          => 'ASC',
-            'posts_per_page' => -1,
+            'posts_per_page' => $limit,
         );
+    if ($tag) {
+        $params['tag'] = $tag;
+    }
 
     if ($by_date) {
         $params['orderby'] = 'post_date';
