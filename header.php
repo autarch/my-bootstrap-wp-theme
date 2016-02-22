@@ -149,25 +149,36 @@ $rss = get_option('exploreveg-rss');
           </div>
         </div>
         <div class="row">
-          <nav class="navbar navbar-inverse navbar-default col-sm-12 col-xs-12" id="global-nav" role="navigation">
-            <div class="row">
-              <div class="col-sm-9 col-xs-12">
-                  <?php wp_nav_menu( array(
-                      'theme_location'    =>  'primary',
-                      'menu_class'        =>  'nav navbar-nav',
-                      'depth'             =>  3,
-                      'fallback_cb'       =>  false,
-                      'walker'            =>  new The_Bootstrap_Nav_Walker,
-                  ) ); ?>
+          <nav class="navbar navbar-inverse navbar-default" id="global-nav" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#global-navbar-collapse"
+                        aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
               </div>
-              <div class="col-sm-3 col-xs-12">
+
+              <div class="collapse navbar-collapse" id="global-navbar-collapse">
+                <?php wp_nav_menu( array(
+                    'theme_location'    =>  'primary',
+                    'menu_class'        =>  'nav navbar-nav',
+                    'depth'             =>  3,
+                    'fallback_cb'       =>  false,
+                    'walker'            =>  new The_Bootstrap_Nav_Walker,
+                ) ); ?>
+
                 <form action="<?php echo esc_url(home_url()); ?>/"
-                      method="get" id="searchform" class="navbar-form navbar-search">
+                      method="get" id="searchform" class="navbar-form navbar-search navbar-right">
                   <div class="form-group">
                     <input type="text" class="form-control" name="s"
-                           value="<?php echo get_search_query() ?>" placeholder="Search"
-                           ><button type="submit" class="btn btn-default navbar-btn" id="search-button"><i class="glyphicon glyphicon-search"></i></button>
+                           value="<?php echo get_search_query() ?>" placeholder="Search">
                   </div>
+                  <button type="submit" class="btn btn-default navbar-btn" id="search-button"
+                          ><i class="glyphicon glyphicon-search"></i></button>
                 </form>
               </div>
             </div>

@@ -7752,30 +7752,15 @@ div.main {
 }
 
 #global-nav {
-  padding-left: 0;
-  margin-top: 15px;
+  margin-top: 2%;
   clear: both;
-  font-family: Gudea, "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 0;
 }
 
 #global-nav .navbar-nav li {
+  font-family: Gudea, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
   font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  #global-nav .navbar-nav li {
-    padding-left: 8px;
-  }
-}
-
-@media (min-width: 992px) {
-  #global-nav .navbar-nav li {
-    font-size: 18px;
-  }
-  #global-nav .navbar-nav li a {
-    line-height: 28px;
-  }
 }
 
 #global-nav .navbar-nav li:hover {
@@ -7786,18 +7771,8 @@ div.main {
   border: 0;
 }
 
-@media (min-width: 1200px) {
-  #global-nav form {
-    padding-left: 19px;
-    margin-top: 2px;
-  }
-  #global-nav form input {
-    width: 162px;
-  }
-}
-
 #global-nav form #search-button {
-  display: none;
+  display: block;
 }
 
 @media (min-width: 1200px) {
