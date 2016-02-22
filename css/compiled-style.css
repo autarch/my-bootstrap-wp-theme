@@ -7648,6 +7648,7 @@ div.main {
   #site-header #tcvf-logo {
     width: 75px;
     height: 60px;
+    margin-top: -25px;
   }
 }
 
