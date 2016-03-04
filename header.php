@@ -171,15 +171,19 @@ $rss = get_option('exploreveg-rss');
                     'walker'            =>  new The_Bootstrap_Nav_Walker,
                 ) ); ?>
 
-                <form action="<?php echo esc_url(home_url()); ?>/"
-                      method="get" id="searchform" class="navbar-form navbar-search navbar-right">
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="s"
-                           value="<?php echo get_search_query() ?>" placeholder="Search">
-                  </div>
-                  <button type="submit" class="btn btn-default navbar-btn" id="search-button"
-                          ><i class="glyphicon glyphicon-search"></i></button>
-                </form>
+                <div class="col-sm-3 col-md-3 pull-right">
+                  <form action="<?php echo esc_url(home_url()); ?>/"
+                        method="get" id="searchform" class="navbar-form">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="s"
+                             value="<?php echo get_search_query() ?>" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default" id="search-button"
+                            ><i class="glyphicon glyphicon-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </nav>
