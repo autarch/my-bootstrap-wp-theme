@@ -31,12 +31,9 @@ if ($phone) :
           </p>
 
           <p id="copyright">
-            <a href="http://creativecommons.org/licenses/by-sa/3.0/us/"
-               ><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/by-sa.png"
-                     alt="Creative Commons BY-SA logo" width="67" height="13"></a>
-            Copyright &copy; 2012-<?php print(Date("Y")); ?> Compassionate Action for
-            Animals. <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">Some
-              rights reserved</a>.
+            Copyright &copy; 2012-<?php print(Date("Y")); ?> Compassionate Action for Animals.
+            <br>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License"  src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/by-sa.png" /></a><br />All content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>, unless otherwise specified.
           </p>
         </div>
       </footer>
