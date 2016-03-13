@@ -647,7 +647,7 @@ function _exploreveg_license_caption ($attachment_id) {
         return '';
     }
 
-    $caption .= '<small>&copy; ';
+    $caption = '<small>';
 
     $link = get_post_meta( $attachment_id, 'credit-tracker-link', true );
     // We used the publisher field for links before there was a link field
@@ -656,9 +656,18 @@ function _exploreveg_license_caption ($attachment_id) {
     }
 
     if ($link) {
-        $caption .= '<a href="' . $link . '">';
+        $caption = '<a href="' . $link . '">';
     }
+
+    $title = get_the_title($attachment_id);
+    if ($title) {
+        $caption .= htmlspecialchars($title) . ' ';
+    }
+
+    $caption .= '&copy; ';
+
     $caption .= htmlspecialchars($author);
+
     if ($link) {
         $caption .= '</a>';
     }
