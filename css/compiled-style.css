@@ -8354,6 +8354,41 @@ img.content-right {
   clear: both;
 }
 
+/* CiviCRM integration */
+
+.entry-content #crm-container.crm-public {
+  /* When you embed a CiviCRM form on a WP page via a shortcode, it includes the
+           form's title directly under the page title. */
+
+}
+
+.entry-content #crm-container.crm-public .crm-title {
+  display: none;
+}
+
+.entry-content #crm-container.crm-public .help {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: 0;
+}
+
+.entry-content #crm-container.crm-public .label {
+  padding-top: 12px;
+}
+
+.entry-content #crm-container.crm-public .label label {
+  font-weight: bold;
+  color: #333;
+}
+
+.entry-content #crm-container.crm-public input[type="text"],
+.entry-content #crm-container.crm-public input[type="password"],
+.entry-content #crm-container.crm-public input[type="email"] {
+  padding: 0;
+}
+
 /* Various standard WordPress styles */
 
 figure {
