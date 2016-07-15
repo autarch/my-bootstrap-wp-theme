@@ -194,6 +194,8 @@ Minneapolis, MN 55404
              }
          }
      );
+
+     updateTotal();
 })();
 </script>
 
