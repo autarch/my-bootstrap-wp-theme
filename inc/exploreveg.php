@@ -1,6 +1,7 @@
 <?php
 
 set_post_thumbnail_size( 300, 300 );
+add_image_size( 'vertical-listing', 200, 150 );
 
 function better_wpautop($pee){
     return wpautop( $pee, $br=0 );
