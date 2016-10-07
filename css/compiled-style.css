@@ -8331,14 +8331,17 @@ img.content-right {
 }
 
 #tcvf-schedule .speaker {
+  width: 35%;
   background-color: #fce9e1;
 }
 
 #tcvf-schedule .cooking-demo {
+  width: 35%;
   background-color: #e1fce8;
 }
 
 #tcvf-schedule .kids-area {
+  width: 20%;
   background-color: #e1fcfc;
 }
 
