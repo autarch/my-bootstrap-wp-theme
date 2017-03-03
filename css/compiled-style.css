@@ -8036,10 +8036,29 @@ header .entry-meta {
   }
 }
 
-@media (max-width: 1200px) {
+.entry-content iframe {
+  width: auto;
+  height: auto;
+}
+
+@media (min-width: 768px) {
   .entry-content iframe {
-    width: 500px !important;
-    height: 281px !important;
+    width: 500px;
+    height: 281px;
+  }
+}
+
+@media (min-width: 992px) {
+  .entry-content iframe {
+    width: 680px;
+    height: 382px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .entry-content iframe {
+    width: 830px;
+    height: 466px;
   }
 }
 
