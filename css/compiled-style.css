@@ -7652,25 +7652,6 @@ div.main {
   }
 }
 
-#site-header #tlov-logo {
-  width: 316px;
-  height: 138px;
-}
-
-@media (max-width: 992px) {
-  #site-header #tlov-logo {
-    width: 209px;
-    height: 91px;
-  }
-}
-
-@media (max-width: 480px) {
-  #site-header #tlov-logo {
-    width: 158px;
-    height: 69px;
-  }
-}
-
 #site-header #name-and-tagline h1 {
   margin-top: 15px;
   margin-bottom: 2px;
