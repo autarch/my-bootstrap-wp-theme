@@ -21,7 +21,15 @@
 
         <div id="colophon">
           <p>
-            <strong>Email:</strong> <a href="mailto:info@exploreveg.org">info@exploreveg.org</a>
+<?php
+$email = get_option('exploreveg-email');
+if (! $email) {
+    $email = 'info@exploreveg.org';
+}
+?>
+
+            <strong>Email:</strong> <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+
 <?php
 $phone = get_option('exploreveg-phone');
 if ($phone) :

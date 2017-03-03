@@ -18,10 +18,9 @@ if (!$logo) {
 $logo_alts = array(
     'caa'  => 'Compassionate Action for Animals',
     'tcvf' => 'Twin Cities Veg Fest',
-    'tlov' => 'Their Lives, Our Voices',
     );
 
-$logo_width = $logo == 'tlov' ? 4 : 3;
+$logo_width = 3;
 
 $favicon = $logo . '-favicon.ico';
 ?>

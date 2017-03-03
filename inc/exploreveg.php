@@ -823,6 +823,7 @@ function exploreveg_plugin_options() {
         update_option('exploreveg-pinterest', $_POST['exploreveg-pinterest']);
         update_option('exploreveg-instagram', $_POST['exploreveg-instagram']);
         update_option('exploreveg-rss', $_POST['exploreveg-rss']);
+        update_option('exploreveg-email', $_POST['exploreveg-email']);
         update_option('exploreveg-phone', $_POST['exploreveg-phone']);
         update_option('exploreveg-announce-form-id', $_POST['exploreveg-announce-form-id']);
         update_option('exploreveg-use-custom-sidebar', $_POST['exploreveg-use-custom-sidebar']);
@@ -839,6 +840,7 @@ function exploreveg_plugin_options() {
     $pinterest_val = get_option('exploreveg-pinterest');
     $instagram_val = get_option('exploreveg-instagram');
     $rss_val = get_option('exploreveg-rss');
+    $email_val = get_option('exploreveg-email');
     $phone_val = get_option('exploreveg-phone');
     $announce_form_id_val = get_option('exploreveg-announce-form-id');
     $use_custom_sidebar_val = get_option('exploreveg-use-custom-sidebar');
@@ -859,6 +861,9 @@ function exploreveg_plugin_options() {
         <br>
         This will appear below the blog title and description as an &lt;h3&gt; tag with the "sub-tagline" class.
       </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="sub-tagline">Facebook Link:</label></th>
       <td>
         <input name="exploreveg-facebook" type="text" id="facebook" value="<?php echo $facebook_val ?>" class="regular-text" />
         <br>
@@ -919,10 +924,17 @@ function exploreveg_plugin_options() {
         <select name="exploreveg-logo">
           <option value="caa" <?php if ($logo_val && $logo_val == "caa") { echo 'selected'; } ?>>CAA</option>
           <option value="tcvf" <?php if ($logo_val && $logo_val == "tcvf") { echo 'selected'; } ?>>Twin Cities Veg Fest</option>
-          <option value="tlov" <?php if ($logo_val && $logo_val == "tlov") { echo 'selected'; } ?>>Their Lives, Our Voices</option>
         </select>
         <br>
         Pick a logo to use (CAA or Twin Cities Veg Fest)
+      </td>
+    </tr>
+    <tr valign="top">
+      <th scope="row"><label for="email">Email:</label></th>
+      <td>
+        <input name="exploreveg-email" type="text" id="email" value="<?php echo $email_val ?>" />
+        <br>
+        This will be shown in the footer. If this is blank then the default value of info@exploreveg.org will be used.
       </td>
     </tr>
     <tr valign="top">
