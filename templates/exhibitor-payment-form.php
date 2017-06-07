@@ -25,72 +25,55 @@ You can pay through PayPal using the form below.
   <input type="hidden" id="paypal-amount" name="amount" value="">
   <input type="hidden" name="business" value="paypal@exploreveg.org">
 
-  <h3>Number of Days</h3>
-
-  <div class="radio">
-    <label id="one-day-label" for="one-day">
-      <input id="one-day" type="radio" name="days" value="1" />
-      One day
-    </label>
-  </div>
-
-  <div class="radio">
-    <label id="two-day-label" for="two-day">
-      <input id="two-day" type="radio" name="days" value="2" />
-      Two days
-    </label>
-  </div>
-
   <h3>Exhibitor Type</h3>
 
   <div class="radio">
     <label id="fc-label" for="fc">
       <input id="fc" type="radio" name="type" value="Food court vendor" />
-      Food court vendor - $300 / $450
+      Food court vendor - $450
     </label>
   </div>
 
   <div class="radio">    
     <label id="fp-label" for="fp">
       <input id="fp" type="radio" name="type" value="For-profit" />
-      For-profit - $150 / $225
+      For-profit - $225
     </label>
   </div>
 
   <div class="radio">
     <label id="np-label" for="np">
       <input id="np" type="radio" name="type" value="Non-profit" />
-      Non-profit - $100 / $150
+      Non-profit - $150
     </label>
   </div>
 
   <div class="radio">
     <label id="aa-label" for="aa">
       <input id="aa" type="radio" name="type" value="Animal Advocacy Non-profit" />
-      Animal Advocacy Non-profit - $50 / $100
+      Animal Advocacy Non-profit - $100
     </label>
   </div>
 
   <div class="radio">
     <label id="artist-label" for="artist">
       <input id="artist" type="radio" name="type" value="Artist" />
-      Artist - $25 / $50
+      Artist or Student Group - $75
     </label>
   </div>
 
   <h3>Extras</h3>
 
   <div class="form-group">
-    <label for="extra-tables">
-      <select name="extra-tables" id="extra-tables">
-        <option value="0" selected="selected">No extra tables</option>
-        <option value="25">1 extra table - $25 per day</option>
-        <option value="50">2 extra tables - $50 per day</option>
+    <label for="extra-spaces">
+      <select name="extra-spaces" id="extra-spaces">
+        <option value="0" selected="selected">No extra spaces</option>
+        <option value="50">1 extra space - $50</option>
+        <option value="100">2 extra spaces - $100</option>
       </select>
     </label>
     <p class="help-block">
-      Food vendors will be given 4 tables total, with 2 facing the attendees
-      and 2 behind you.
+      Food vendors will be given 4 tent spaces
     </p>
   </div>
 
@@ -98,8 +81,8 @@ You can pay through PayPal using the form below.
     <label for="electricity">
       <select name="electricity" id="electricity">
         <option value="0" selected="selected">No electricity</option>
-        <option value="10">Light use - $10 per day</option>
-        <option value="25">Heavy use - $25 per day</option>
+        <option value="25">Light use - $25</option>
+        <option value="150">Heavy use - $150</option>
       </select>
     </label>
     <p class="help-block">
@@ -110,7 +93,7 @@ You can pay through PayPal using the form below.
   </div>
 
   <div class="form-group">
-    <label><strong>Total: <span id="total">Pick number of days and exhibitor type</span></strong></label>
+    <label><strong>Total: <span id="total">Pick an exhibitor type</span></strong></label>
     <br>
     <input id="paypal-button" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_SM.gif" name="submit" alt="Pay with PayPal">
     <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -119,7 +102,7 @@ You can pay through PayPal using the form below.
 
 <p>
   Your payment constitutes acceptance of
-  the <a href="/exhibitor-guidelines/">Twin Cities Veg Fest Exhibitor
+  the <a href="/exhibit-twin-cities-veg-fest/exhibitor-guidelines/">Twin Cities Veg Fest Exhibitor
   Guidelines</a>.
 </p>
 
@@ -145,11 +128,11 @@ Minneapolis, MN 55404
      var $ = jQuery;
 
      var baseCost = {
-         "fc": [300, 450],
-         "fp": [150, 225],
-         "np": [100, 150],
-         "aa": [50, 100],
-         "artist": [25, 50],
+         "fc": 450,
+         "fp": 225,
+         "np": 150,
+         "aa": 100,
+         "artist": 75,
      };
 
      $("#paypal-button").hide();
@@ -157,25 +140,24 @@ Minneapolis, MN 55404
      var form = $("#exhibitor-payment");
 
      var updateTotal = function () {
-         var days = $( 'input[name="days"]:checked', form ).val();
          var type = $( 'input[name="type"]:checked', form ).attr("id");
-         if ( ! days || ! type ) {
+         if ( ! type ) {
              return;
          }
 
-         var total = baseCost[type][days - 1];
+         var total = baseCost[type];
 
          if ( type == "fc" ) {
-             $("#extra-tables option[value='0']").prop( "selected", true );
-             $("#extra-tables").attr( "disabled", true );
+             $("#extra-spaces option[value='0']").prop( "selected", true );
+             $("#extra-spaces").attr( "disabled", true );
          }
          else {
-             $("#extra-tables").removeAttr("disabled");
+             $("#extra-spaces").removeAttr("disabled");
 
-             total += $("#extra-tables option:selected").val() * days;
+             total += parseInt( $("#extra-spaces option:selected").val() );
          }
 
-         total += $("#electricity option:selected").val() * days;
+         total += parseInt( $("#electricity option:selected").val() );
 
          $("#total").text( "$" + total );
          $("#paypal-amount").val(total);
@@ -183,7 +165,7 @@ Minneapolis, MN 55404
      };
 
      $("#exhibitor-payment input").change(updateTotal);
-     $("#extra-tables").change(updateTotal);
+     $("#extra-spaces").change(updateTotal);
      $("#electricity").change(updateTotal);
 
      $("#exhibitor-payment").submit(
