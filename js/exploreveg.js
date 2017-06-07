@@ -150,16 +150,16 @@
          function () {
              $("#front-page-photos").carousel( { interval: false } );
 
-             instrumentWPCF7Form("announce-subscribe");
+//             instrumentWPCF7Form("announce-subscribe");
              $('#announce-subscribe input[name="your-email"]').attr( "placeholder", "Email" );
 
-             instrumentWPCF7Form("veg-pledge", false);
+//             instrumentWPCF7Form("veg-pledge", false);
 
-             instrumentWPCF7Form("speaker-submission");
+//             instrumentWPCF7Form("speaker-submission");
 
-             instrumentWPCF7Form("sponsor-info");
+//             instrumentWPCF7Form("sponsor-info");
 
-             instrumentWPCF7Form("exhibitor-application");
+//             instrumentWPCF7Form("exhibitor-application");
 
              lightboxifyImages();
          }
