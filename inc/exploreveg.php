@@ -550,7 +550,7 @@ function exploreveg_post_thumbnail($post_id) {
         $caption = $image_post->post_excerpt;
     }
 
-    $img = get_the_post_thumbnail();
+    $img = get_the_post_thumbnail($post_id);
 
     $license_caption = _exploreveg_license_caption( get_post_thumbnail_id() );
     if ( $caption && $license_caption ) {
