@@ -539,7 +539,7 @@ function _exploreveg_non_empty ($value) {
 
 add_shortcode( 'ev_galleries', 'exploreveg_galleries' );
 
-function exploreveg_post_thumbnail($post_id) {
+function exploreveg_post_thumbnail($post_id, $size = 'post-thumbnail') {
     if ( !has_post_thumbnail($post_id) ) {
         return;
     }
@@ -550,7 +550,7 @@ function exploreveg_post_thumbnail($post_id) {
         $caption = $image_post->post_excerpt;
     }
 
-    $img = get_the_post_thumbnail($post_id);
+    $img = get_the_post_thumbnail( $post_id, $size );
 
     $license_caption = _exploreveg_license_caption( get_post_thumbnail_id($post_id) );
     if ( $caption && $license_caption ) {
@@ -594,10 +594,13 @@ function exploreveg_post_thumbnail($post_id) {
     if ( !$caption ) {
         $classes .= 'alignright post-thumbnail thumbnail';
     }
-    $img = '<a ' . $extra . ' class="' . $classes .'" href="' . $link . '">' . $img . '</a>';
+    if (!$extra) {
+        $extra = 'href="' . $link . '"';
+    }
+    $img = '<a ' . $extra . ' class="' . $classes .'">' . $img . '</a>';
 
     if ($caption) {
-        $img_info = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'post-thumbnail' );
+        $img_info = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), $size );
         return the_bootstrap_img_caption( $img, '', 'alignright', $img_info[1], $caption ) . $lb_div;
     }
     else {
