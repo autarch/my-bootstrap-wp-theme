@@ -546,13 +546,13 @@ function exploreveg_post_thumbnail($post_id) {
 
     $caption = get_post_meta( $post_id, 'featured_image_caption', true );
     if ( !$caption ) {
-        $image_post = get_post( get_post_thumbnail_id( $post_id ) );
+        $image_post = get_post( get_post_thumbnail_id($post_id) );
         $caption = $image_post->post_excerpt;
     }
 
     $img = get_the_post_thumbnail($post_id);
 
-    $license_caption = _exploreveg_license_caption( get_post_thumbnail_id() );
+    $license_caption = _exploreveg_license_caption( get_post_thumbnail_id($post_id) );
     if ( $caption && $license_caption ) {
         $caption .= '<br>';
     }
@@ -562,23 +562,25 @@ function exploreveg_post_thumbnail($post_id) {
     $extra = '';
     $lb_div = '';
     if ( !( $link = get_post_meta( $post_id, 'featured_image_link', true ) ) ) {
-        $full_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+        $full_image = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'full' );
         $link = $full_image[0];
 
-        $extra = 'data-toggle="lightbox" href="#featured-image-lightbox"';
-        $lb_div = "
-<div id='featured-image-lightbox' class='lightbox fade'  tabindex='-1' role='dialog' aria-hidden='true'>
+        if ($link) {
+            $extra = "data-toggle=\"lightbox\" href=\"#featured-image-lightbox-$post_id\"";
+            $lb_div = "
+<div id='featured-image-lightbox-$post_id' class='lightbox fade'  tabindex='-1' role='dialog' aria-hidden='true'>
     <div class='lightbox-dialog'>
         <div class='lightbox-content'>
             <img src='$link'>
 ";
 
-        if ($caption) {
-            $lb_div .= "
+            if ($caption) {
+                $lb_div .= "
             <div class='lightbox-caption'>
                 $caption
             </div>
 ";
+            }
         }
 
         $lb_div .= "
@@ -595,7 +597,7 @@ function exploreveg_post_thumbnail($post_id) {
     $img = '<a ' . $extra . ' class="' . $classes .'" href="' . $link . '">' . $img . '</a>';
 
     if ($caption) {
-        $img_info = wp_get_attachment_image_src( get_post_thumbnail_id(), 'post-thumbnail' );
+        $img_info = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'post-thumbnail' );
         return the_bootstrap_img_caption( $img, '', 'alignright', $img_info[1], $caption ) . $lb_div;
     }
     else {
