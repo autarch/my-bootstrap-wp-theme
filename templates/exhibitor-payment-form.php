@@ -23,6 +23,7 @@ You can pay through PayPal using the form below.
   <input type="hidden" name="currency_code" value="USD">
   <input type="hidden" name="item_name" value="Twin Cities Veg Fest Exhibitor Payment">
   <input type="hidden" id="paypal-amount" name="amount" value="">
+  <input type="hidden" id="paypal-item-name" name="item_name" value="">
   <input type="hidden" name="business" value="paypal@exploreveg.org">
 
   <h3>Exhibitor Type</h3>
@@ -62,6 +63,13 @@ You can pay through PayPal using the form below.
     </label>
   </div>
 
+  <div class="radio">
+    <label id="paid-label" for="paid">
+      <input id="paid" type="radio" name="type" value="Paid" />
+      I already paid my exhibitor fee, I'm just ordering tables or chairs - $0
+    </label>
+  </div>
+
   <h3>Extras</h3>
 
   <div class="form-group">
@@ -90,6 +98,30 @@ You can pay through PayPal using the form below.
       of cooking equipment including microwaves, electric grills, warmers,
       etc.
     </p>
+  </div>
+
+  <div class="form-group">
+    <label for="tables">
+      <select name="tables" id="tables">
+        <option value="0" selected="selected">No tables</option>
+        <option value="1">1 table - $12</option>
+        <option value="2">2 tables - $24</option>
+        <option value="3">3 tables - $36</option>
+        <option value="4">4 tables - $48</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label for="chairs">
+      <select name="chairs" id="chairs">
+        <option value="0" selected="selected">No chairs</option>
+        <option value="1">1 chair - $2</option>
+        <option value="2">2 chairs - $4</option>
+        <option value="3">3 chairs - $6</option>
+        <option value="4">4 chairs - $8</option>
+      </select>
+    </label>
   </div>
 
   <div class="form-group">
@@ -133,6 +165,7 @@ Minneapolis, MN 55404
          "np": 150,
          "aa": 100,
          "artist": 75,
+         "paid": 0,
      };
 
      $("#paypal-button").hide();
@@ -140,12 +173,15 @@ Minneapolis, MN 55404
      var form = $("#exhibitor-payment");
 
      var updateTotal = function () {
-         var type = $( 'input[name="type"]:checked', form ).attr("id");
-         if ( ! type ) {
+         var type_input = $( 'input[name="type"]:checked', form );
+         if ( ! type_input ) {
              return;
          }
 
-         var total = baseCost[type];
+         var type = type_input.attr("id");
+
+         $("#paypal-item-name").val( type_input.attr("value") );
+         var total = type ? baseCost[type] : 0;
 
          if ( type == "fc" ) {
              $("#extra-spaces option[value='0']").prop( "selected", true );
@@ -155,9 +191,27 @@ Minneapolis, MN 55404
              $("#extra-spaces").removeAttr("disabled");
 
              total += parseInt( $("#extra-spaces option:selected").val() );
+
+             $("#paypal-item-name").val( $("#paypal-item-name").val()+ "; " + $("#extra-spaces option:selected").text() );
          }
 
-         total += parseInt( $("#electricity option:selected").val() );
+         var elec = parseInt( $("#electricity option:selected").val() );
+         if (elec) {
+             $("#paypal-item-name").val( $("#paypal-item-name").val()+ "; " + $("#electricity option:selected").text() );
+             total += elec;
+         }
+
+         var tables = parseInt( $("#tables option:selected").val() );
+         if (tables) {
+             $("#paypal-item-name").val( $("#paypal-item-name").val()+ "; " + $("#tables option:selected").text() );
+             total += tables * 12;
+         }
+
+         var chairs = parseInt( $("#chairs option:selected").val() );
+         if (chairs) {
+             $("#paypal-item-name").val( $("#paypal-item-name").val()+ "; " + $("#chairs option:selected").text() );
+             total += chairs * 2;
+         }
 
          $("#total").text( "$" + total );
          $("#paypal-amount").val(total);
@@ -167,6 +221,8 @@ Minneapolis, MN 55404
      $("#exhibitor-payment input").change(updateTotal);
      $("#extra-spaces").change(updateTotal);
      $("#electricity").change(updateTotal);
+     $("#tables").change(updateTotal);
+     $("#chairs").change(updateTotal);
 
      $("#exhibitor-payment").submit(
          function () {
