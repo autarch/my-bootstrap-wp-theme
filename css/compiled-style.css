@@ -8368,6 +8368,12 @@ img.content-right {
   /* When you embed a CiviCRM form on a WP page via a shortcode, it includes the
            form's title directly under the page title. */
 
+  /* Text boxes end up with no horizontal padding, which looks quite odd */
+
+  /* This fixes the problem where radio buttons are too close horizontally to the button labels */
+
+  /* This fixes the problem where a radio group's label is misaligned vertically with the radio group to their right */
+
 }
 
 .entry-content #crm-container.crm-public .crm-title {
@@ -8391,10 +8397,27 @@ img.content-right {
   color: #333;
 }
 
+.entry-content #crm-container.crm-public div.crm-public-footer {
+  display: none;
+}
+
 .entry-content #crm-container.crm-public input[type="text"],
 .entry-content #crm-container.crm-public input[type="password"],
 .entry-content #crm-container.crm-public input[type="email"] {
-  padding: 0;
+  padding-right: 4px !important;
+  padding-left: 4px !important;
+}
+
+.entry-content #crm-container.crm-public input[type="radio"] {
+  margin: 0 6px 0px;
+}
+
+.entry-content #crm-container.crm-public div.label + div.content > input[type="radio"] {
+  margin-top: 8px;
+}
+
+.entry-content #crm-container.crm-public #crm-submit-buttons {
+  padding-bottom: 8px;
 }
 
 /* Various standard WordPress styles */
