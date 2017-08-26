@@ -539,7 +539,7 @@ function _exploreveg_non_empty ($value) {
 
 add_shortcode( 'ev_galleries', 'exploreveg_galleries' );
 
-function exploreveg_post_thumbnail($post_id, $size = 'post-thumbnail') {
+function exploreveg_post_thumbnail($post_id, $size = 'post-thumbnail', $align = 'right') {
     if ( !has_post_thumbnail($post_id) ) {
         return;
     }
@@ -592,7 +592,7 @@ function exploreveg_post_thumbnail($post_id, $size = 'post-thumbnail') {
 
     $classes = '';
     if ( !$caption ) {
-        $classes .= 'alignright post-thumbnail thumbnail';
+        $classes .= "align$align post-thumbnail thumbnail";
     }
     if (!$extra) {
         $extra = 'href="' . $link . '"';
@@ -767,6 +767,54 @@ function exploreveg_posts ($atts) {
 }
 
 add_shortcode( 'ev_posts', 'exploreveg_posts' );
+
+function tcvf_front_page_sponsors ($atts) {
+    $p = pods('sponsor')->find();
+
+    while ( $s = $p->fetch() ) {
+        $level = $p->field( 'sponsorship_level', TRUE );
+        if ( ! $sponsors[$level] ) {
+            $sponsors[$level] = array();
+        }
+
+        array_push( $sponsors[$level], $s );
+    }
+
+    if ( ! ($sponsors['Platinum'] || $sponsors['Gold']) ) {
+        return;
+    }
+
+
+    $sizes = array(
+        "Platinum" => 350,
+        "Gold"     => 175,
+    );
+
+    $levels = [ "Platinum", "Gold" ];
+
+    $html = '';
+    foreach ( $levels as $l ) {
+        if ( ! $sponsors[$l] ) {
+            continue;
+        }
+
+        $html .= "<h2>$l Sponsor";
+        if ( count( $sponsors[$l] ) > 1 ) {
+            $html .= 's';
+        }
+        $html .= '</h2>';
+
+        $size = $sizes[$l];
+        foreach ( $sponsors[$l] as $s ) {
+            $html .= '<h3 class="tcvf-exhibitor">' . $s['post_title'] . '</h3>';
+            $html .= exploreveg_post_thumbnail( $s['ID'], [ $size, $size ], 'left' );
+        }
+    }
+
+    return $html;
+}
+
+add_shortcode( 'tcvf_front_page_sponsors', 'tcvf_front_page_sponsors' );
 
 function exploreveg_show_all_posts($query) {
     global $is_multi_post;
