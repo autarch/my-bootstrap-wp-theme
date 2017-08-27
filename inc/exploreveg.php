@@ -539,7 +539,7 @@ function _exploreveg_non_empty ($value) {
 
 add_shortcode( 'ev_galleries', 'exploreveg_galleries' );
 
-function exploreveg_post_thumbnail($post_id, $size = 'post-thumbnail', $align = 'right') {
+function exploreveg_post_thumbnail($post_id, $size = 'post-thumbnail', $align = 'right', $is_post_thumbnail = true) {
     if ( !has_post_thumbnail($post_id) ) {
         return;
     }
@@ -592,7 +592,10 @@ function exploreveg_post_thumbnail($post_id, $size = 'post-thumbnail', $align = 
 
     $classes = '';
     if ( !$caption ) {
-        $classes .= "align$align post-thumbnail thumbnail";
+        $classes .= "align$align thumbnail";
+        if ($is_post_thumbnail) {
+            $classes .= " post-thumbnail";
+        }
     }
     if (!$extra) {
         $extra = 'href="' . $link . '"';
@@ -798,17 +801,24 @@ function tcvf_front_page_sponsors ($atts) {
             continue;
         }
 
+        $html .= '<div class="row"><div class="col-md-12">';
         $html .= "<h2>$l Sponsor";
         if ( count( $sponsors[$l] ) > 1 ) {
             $html .= 's';
         }
         $html .= '</h2>';
+        $html .= '</div></div>';
+
+        $html .= '<div class="row">';
 
         $size = $sizes[$l];
         foreach ( $sponsors[$l] as $s ) {
-            $html .= '<h3 class="tcvf-exhibitor">' . $s['post_title'] . '</h3>';
-            $html .= exploreveg_post_thumbnail( $s['ID'], [ $size, $size ], 'left' );
+            $html .= '<div class="col-xs-12 col-md-4">';
+            $html .= '<h3 class="tcvf-sponsor">' . $s['post_title'] . '</h3>';
+            $html .= exploreveg_post_thumbnail( $s['ID'], [ $size, $size ], 'left', false );
+            $html .= '</div>';
         }
+        $html .= '</div>';
     }
 
     return $html;
