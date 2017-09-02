@@ -7837,6 +7837,10 @@ div.main {
   color: #555555;
 }
 
+.tcvf-front-page-sponsor {
+  min-height: 350px;
+}
+
 #right-nav {
   padding-bottom: 10px;
   margin-bottom: 20px;

@@ -813,7 +813,7 @@ function tcvf_front_page_sponsors ($atts) {
 
         $size = $sizes[$l];
         foreach ( $sponsors[$l] as $s ) {
-            $html .= '<div class="col-xs-12 col-md-4">';
+            $html .= '<div class="col-xs-12 col-md-4 tcvf-front-page-sponsor">';
             $html .= '<h3 class="tcvf-sponsor">' . $s['post_title'] . '</h3>';
             $html .= exploreveg_post_thumbnail( $s['ID'], [ $size, $size ], 'left', false );
             $html .= '</div>';
