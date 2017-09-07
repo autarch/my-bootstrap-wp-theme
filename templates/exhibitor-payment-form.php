@@ -100,6 +100,8 @@ You can pay through PayPal using the form below.
     </p>
   </div>
 
+<!--
+
   <div class="form-group">
     <label for="tables">
       <select name="tables" id="tables">
@@ -123,6 +125,8 @@ You can pay through PayPal using the form below.
       </select>
     </label>
   </div>
+
+-->
 
   <div class="form-group">
     <label><strong>Total: <span id="total">Pick an exhibitor type</span></strong></label>
