@@ -16,8 +16,9 @@ if (!$logo) {
 }
 
 $logo_alts = array(
-    'caa'  => 'Compassionate Action for Animals',
-    'tcvf' => 'Twin Cities Veg Fest',
+    'bridges' => 'Bridges of Respect',
+    'caa'     => 'Compassionate Action for Animals',
+    'tcvf'    => 'Twin Cities Veg Fest',
     );
 
 $logo_width = 3;

@@ -987,9 +987,10 @@ function exploreveg_plugin_options() {
         <select name="exploreveg-logo">
           <option value="caa" <?php if ($logo_val && $logo_val == "caa") { echo 'selected'; } ?>>CAA</option>
           <option value="tcvf" <?php if ($logo_val && $logo_val == "tcvf") { echo 'selected'; } ?>>Twin Cities Veg Fest</option>
+          <option value="bridges" <?php if ($logo_val && $logo_val == "bridges") { echo 'selected'; } ?>>Bridges of Respect</option>
         </select>
         <br>
-        Pick a logo to use (CAA or Twin Cities Veg Fest)
+        Pick a logo to use
       </td>
     </tr>
     <tr valign="top">
