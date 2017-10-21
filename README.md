@@ -43,3 +43,24 @@ when working on the theme:
 
 You'll want to clear the Wordpress cache after updating the theme in order to
 see your changes. Just use the "Purge All Caches" option in the admin menu.
+
+## Theme Templates
+
+This theme has a few special templates that we use for certain pages:
+
+* CiviCRM Form (`templates/civicrm-form.php`) - just like the regular page
+  template but it removes some filters which break CiviCRM forms.
+* Event page (`templates/event.php`) - tweaks the breadcrumbs for the page to
+  link back to /events/.
+* Exhibitor Payment Form (`templates/exhibitor-payment-form.php`) - Hard codes
+  the page content with a form & JS to manage the form. All of this ultimately
+  submits the form to PayPal for exhibitors to pay. This is really gross and
+  could be replaced with a CiviCRM event payment form in the future.
+* Home page (`templates/home.php`) - Uses the `front-page` partial instead of
+  the `page` partial. The partial removes some navigation (breadcrumbs) and
+  tweaks some of the HTLM for the page.
+* TCVF Sponsor Listing (`tcvf-sponsor-listing.php`) - Used to list the
+  sponsors for TCVF (which are themselves managed as PODs custom content
+  types).
+* Veg Fest From Start to Finish Page (`vegfest-howto.php`) - Used for pages on
+  our https://vegfest.exploreveg.org/ site.
