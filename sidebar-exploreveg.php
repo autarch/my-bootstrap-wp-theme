@@ -8,7 +8,7 @@
 
               <div class="right-side-content">
                 <p>
-                  Subscribe to our <a href="/weekly-update/">weekly update</a>:
+                  Subscribe to our weekly update:
                 </p>
 
 <!-- HTML and JS provided by Mad Mimi -->
