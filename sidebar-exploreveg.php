@@ -15,7 +15,7 @@
     <form id="ema_signup_form" target="_blank" action="https://madmimi.com/signups/subscribe/6d600093e65e482ba09ea9261eee0a11" accept-charset="UTF-8" method="post">
        <input name="utf8" type="hidden" value="✓"/>
        <div class="mimi_field required">
-          <label for="signup_email">Email*</label>
+          <label for="signup_email">Email</label>
           <br/>
           <input id="signup_email" name="signup[email]" type="text" data-required-field="This field is required" placeholder="you@example.com"/>
        </div>
