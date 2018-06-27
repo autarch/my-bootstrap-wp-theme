@@ -126,6 +126,7 @@ $rss = get_option('exploreveg-rss');
                              echo " id='$logo-logo' alt='$logo_alts[$logo] logo'>";
                              ?></a>
           </div>
+<?php /*
           <div id="name-and-tagline" class="col-sm-<?php echo 12- $logo_width ?> col-xs-12">
             <h1>
               <a href="/"><?php
@@ -147,6 +148,7 @@ $rss = get_option('exploreveg-rss');
     }
 ?>
           </div>
+*/ ?>
         </div>
         <div class="row">
           <nav class="navbar navbar-inverse navbar-default" id="global-nav" role="navigation">
