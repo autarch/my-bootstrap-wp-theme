@@ -19,7 +19,7 @@ $logo_alts = array(
     'bridges' => 'Bridges of Respect',
     'caa'     => 'Compassionate Action for Animals',
     'tcvf'    => 'Twin Cities Veg Fest',
-    );
+);
 
 $logo_width = 3;
 
@@ -31,12 +31,12 @@ $favicon = $logo . '-favicon.ico';
     <head>
         <?php tha_head_top(); ?>
         <link rel="profile" href="http://gmpg.org/xfn/11" />
-		<link rel="shortcut icon" href="<?php echo esc_url(get_stylesheet_directory_uri()) ?>/img/<?php echo $favicon ?>" />
+        <link rel="shortcut icon" href="<?php echo esc_url(get_stylesheet_directory_uri()) ?>/img/<?php echo $favicon ?>" />
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+
         <title><?php wp_title( '&laquo;', true, 'right' ); ?></title>
-        
+
         <?php tha_head_bottom(); ?>
         <?php wp_head(); ?>
 
@@ -50,22 +50,22 @@ $fb_app_id = get_option('exploreveg-fb-app-id');
 if ($fb_app_id) :
 ?>
 <div id="fb-root"></div>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '<?php echo $fb_app_id ?>',
-      status     : true,
-      xfbml      : true
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+        appId      : '<?php echo $fb_app_id ?>',
+            status     : true,
+            xfbml      : true
     });
-  };
+    };
 
-  (function(d, s, id){
+(function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/all.js";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+}(document, 'script', 'facebook-jssdk'));
 </script>
 <?php endif ?>
 
@@ -75,9 +75,9 @@ if ($fb_app_id) :
         <div class="row">
           <div id="follow-buttons" class="col-sm-12">
 <?php
-/* All icons are from http://www.iconsdb.com/ */
+    /* All icons are from http://www.iconsdb.com/ */
 
-$facebook = get_option('exploreveg-facebook');
+    $facebook = get_option('exploreveg-facebook');
 $twitter = get_option('exploreveg-twitter');
 $tumblr = get_option('exploreveg-tumblr');
 $pinterest = get_option('exploreveg-pinterest');
@@ -116,37 +116,39 @@ $rss = get_option('exploreveg-rss');
         <div class="row">
 
           <div class="col-sm-<?php echo $logo_width ?> col-xs-12">
-            <a href="/"><img <?php
-                             echo 'src="';
-                             echo esc_url(get_stylesheet_directory_uri());
+          <a href="/"><img <?php
+echo 'src="';
+echo esc_url(get_stylesheet_directory_uri());
 
-                             echo  '/img/' . $logo . '-logo.png';
-                             echo '" ';
+echo  '/img/' . $logo . '-logo.png';
+echo '" ';
 
-                             echo " id='$logo-logo' alt='$logo_alts[$logo] logo'>";
-                             ?></a>
+echo " id='$logo-logo' alt='$logo_alts[$logo] logo'>";
+?></a>
           </div>
-          <div id="name-and-tagline" class="col-sm-<?php echo 12- $logo_width ?> col-xs-12">
-            <h1>
-              <a href="/"><?php
-                             $blog_name = get_bloginfo('name');
-                             if ( strcmp( $blog_name, 'CAA Test' ) == 0 ) {
-                                 echo 'Compassionate Action for Animals';
+<?php /*
+<div id="name-and-tagline" class="col-sm-<?php echo 12- $logo_width ?> col-xs-12">
+<h1>
+<a href="/"><?php
+$blog_name = get_bloginfo('name');
+if ( strcmp( $blog_name, 'CAA Test' ) == 0 ) {
+    echo 'Compassionate Action for Animals';
                              }
                              else {
                                  echo $blog_name;
                              } ?></a>
-            </h1>
-            <h2 id="tagline">
-              <?php bloginfo( 'description' ); ?>
+                             </h1>
+                             <h2 id="tagline">
+                             <?php bloginfo( 'description' ); ?>
             </h2>
 <?php
-    $sub_tagline = get_option('exploreveg-sub-tagline');
+                             $sub_tagline = get_option('exploreveg-sub-tagline');
     if ($sub_tagline) {
         echo '<h3 id="sub-tagline">' . $sub_tagline . '</h3>';
     }
 ?>
-          </div>
+    </div>
+ */ ?>
         </div>
         <div class="row">
           <nav class="navbar navbar-inverse navbar-default" id="global-nav" role="navigation">
@@ -163,13 +165,13 @@ $rss = get_option('exploreveg-rss');
               </div>
 
               <div class="collapse navbar-collapse" id="global-navbar-collapse">
-                <?php wp_nav_menu( array(
-                    'theme_location'    =>  'primary',
-                    'menu_class'        =>  'nav navbar-nav',
-                    'depth'             =>  3,
-                    'fallback_cb'       =>  false,
-                    'walker'            =>  new The_Bootstrap_Nav_Walker,
-                ) ); ?>
+<?php wp_nav_menu( array(
+    'theme_location'    =>  'primary',
+    'menu_class'        =>  'nav navbar-nav',
+    'depth'             =>  3,
+    'fallback_cb'       =>  false,
+    'walker'            =>  new The_Bootstrap_Nav_Walker,
+) ); ?>
 
                 <div class="col-sm-3 col-md-3 pull-right">
                   <form action="<?php echo esc_url(home_url()); ?>/"
@@ -190,8 +192,8 @@ $rss = get_option('exploreveg-rss');
         </div>
       <?php tha_header_bottom(); ?>
       </header>
-      <?php tha_header_after();
-                
+<?php tha_header_after();
+
 
 /* End of file header.php */
 /* Location: ./wp-content/themes/the-bootstrap/header.php */
