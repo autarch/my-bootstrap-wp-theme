@@ -118,10 +118,8 @@ $rss = get_option('exploreveg-rss');
           <div class="col-sm-<?php echo $logo_width ?> col-xs-12">
           <a href="/"><img <?php
 echo 'src="';
-echo esc_url(get_stylesheet_directory_uri());
-
-echo  '/img/' . $logo . '-logo.png';
-echo '" ';
+header_image();
+echo '"';
 
 echo " id='$logo-logo' alt='$logo_alts[$logo] logo'>";
 ?></a>

@@ -8,87 +8,106 @@
 
 
 if ( ! function_exists( 'the_bootstrap_setup' ) ):
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * @author	WordPress.org
- * @since	1.0.0 - 05.02.2012
- *
- * @return	void
- */
-function the_bootstrap_setup() {
-	global $content_width;
-	
-	if ( ! isset( $content_width ) ) {
-		$content_width = 770;
-	}
-	
-	load_theme_textdomain( 'the-bootstrap', get_template_directory() . '/lang' );
-	
-	add_theme_support( 'automatic-feed-links' );
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * @author	WordPress.org
+	 * @since	1.0.0 - 05.02.2012
+	 *
+	 * @return	void
+	 */
+	function the_bootstrap_setup() {
+		global $content_width;
 
-	add_theme_support( 'post-thumbnails' );
+		if ( ! isset( $content_width ) ) {
+			$content_width = 770;
+		}
 
-	add_theme_support( 'post-formats', array(
-		'aside',
-		'chat',
-		'link',
-		'gallery',
-		'status',
-		'quote',
-		'image',
-		'video'
-	) );
-	
-	add_theme_support( 'tha_hooks', array( 'all' ) );
+		load_theme_textdomain( 'the-bootstrap', get_template_directory() . '/lang' );
 
-	if ( version_compare( get_bloginfo( 'version' ), '3.4', '<' ) )
-		// Custom Theme Options
-		require_once( get_template_directory() . '/inc/theme-options.php' );
-	else
-		// Implement the Theme Customizer script
-		require_once( get_template_directory() . '/inc/theme-customizer.php' );
-	
-	/**
-	 * Custom template tags for this theme.
-	 */
-	require_once( get_template_directory() . '/inc/template-tags.php' );
-	
-	/**
-	 * Implement the Custom Header feature
-	 */
-	require_once( get_template_directory() . '/inc/custom-header.php' );
-	
-	/**
-	 * Custom Nav Menu handler for the Navbar.
-	 */
-	require_once( get_template_directory() . '/inc/nav-menu-walker.php' );
+		add_theme_support( 'automatic-feed-links' );
 
-    /**
-     * Custom for exploreveg theme
-     */
-	require_once( get_template_directory() . '/inc/exploreveg.php' );
-	
-	/**
-	 * Theme Hook Alliance
-	 */
-	require_if_theme_supports( 'tha_hooks', get_template_directory() . '/inc/tha-theme-hooks.php' );
-	
-	/**
-	 * Including three menu (header-menu, primary and footer-menu).
-	 * Primary is wrapping in a navbar containing div (wich support responsive variation)
-	 * Header-menu and Footer-menu are inside pills dropdown menu
-	 * 
-	 * @since	1.2.2 - 07.04.2012
-	 * @see		http://codex.wordpress.org/Function_Reference/register_nav_menus
-	 */
-	register_nav_menus( array(
-		'primary'		=>	__( 'Main Navigation', 'the-bootstrap' ),
-		'header-menu'  	=>	__( 'Header Menu', 'the-bootstrap' ),
-		'footer-menu' 	=>	__( 'Footer Menu', 'the-bootstrap' )
-	) );
-	
-} // the_bootstrap_setup
+		add_theme_support( 'post-thumbnails' );
+
+		$logo = get_option('exploreveg-logo');
+		if (!$logo) {
+			$logo = 'caa';
+		}
+
+		$defaults = array(
+			'default-image'          =>  esc_url(get_stylesheet_directory_uri()) . '/img/' . $logo . '-logo.png',
+			'flex-height'            => false,
+			'flex-width'             => false,
+			'uploads'                => true,
+			'random-default'         => false,
+			'header-text'            => true,
+			'default-text-color'     => '',
+			'wp-head-callback'       => '',
+			'admin-head-callback'    => '',
+			'admin-preview-callback' => '',
+		);
+		add_theme_support( 'custom-header', $defaults );
+
+		add_theme_support( 'post-formats', array(
+			'aside',
+			'chat',
+			'link',
+			'gallery',
+			'status',
+			'quote',
+			'image',
+			'video'
+		) );
+
+		add_theme_support( 'tha_hooks', array( 'all' ) );
+
+		if ( version_compare( get_bloginfo( 'version' ), '3.4', '<' ) )
+			// Custom Theme Options
+			require_once( get_template_directory() . '/inc/theme-options.php' );
+		else
+			// Implement the Theme Customizer script
+			require_once( get_template_directory() . '/inc/theme-customizer.php' );
+
+		/**
+		 * Custom template tags for this theme.
+		 */
+		require_once( get_template_directory() . '/inc/template-tags.php' );
+
+		/**
+		 * Implement the Custom Header feature
+		 */
+		require_once( get_template_directory() . '/inc/custom-header.php' );
+
+		/**
+		 * Custom Nav Menu handler for the Navbar.
+		 */
+		require_once( get_template_directory() . '/inc/nav-menu-walker.php' );
+
+		/**
+		 * Custom for exploreveg theme
+		 */
+		require_once( get_template_directory() . '/inc/exploreveg.php' );
+
+		/**
+		 * Theme Hook Alliance
+		 */
+		require_if_theme_supports( 'tha_hooks', get_template_directory() . '/inc/tha-theme-hooks.php' );
+
+		/**
+		 * Including three menu (header-menu, primary and footer-menu).
+		 * Primary is wrapping in a navbar containing div (wich support responsive variation)
+		 * Header-menu and Footer-menu are inside pills dropdown menu
+		 * 
+		 * @since	1.2.2 - 07.04.2012
+		 * @see		http://codex.wordpress.org/Function_Reference/register_nav_menus
+		 */
+		register_nav_menus( array(
+			'primary'		=>	__( 'Main Navigation', 'the-bootstrap' ),
+			'header-menu'  	=>	__( 'Header Menu', 'the-bootstrap' ),
+			'footer-menu' 	=>	__( 'Footer Menu', 'the-bootstrap' )
+		) );
+
+	} // the_bootstrap_setup
 endif;
 add_action( 'after_setup_theme', 'the_bootstrap_setup' );
 
@@ -156,11 +175,11 @@ add_filter( 'body_class', 'the_bootstrap_layout_classes' );
  * @return	void
  */
 function the_bootstrap_custom_background_setup() {
-	
+
 	$args = apply_filters( 'the_bootstrap_custom_background_args',  array(
 		'default-color'	=>	'EFEFEF',
 	) );
-	
+
 	add_theme_support( 'custom-background', $args );
 }
 add_action( 'after_setup_theme', 'the_bootstrap_custom_background_setup' );
@@ -184,7 +203,7 @@ function the_bootstrap_widgets_init() {
 		'before_title'	=>	'<h2 class="widget-title">',
 		'after_title'	=>	'</h2>',
 	) );
-	
+
 	register_sidebar( array(
 		'name'			=>	__( 'Image Sidebar', 'the-bootstrap' ),
 		'description'	=>	__( 'Shown on image attachment pages.', 'the-bootstrap' ),
@@ -197,7 +216,7 @@ function the_bootstrap_widgets_init() {
 
 	include_once( 'inc/the-bootstrap-image-meta-widget.php' );
 	register_widget( 'The_Bootstrap_Image_Meta_Widget' );
-	
+
 	include_once( 'inc/the-bootstrap-gallery-widget.php' );
 	register_widget( 'The_Bootstrap_Gallery_Widget' );
 }
@@ -267,12 +286,12 @@ add_action( 'wp_enqueue_scripts', 'the_bootstrap_print_scripts' );
  * @return	void
  */
 function the_bootstrap_print_ie_scripts() {
-	?>
+?>
 	<!--[if lt IE 9]>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.min.js" type="text/javascript"></script>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js" type="text/javascript"></script>
 	<![endif]-->
-	<?php
+<?php
 }
 add_action( 'wp_head', 'the_bootstrap_print_ie_scripts', 11 );
 
@@ -305,30 +324,30 @@ add_action( 'comment_form_before', 'the_bootstrap_comment_reply' );
  * @return	void
  */
 function the_bootstrap_print_styles() {
-    wp_enqueue_style( 'compiled-css' );
-    wp_enqueue_style( 'per-server-css' );
+	wp_enqueue_style( 'compiled-css' );
+	wp_enqueue_style( 'per-server-css' );
 }
 add_action( 'wp_enqueue_scripts', 'the_bootstrap_print_styles' );
 
 
 if ( ! function_exists( 'the_bootstrap_credits' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author,
- * comment and edit link
- *
- * @author	Konstantin Obenland
- * @since	1.2.2 - 07.04.2012
- *
- * @return	void
- */
-function the_bootstrap_credits() {
-	printf(
-		'<span class="credits alignleft">' . __( '&copy; %1$s <a href="%2$s">%3$s</a>, all rights reserved.', 'the-bootstrap' ) . '</span>',
-		date( 'Y' ),
-		home_url( '/' ),
-		get_bloginfo( 'name' )
-	);
-}
+	/**
+	 * Prints HTML with meta information for the current post-date/time and author,
+	 * comment and edit link
+	 *
+	 * @author	Konstantin Obenland
+	 * @since	1.2.2 - 07.04.2012
+	 *
+	 * @return	void
+	 */
+	function the_bootstrap_credits() {
+		printf(
+			'<span class="credits alignleft">' . __( '&copy; %1$s <a href="%2$s">%3$s</a>, all rights reserved.', 'the-bootstrap' ) . '</span>',
+			date( 'Y' ),
+			home_url( '/' ),
+			get_bloginfo( 'name' )
+		);
+	}
 endif;
 
 
@@ -344,10 +363,10 @@ endif;
  * @return	string
  */
 function the_bootstrap_wp_title( $title, $sep ) {
-	
+
 	if ( ! is_feed() ) {
 		$title .= get_bloginfo( 'name' );
-		
+
 		if ( is_front_page() ) {
 			$title .= " {$sep} " . get_bloginfo( 'description' );
 		}
@@ -443,14 +462,14 @@ add_filter( 'wp_page_menu_args', 'the_bootstrap_page_menu_args' );
  * @return	string
  */
 function the_bootstrap_enhanced_image_navigation( $url, $id ) {
-    
+
 	if ( is_attachment() AND wp_attachment_is_image( $id ) ) {
 		$image = get_post( $id );
 		if ( $image->post_parent AND $image->post_parent != $id )
 			$url .= '#primary';
-    }
-    
-    return $url;
+	}
+
+	return $url;
 }
 add_filter( 'attachment_link', 'the_bootstrap_enhanced_image_navigation', 10, 2 );
 
@@ -468,28 +487,28 @@ function the_bootstrap_comments_list() {
 		<div id="comments">
 			<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'the-bootstrap' ); ?></p>
 		</div><!-- #comments -->
-		<?php
+<?php
 		return;
-	endif;
-	
-	
-	if ( have_comments() ) : ?>
+endif;
+
+
+if ( have_comments() ) : ?>
 		<div id="comments">
 			<h2 id="comments-title">
-				<?php printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'the-bootstrap' ),
-						number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' ); ?>
+<?php printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'the-bootstrap' ),
+	number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' ); ?>
 			</h2>
-		
+
 			<?php the_bootstrap_comment_nav(); ?>
-		
+
 			<ol class="commentlist unstyled">
 				<?php wp_list_comments( array( 'callback' => 'the_bootstrap_comment' ) ); ?>
 			</ol><!-- .commentlist .unstyled -->
-		
+
 			<?php the_bootstrap_comment_nav(); ?>
-		
+
 		</div><!-- #comments -->
-	<?php endif;
+<?php endif;
 }
 add_action( 'comment_form_before', 'the_bootstrap_comments_list', 0 );
 add_action( 'comment_form_comments_closed', 'the_bootstrap_comments_list', 1 );
@@ -507,7 +526,7 @@ add_action( 'comment_form_comments_closed', 'the_bootstrap_comments_list', 1 );
 function the_bootstrap_comments_closed() {
 	if ( ! is_page() AND post_type_supports( get_post_type(), 'comments' ) ) : ?>
 		<p class="nocomments"><?php _e( 'Comments are closed.', 'the-bootstrap' ); ?></p>
-	<?php endif;
+<?php endif;
 }
 add_action( 'comment_form_comments_closed', 'the_bootstrap_comments_closed' );
 
@@ -527,7 +546,7 @@ function the_bootstrap_comment_form_defaults( $defaults ) {
 		'comment_field'			=>	'<div class="comment-form-comment control-group"><label class="control-label" for="comment">' . _x( 'Comment', 'noun', 'the-bootstrap' ) . '</label><div class="controls"><textarea class="span7" id="comment" name="comment" rows="8" aria-required="true"></textarea></div></div>',
 		'comment_notes_before'	=>	'',
 		'comment_notes_after'	=>	'<div class="form-allowed-tags control-group"><label class="control-label">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'the-bootstrap' ), '</label><div class="controls"><pre>' . allowed_tags() . '</pre></div>' ) . '</div>
-									 <div class="form-actions">',
+		<div class="form-actions">',
 		'title_reply'			=>	'<legend>' . __( 'Leave a reply', 'the-bootstrap' ) . '</legend>',
 		'title_reply_to'		=>	'<legend>' . __( 'Leave a reply to %s', 'the-bootstrap' ). '</legend>',
 		'must_log_in'			=>	'<div class="must-log-in control-group controls">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.', 'the-bootstrap' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( get_the_ID() ) ) ) ) . '</div>',
@@ -538,37 +557,37 @@ add_filter( 'comment_form_defaults', 'the_bootstrap_comment_form_defaults' );
 
 
 if ( ! function_exists( 'the_bootstrap_comment' ) ) :
-/**
- * Template for comments and pingbacks.
- *
- * To override this walker in a child theme without modifying the comments template
- * simply create your own the_bootstrap_comment(), and that function will be used instead.
- *
- * Used as a callback by wp_list_comments() for displaying the comments.
- *
- * @author	Konstantin Obenland
- * @since	1.0.0 - 05.02.2012
- *
- * @param	object	$comment	Comment data object.
- * @param	array	$args
- * @param	int		$depth		Depth of comment in reference to parents.
- *
- * @return	void
- */
-function the_bootstrap_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-	if ( 'pingback' == $comment->comment_type OR 'trackback' == $comment->comment_type ) : ?>
-	
+	/**
+	 * Template for comments and pingbacks.
+	 *
+	 * To override this walker in a child theme without modifying the comments template
+	 * simply create your own the_bootstrap_comment(), and that function will be used instead.
+	 *
+	 * Used as a callback by wp_list_comments() for displaying the comments.
+	 *
+	 * @author	Konstantin Obenland
+	 * @since	1.0.0 - 05.02.2012
+	 *
+	 * @param	object	$comment	Comment data object.
+	 * @param	array	$args
+	 * @param	int		$depth		Depth of comment in reference to parents.
+	 *
+	 * @return	void
+	 */
+	function the_bootstrap_comment( $comment, $args, $depth ) {
+		$GLOBALS['comment'] = $comment;
+		if ( 'pingback' == $comment->comment_type OR 'trackback' == $comment->comment_type ) : ?>
+
 		<li id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 			<p class="row">
 				<strong class="ping-label col-md-1"><?php _e( 'Pingback:', 'the-bootstrap' ); ?></strong>
 				<span class="span7"><?php comment_author_link(); edit_comment_link( __( 'Edit', 'the-bootstrap' ), '<span class="sep">&nbsp;</span><span class="edit-link label">', '</span>' ); ?></span>
 			</p>
-	
-	<?php else:
-		$offset	=	$depth - 1;
-		$span	=	7 - $offset; ?>
-		
+
+<?php else:
+$offset	=	$depth - 1;
+$span	=	7 - $offset; ?>
+
 		<li  id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 			<article id="comment-<?php comment_ID(); ?>" class="comment row">
 				<div class="comment-author-avatar col-md-1<?php if ($offset) echo " offset{$offset}"; ?>">
@@ -576,39 +595,39 @@ function the_bootstrap_comment( $comment, $args, $depth ) {
 				</div>
 				<footer class="comment-meta span<?php echo $span; ?>">
 					<p class="comment-author vcard">
-						<?php
-							/* translators: 1: comment author, 2: date and time */
-							printf( __( '%1$s <span class="says">said</span> on %2$s:', 'the-bootstrap' ),
-								sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
-								sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
-									esc_url( get_comment_link( $comment->comment_ID ) ),
-									get_comment_time( 'c' ),
-									/* translators: 1: date, 2: time */
-									sprintf( __( '%1$s at %2$s', 'the-bootstrap' ), get_comment_date(), get_comment_time() )
-								)
+<?php
+/* translators: 1: comment author, 2: date and time */
+printf( __( '%1$s <span class="says">said</span> on %2$s:', 'the-bootstrap' ),
+	sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
+	sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
+	esc_url( get_comment_link( $comment->comment_ID ) ),
+	get_comment_time( 'c' ),
+	/* translators: 1: date, 2: time */
+	sprintf( __( '%1$s at %2$s', 'the-bootstrap' ), get_comment_date(), get_comment_time() )
+)
 							);
-							edit_comment_link( __( 'Edit', 'the-bootstrap' ), '<span class="sep">&nbsp;</span><span class="edit-link label">', '</span>' ); ?>
+edit_comment_link( __( 'Edit', 'the-bootstrap' ), '<span class="sep">&nbsp;</span><span class="edit-link label">', '</span>' ); ?>
 					</p><!-- .comment-author .vcard -->
-	
+
 					<?php if ( ! $comment->comment_approved ) : ?>
 					<div class="comment-awaiting-moderation alert alert-info"><em><?php _e( 'Your comment is awaiting moderation.', 'the-bootstrap' ); ?></em></div>
 					<?php endif; ?>
-	
+
 				</footer><!-- .comment-meta -->
-	
+
 				<div class="comment-content span<?php echo $span; ?>">
-					<?php
-					comment_text();
-					comment_reply_link( array_merge( $args, array(
-						'reply_text'	=>	__( 'Reply <span>&darr;</span>', 'the-bootstrap' ),
-						'depth'			=>	$depth,
-						'max_depth'		=>	$args['max_depth']
-					) ) ); ?>
+<?php
+comment_text();
+comment_reply_link( array_merge( $args, array(
+	'reply_text'	=>	__( 'Reply <span>&darr;</span>', 'the-bootstrap' ),
+	'depth'			=>	$depth,
+	'max_depth'		=>	$args['max_depth']
+) ) ); ?>
 				</div><!-- .comment-content -->
 			</article><!-- #comment-<?php comment_ID(); ?> .comment -->
-			
-	<?php endif; // comment_type
-}
+
+<?php endif; // comment_type
+	}
 endif; // ends check for the_bootstrap_comment()
 
 
@@ -660,14 +679,14 @@ function the_bootstrap_comment_form_field_author( $html ) {
 	$commenter	=	wp_get_current_commenter();
 	$req		=	get_option( 'require_name_email' );
 	$aria_req	=	( $req ? " aria-required='true'" : '' );
-	
+
 	return	'<div class="comment-form-author control-group">
-				<label for="author" class="control-label">' . __( 'Name', 'the-bootstrap' ) . '</label>
-				<div class="controls">
-					<input id="author" name="author" type="text" value="' . esc_attr(  $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />
-					' . ( $req ? '<p class="help-inline"><span class="required">' . __('required', 'the-bootstrap') . '</span></p>' : '' ) . '
-				</div>
-			</div>';
+		<label for="author" class="control-label">' . __( 'Name', 'the-bootstrap' ) . '</label>
+		<div class="controls">
+		<input id="author" name="author" type="text" value="' . esc_attr(  $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />
+		' . ( $req ? '<p class="help-inline"><span class="required">' . __('required', 'the-bootstrap') . '</span></p>' : '' ) . '
+		</div>
+		</div>';
 }
 add_filter( 'comment_form_field_author', 'the_bootstrap_comment_form_field_author');
 
@@ -686,14 +705,14 @@ function the_bootstrap_comment_form_field_email( $html ) {
 	$commenter	=	wp_get_current_commenter();
 	$req		=	get_option( 'require_name_email' );
 	$aria_req	=	( $req ? " aria-required='true'" : '' );
-	
+
 	return	'<div class="comment-form-email control-group">
-				<label for="email" class="control-label">' . __( 'Email', 'the-bootstrap' ) . '</label>
-				<div class="controls">
-					<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />
-					<p class="help-inline">' . ( $req ? '<span class="required">' . __('required', 'the-bootstrap') . '</span>, ' : '' ) . __( 'will not be published', 'the-bootstrap' ) . '</p>
-				</div>
-			</div>';
+		<label for="email" class="control-label">' . __( 'Email', 'the-bootstrap' ) . '</label>
+		<div class="controls">
+		<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' />
+		<p class="help-inline">' . ( $req ? '<span class="required">' . __('required', 'the-bootstrap') . '</span>, ' : '' ) . __( 'will not be published', 'the-bootstrap' ) . '</p>
+		</div>
+		</div>';
 }
 add_filter( 'comment_form_field_email', 'the_bootstrap_comment_form_field_email');
 
@@ -710,13 +729,13 @@ add_filter( 'comment_form_field_email', 'the_bootstrap_comment_form_field_email'
  */
 function the_bootstrap_comment_form_field_url( $html ) {
 	$commenter	=	wp_get_current_commenter();
-	
+
 	return	'<div class="comment-form-url control-group">
-				<label for="url" class="control-label">' . __( 'Website', 'the-bootstrap' ) . '</label>
-				<div class="controls">
-					<input id="url" name="url" type="url" value="' . esc_attr(  $commenter['comment_author_url'] ) . '" size="30" />
-				</div>
-			</div>';
+		<label for="url" class="control-label">' . __( 'Website', 'the-bootstrap' ) . '</label>
+		<div class="controls">
+		<input id="url" name="url" type="url" value="' . esc_attr(  $commenter['comment_author_url'] ) . '" size="30" />
+		</div>
+		</div>';
 }
 add_filter( 'comment_form_field_url', 'the_bootstrap_comment_form_field_url');
 
@@ -737,7 +756,7 @@ function the_bootstrap_post_classes( $classes ) {
 	if ( is_sticky() AND is_home() ) {
 		$classes[] = 'hero-unit';
 	}
-	
+
 	return $classes;
 }
 add_filter( 'post_class', 'the_bootstrap_post_classes' );
@@ -829,8 +848,8 @@ function the_bootstrap_post_gallery( $content, $attr ) {
 			$output .= wp_get_attachment_link( $att_id, $size, true ) . "\n";
 		return $output;
 	}
-	
-	
+
+
 
 	$itemtag	=	tag_escape( $itemtag );
 	$captiontag	=	tag_escape( $captiontag );
@@ -839,7 +858,7 @@ function the_bootstrap_post_gallery( $content, $attr ) {
 
 	if ( 4 > $columns )
 		$size = 'full';
-	
+
 	$selector	=	"gallery-{$instance}";
 	$size_class	=	sanitize_html_class( $size );
 	$output		=	"<ul id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} thumbnails'>";
@@ -852,14 +871,14 @@ function the_bootstrap_post_gallery( $content, $attr ) {
 			'type'		=>	'comment',
 			'status'	=>	'approve'
 		) );
-		
+
 		$link = wp_get_attachment_link( $id, $size, ! ( isset( $attr['link'] ) AND 'file' == $attr['link'] ) );
 		$clear_class = ( 0 == $i++ % $columns ) ? ' clear' : '';
 		$span = 'span' . floor( 8 / $columns );
-		
+
 		$output .= "<li class='{$span}{$clear_class}'><{$itemtag} class='gallery-item'>";
 		$output .= "<{$icontag} class='gallery-icon'>{$link}</{$icontag}>\n";
-			
+
 		if ( $captiontag AND ( 0 < $comments OR trim( $attachment->post_excerpt ) ) ) {
 			$comments	=	( 0 < $comments ) ? sprintf( _n('%d comment', '%d comments', $comments, 'the-bootstrap'), $comments ) : '';
 			$excerpt	=	wptexturize( $attachment->post_excerpt );
@@ -869,7 +888,7 @@ function the_bootstrap_post_gallery( $content, $attr ) {
 		$output .= "</{$itemtag}></li>\n";
 	}
 	$output .= "</ul>\n";
-	
+
 	return $output;
 }
 add_filter( 'post_gallery', 'the_bootstrap_post_gallery', 10, 2 );
@@ -900,8 +919,8 @@ function the_bootstrap_img_caption_shortcode( $empty, $attr, $content ) {
 		return $content;
 	}
 
-    $img = do_shortcode( str_replace( 'class="thumbnail', 'class="', $content ) );
-    return the_bootstrap_img_caption( $img, $id, $align, $width, $caption );
+	$img = do_shortcode( str_replace( 'class="thumbnail', 'class="', $content ) );
+	return the_bootstrap_img_caption( $img, $id, $align, $width, $caption );
 }
 
 add_filter( 'img_caption_shortcode', 'the_bootstrap_img_caption_shortcode', 10, 3 );
@@ -912,7 +931,7 @@ function the_bootstrap_img_caption ( $img, $id, $align, $width, $caption ) {
 	}
 
 	return '<figure ' . $id . 'class="wp-caption thumbnail ' . $align . '" style="width: '.$width.'px;">'
-        . $img . '<figcaption class="wp-caption-text">' . $caption . '</figcaption></figure>';
+		. $img . '<figcaption class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
 
 
@@ -985,7 +1004,7 @@ add_action( 'template_redirect', 'the_bootstrap_content_width' );
  * @return	string	The Bootstrap version
  */
 function _the_bootstrap_version() {
-    return wp_get_theme()->get( 'Version' );
+	return wp_get_theme()->get( 'Version' );
 }
 
 /* End of file functions.php */
